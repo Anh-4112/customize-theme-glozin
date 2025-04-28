@@ -1612,3 +1612,43 @@ mini-cart-remove-button.loading .remove-icon {
 .sec__icon-box-content-icon svg{
   color: var(--color-heading);
 }
+
+/* ===== CSS Customize ===== */
+:root {
+  --light-cool-gray: #E5E8EC;
+}
+
+.gap-0 {
+  gap: 0rem !important;
+}
+
+.gap-20 {
+  gap: 2rem !important;
+}
+
+.submenu-topbar {
+  display: none;
+  top: 100%;
+  left: -30%;
+  background: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 1rem;
+  list-style: none;
+}
+
+.btn-topbar:hover .submenu-topbar {
+  display: block;
+}
+
+.bor-none {
+  border: none !important;
+}
+
+.btn-rounded {
+  border: solid 0.2rem var(--light-cool-gray);
+  border-radius: 1rem;
+}
+
+.search__button {
+  font-weight: 500 !important;
+}

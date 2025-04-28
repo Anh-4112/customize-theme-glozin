@@ -176,14 +176,34 @@
                 </slide-section>
               </div>
             {%- when 'cur_lang' -%}
-              <div class="lang__currency-desktop justify-content-center justity-md-unset topbar-item{% if block_st.hidden_on_mobile %} hidden flex-1025{% else %} flex{% endif %} flex-wrap gap-10 gap-lg-25 align-center row-gap-0">
+              <div class="gap-0 lang__currency-desktop justify-content-center justity-md-unset topbar-item{% if block_st.hidden_on_mobile %} hidden flex-1025{% else %} flex{% endif %} flex-wrap gap-10 gap-lg-25 align-center row-gap-0">
                 {%- if block_st.menu_link != blank -%}
-                  <ul class="linklist list-unstyled flex flex-wrap gap-10 gap-lg-25">
+                  <ul class="linklist list-unstyled flex flex-wrap gap-10 gap-lg-25 gap-20">
                     {%- for link in block_st.menu_link.links -%}
-                      <li>
+                      <li class="btn-topbar relative group">
                         <a class="no-underline block" href="{{ link.url }}" aria-label="{{ link.title }}">
                           {{- link.title -}}
+                          {%- if link.links.size > 0 -%}
+                            <open-children-toggle class="inline-flex flex-end align-center ms-5{% if section_st.redirect_to_link == blank %} absolute inset-0 static-1025{% else %} touch-target-mb{% endif %}">
+                              <svg class="icon-down hidden block-1025" width="10" height="8">
+                                <use href="#icon-arrow-down" />
+                              </svg>
+                            </open-children-toggle>
+                          {%- endif -%}
                         </a>
+                        
+                        {%- if link.links.size > 0 -%}
+                          <ul class="submenu-topbar absolute left-0 top-full mt-2 hidden group-hover:block bg-white shadow-lg min-w-150 p-10">
+                            {%- for sublink in link.links -%}
+                              <li>
+                                <a class="no-underline block py-5 px-10" href="{{ sublink.url }}" aria-label="{{ sublink.title }}">
+                                  {{ sublink.title }}
+                                </a>
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        {%- endif -%}
+                        
                       </li>
                     {%- endfor -%}
                   </ul>

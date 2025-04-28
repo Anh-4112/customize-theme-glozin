@@ -32,17 +32,8 @@
               class="search search-modal__form"
             >
               <input type="hidden" name="type" value="product">
-              <div class="field flex relative btn-rounded">
-                <button
-                  id="button_search_default"
-                  class="search__button field__button{% if search_type == 'default' %} light-dark-grey{% else %} header-color{% endif %} hover-heading-color btn-reset w-44 content-center absolute-md left-5 inset-y-0 pointer"
-                  aria-label="{{ 'general.search.search' | t }}"
-                >
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" class="transition">
-                    <use href="#icon-search" />
-                  </svg>
-                </button>
-                <button
+              <div class="field flex btn-rounded">
+                {% comment %} <button
                   type="button"
                   class="btn-reset top-search-toggle header-icon header-color w-44 h-44 inline-flex content-center header-color pointer transition"
                   aria-label="{{ 'templates.search.tooltip' | t }}"
@@ -50,9 +41,10 @@
                   <svg width="17" height="17" viewBox="0 0 17 17" fill="currentColor">
                     <use href="#icon-search" />
                   </svg>
-                </button>
+                </button> {% endcomment %}
+
                 <input
-                  class="search__input field__input flex-1 max-w-custom hidden block-md"
+                  class="bor-none search__input field__input flex-1 max-w-custom hidden block-md"
                   type="search"
                   name="q"
                   id="search-template"
@@ -71,6 +63,18 @@
                   spellcheck="false"
                   style="--input-padding: 1rem 1rem 1rem 4.5rem; --input-height: 4rem; --max-width: 200px;"
                 >
+
+                <button
+                  id="button_search_default"
+                  class="search__button field__button{% if search_type == 'default' %} light-dark-grey{% else %} header-color{% endif %} hover-heading-color btn-reset w-44 content-center pointer"
+                  aria-label="{{ 'general.search.search' | t }}"
+                >
+                  {% comment %} <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" class="transition">
+                    <use href="#icon-search" />
+                  </svg> {% endcomment %}
+                  Search
+                </button>
+
                 <label class="field__label visually-hidden" for="search-template">
                   {{- 'general.search.search' | t -}}
                 </label>
