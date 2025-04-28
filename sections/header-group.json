@@ -8,118 +8,117 @@
  * ------------------------------------------------------------
  */
  {
-    "name": "t:sections.header.name",
-    "type": "header",
-    "sections": {
-      "top_bar_CbXNYj": {
-        "type": "top-bar",
-        "blocks": {
-          "text_slider_LFaC38": {
-            "type": "text_slider",
-            "settings": {
-              "text1": "Sign up for 10% off your first order. <a href=\"/account/\" title=\"/account/\"><strong>Sign Up</strong></a>",
-              "text2": "Summer sale discount off 50%. <a href=\"/collections/activewear\" title=\"Activewear\"><strong>Shop Sale</strong></a>",
-              "text3": "Coats—every friday 75% Off . <a href=\"/collections/blazers\" title=\"Blazers\"><strong>Shop Sale</strong></a>",
-              "change_every": 3,
-              "hidden_on_mobile": false
-            }
-          },
-          "cur_lang_aPwfT9": {
-            "type": "cur_lang",
-            "settings": {
-              "menu_link": "",
-              "show_currency": true,
-              "show_language": false,
-              "show_our_store": true,
-              "hidden_on_mobile": true
-            }
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "top_bar_CbXNYj": {
+      "type": "top-bar",
+      "blocks": {
+        "text_slider_LFaC38": {
+          "type": "text_slider",
+          "settings": {
+            "text1": "Sign up for 10% off your first order. <a href=\"/account/\" title=\"/account/\"><strong>Sign Up</strong></a>",
+            "text2": "Summer sale discount off 50%. <a href=\"/collections/activewear\" title=\"Activewear\"><strong>Shop Sale</strong></a>",
+            "text3": "Coats—every friday 75% Off . <a href=\"/collections/blazers\" title=\"Blazers\"><strong>Shop Sale</strong></a>",
+            "change_every": 3,
+            "hidden_on_mobile": false
           }
         },
-        "block_order": [
-          "text_slider_LFaC38",
-          "cur_lang_aPwfT9"
-        ],
-        "custom_css": [],
-        "settings": {
-          "section_width": "stretch_width",
-          "color_scheme": "default",
-          "show_mobile": false,
-          "show_separator_line": false,
-          "uppercase": false,
-          "font_size": 13,
-          "font_weight": "body_weight",
-          "padding_top": 10,
-          "padding_bottom": 10
+        "cur_lang_aPwfT9": {
+          "type": "cur_lang",
+          "settings": {
+            "menu_link": "",
+            "show_currency": true,
+            "show_language": false,
+            "show_our_store": true,
+            "hidden_on_mobile": true
+          }
         }
       },
-      "header_mega_store_849rKV": {
-        "type": "header-mega-store",
-        "blocks": {
-          "menu_promotion_JGWEMq": {
-            "type": "menu_promotion",
-            "settings": {
-              "text": "",
-              "open-link-newtab": true,
-              "item_label": "unset",
-              "promotion_menu_column": 4,
-              "mega_custom_width": 1030,
-              "center_submenu": true,
-              "full_width": true,
-              "promotion_position": "right",
-              "promotion_image_width": 27,
-              "promotion_link_1": "",
-              "promotion_link_newtab_1": true,
-              "promotion_link_2": "",
-              "promotion_link_newtab_2": true
-            }
-          }
-        },
-        "block_order": [
-          "menu_promotion_JGWEMq"
-        ],
-        "name": "t:sections.header.header_mega_store",
-        "settings": {
-          "section_width": "stretch_width",
-          "color_scheme": "",
-          "show_email": true,
-          "show_phone": true,
-          "enable_login_popup": true,
-          "separator_line": "unset",
-          "sticky_header_type": "on-scroll-up",
-          "sticky_header_mobile": true,
-          "mega_menu": "main-menu",
-          "dropdowns_animation": "down-to-up",
-          "uppercase_first": false,
-          "hot": "Hot",
-          "label_color_hot": "#fff",
-          "label_background_hot": "#D0473E",
-          "new": "New",
-          "label_color_new": "#fff",
-          "label_background_new": "#516cf4",
-          "sale": "Sale",
-          "label_color_sale": "#fff",
-          "label_background_sale": "#D0473E",
-          "popular": "Popular",
-          "label_color_popular": "#fff",
-          "label_background_popular": "#14854E",
-          "redirect_to_link": true,
-          "menu_mobile_color": "#fff",
-          "menu_mobile_background": "#D0473E",
-          "show_search": true,
-          "show_account_icon": true,
-          "show_wishlist_icon": true,
-          "show_shopping_cart": true,
-          "show_currency": true,
-          "show_language": true,
-          "show_recently_viewed": true,
-          "padding_top": 25,
-          "padding_bottom": 25
-        }
+      "block_order": [
+        "text_slider_LFaC38",
+        "cur_lang_aPwfT9"
+      ],
+      "custom_css": [],
+      "settings": {
+        "section_width": "stretch_width",
+        "color_scheme": "default",
+        "show_mobile": false,
+        "show_separator_line": false,
+        "uppercase": false,
+        "font_size": 13,
+        "font_weight": "body_weight",
+        "padding_top": 10,
+        "padding_bottom": 10
       }
     },
-    "order": [
-      "top_bar_CbXNYj",
-      "header_mega_store_849rKV"
-    ]
-  }
-  
+    "header_mega_store_849rKV": {
+      "type": "header-mega-store",
+      "blocks": {
+        "menu_promotion_JGWEMq": {
+          "type": "menu_promotion",
+          "settings": {
+            "text": "",
+            "open-link-newtab": true,
+            "item_label": "unset",
+            "promotion_menu_column": 4,
+            "mega_custom_width": 1030,
+            "center_submenu": true,
+            "full_width": true,
+            "promotion_position": "right",
+            "promotion_image_width": 27,
+            "promotion_link_1": "",
+            "promotion_link_newtab_1": true,
+            "promotion_link_2": "",
+            "promotion_link_newtab_2": true
+          }
+        }
+      },
+      "block_order": [
+        "menu_promotion_JGWEMq"
+      ],
+      "name": "t:sections.header.header_mega_store",
+      "settings": {
+        "section_width": "stretch_width",
+        "color_scheme": "",
+        "show_email": true,
+        "show_phone": true,
+        "enable_login_popup": true,
+        "separator_line": "unset",
+        "sticky_header_type": "on-scroll-up",
+        "sticky_header_mobile": true,
+        "mega_menu": "main-menu",
+        "dropdowns_animation": "down-to-up",
+        "uppercase_first": false,
+        "hot": "Hot",
+        "label_color_hot": "#fff",
+        "label_background_hot": "#D0473E",
+        "new": "New",
+        "label_color_new": "#fff",
+        "label_background_new": "#516cf4",
+        "sale": "Sale",
+        "label_color_sale": "#fff",
+        "label_background_sale": "#D0473E",
+        "popular": "Popular",
+        "label_color_popular": "#fff",
+        "label_background_popular": "#14854E",
+        "redirect_to_link": true,
+        "menu_mobile_color": "#fff",
+        "menu_mobile_background": "#D0473E",
+        "show_search": true,
+        "show_account_icon": true,
+        "show_wishlist_icon": true,
+        "show_shopping_cart": true,
+        "show_currency": true,
+        "show_language": true,
+        "show_recently_viewed": true,
+        "padding_top": 25,
+        "padding_bottom": 25
+      }
+    }
+  },
+  "order": [
+    "top_bar_CbXNYj",
+    "header_mega_store_849rKV"
+  ]
+}
