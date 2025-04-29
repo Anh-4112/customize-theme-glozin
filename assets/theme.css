@@ -1615,7 +1615,53 @@ mini-cart-remove-button.loading .remove-icon {
 
 /* ===== CSS Customize ===== */
 :root {
+  --white: #ffffff;
   --light-cool-gray: #E5E8EC;
+  --dark-blue: #2B38D1;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.d-none {
+  display: none;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.f-wrap {
+  flex-wrap: wrap;
+}
+
+.f-50p {
+  flex: 0 0 50% !important;
+}
+
+.f-100p {
+  flex: 0 0 100% !important;
+}
+
+.order-0 {
+  order: 0;
+}
+
+.order-0 {
+  order: 1;
+}
+
+.order-0 {
+  order: 2;
+}
+
+.w-110 {
+  width: 11rem !important;
+}
+
+.font-inherit {
+  font: inherit;
 }
 
 .gap-0 {
@@ -1624,6 +1670,47 @@ mini-cart-remove-button.loading .remove-icon {
 
 .gap-20 {
   gap: 2rem !important;
+}
+
+.lh {
+  line-height: 100% !important;
+}
+
+.fw-400 {
+  font-weight: 400 !important;
+}
+
+.fw-500 {
+  font-weight: 500 !important;
+}
+
+.fw-600 {
+  font-weight: 600 !important;
+}
+
+.fs-11 {
+  font-size: 1.1rem !important;
+}
+
+.fs-14 {
+  font-size: 1.4rem !important;
+}
+
+.cl-white {
+  color: var(--white) !important;
+}
+
+.bg-dark-blue {
+  background-color: var(--dark-blue);
+}
+
+.mt-10 {
+  margin-top: 1rem;
+}
+
+.mx-0 {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
 .submenu-topbar {
@@ -1640,15 +1727,57 @@ mini-cart-remove-button.loading .remove-icon {
   display: block;
 }
 
-.bor-none {
-  border: none !important;
+.search__input-custom {
+  border-top: solid 0.2rem var(--light-cool-gray) !important;
+  border-left: solid 0.2rem var(--light-cool-gray) !important;
+  border-bottom: solid 0.2rem var(--light-cool-gray) !important;
+  border-top-left-radius: 0.5rem !important;
+  border-bottom-left-radius: 0.5rem !important;
 }
 
-.btn-rounded {
-  border: solid 0.2rem var(--light-cool-gray);
-  border-radius: 1rem;
+.search__input-custom:focus-within {
+  border-color: var(--dark-blue) !important;
 }
 
-.search__button {
-  font-weight: 500 !important;
+.search__button-custom {
+  border-top-right-radius: 0.5rem !important;
+  border-bottom-right-radius: 0.5rem !important;
+}
+
+@media (min-width: 992px) {
+  .d-lg-block {
+    display: block;
+  }
+
+  .d-lg-flex {
+    display: flex;
+  }
+
+  .f-lg-nowrap {
+    flex-wrap: nowrap !important;
+  }
+
+  .f-lg-25p {
+    flex: 0 0 25% !important;
+  }
+
+  .f-lg-50p {
+    flex: 0 0 50% !important;
+  }
+
+  .order-lg-0 {
+    order: 0;
+  }
+
+  .order-lg-1 {
+    order: 1;
+  }
+
+  .order-lg-2 {
+    order: 2;
+  }
+
+  .mt-lg-0 {
+    margin-top: 0;
+  }
 }
