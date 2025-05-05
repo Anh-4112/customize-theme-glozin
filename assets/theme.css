@@ -1620,6 +1620,10 @@ mini-cart-remove-button.loading .remove-icon {
   --dark-blue: #2B38D1;
 }
 
+.height-150 {
+  height: 15rem !important;
+}
+
 .d-flex {
   display: flex;
 }
@@ -1668,6 +1672,10 @@ mini-cart-remove-button.loading .remove-icon {
   gap: 0rem !important;
 }
 
+.gap-5 {
+  gap: 0.5rem !important;
+}
+
 .gap-20 {
   gap: 2rem !important;
 }
@@ -1706,6 +1714,10 @@ mini-cart-remove-button.loading .remove-icon {
 
 .mt-10 {
   margin-top: 1rem;
+}
+
+.mb-5 {
+  margin-bottom: 0.5rem !important;
 }
 
 .mx-0 {
@@ -1775,6 +1787,10 @@ mini-cart-remove-button.loading .remove-icon {
 
   .order-lg-2 {
     order: 2;
+  }
+
+  .height-lg-200 {
+    height: 20rem !important;
   }
 
   .mt-lg-0 {

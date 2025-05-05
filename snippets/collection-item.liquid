@@ -252,7 +252,7 @@
         {% endif %}
       </a>
     </div>
-    <div
+    {% comment %} <div
       class="collection-item__information{% if collection_information_position == 'below_image' %} mt-custom{% else %} absolute inset-x-15 bottom-15 inset-x-md-30 bottom-md-30 z-3 flex justify-content-{{ section_st.text_alignment }} {% endif %} text-{{ section_st.text_alignment }}{% if collection_information_position == 'overlay_image' and  design == 'morden' %} flex-column align-item-{{  section_st.text_alignment }} gap-5{% endif %}"
       {% if collection_information_position == 'below_image' %}
         style="--space-top: {{ section_st.information_spacing }}px;"
@@ -323,6 +323,6 @@
         </div>
         </div>
       {% endif %}
-    </div>
+    </div> {% endcomment %}
   </div>
 {% endif %}
