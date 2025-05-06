@@ -43,7 +43,7 @@
 {% if column_gap < 15 %}--col-gap: {{ column_gap }}px;{% else %}--col-gap: 15px;--col-gap-desktop: {{  column_gap }}px;{% endif %}--repeat: {{ items_to_show }}; --col-mobile: {{ items_per_row_mobile }}
 {%- endcapture -%}
 <div
-  class="section{% if section_st.padding_top < 30 %} pt-min{% endif %}{% if section_st.padding_bottom < 30 %} pb-min{% endif %} sec__products-grid{% if action_with_additional_products == 'load_more' %} sec__products-loadmore {% endif %}color-{{ color_scheme }} gradient{{ reset_spacing }}"
+  class="w-body mx-auto bg-light-gray mb-30 section{% if section_st.padding_top < 30 %} pt-min{% endif %}{% if section_st.padding_bottom < 30 %} pb-min{% endif %} sec__products-grid{% if action_with_additional_products == 'load_more' %} sec__products-loadmore {% endif %}color-{{ color_scheme }} gradient{{ reset_spacing }}"
   style="{{ style | strip | strip_newlines }}"
 >
   <div class="{{ section_width }}">

@@ -919,6 +919,7 @@
           </a>
         </div>
       </div>
+      {% comment %}
       <div class="product-item__information word-break{% if type == 'list' or type == 'sticky' %} text-start align-self-center type-list{% else %} text-{{ settings.product_alignment }} mt-15{% endif %}">
         <a
           draggable="false"
@@ -937,6 +938,7 @@
           {%- render 'price' | scope: 'item', show_badges: false, class: priceclass -%}
         </div>
       </div>
+      {% endcomment %}
     </motion-element>
   </div>
 {% endif %}
