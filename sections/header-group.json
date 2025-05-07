@@ -28,9 +28,9 @@
           "type": "cur_lang",
           "settings": {
             "menu_link": "menu-store",
-            "show_currency": true,
+            "show_currency": false,
             "show_language": false,
-            "show_our_store": true,
+            "show_our_store": false,
             "hidden_on_mobile": true
           }
         }
