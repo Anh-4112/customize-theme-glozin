@@ -33,9 +33,10 @@
           </span>
         </h-count>
         {% if type == 'header_mega' %}
-          <header-total-price>
-            <span class="text-icons  d-inline-flex fs-11 fw-500 ml-15 text-left d-none-mb">
-              <span class="text-icons-top">{{ 'general.cart.label' | t }}</span>
+          <header-total-price class="d-none d-sm-block">
+            <span class="text-icons d-inline-flex fs-11 fw-500 ml-15 text-left d-none-mb">
+              {% comment %} <span class="text-icons-top">{{ 'general.cart.label' | t }}</span> {% endcomment %}
+              <span class="text-icons-top fs-11 fw-400 cl-dark-blue-gray">Your Cart</span>
               <span class="fs-14 menu-cart" data-cart-subtotal-price>
                 {% if settings.currency_code_enabled %}
                   {{ cart.total_price | money_with_currency }}

@@ -3135,9 +3135,9 @@ nav.mobile {
 .header__layout-3 .text-icon a:first-child{
   font-size: 1.1rem;
 }
-.header__layout-3 .header__action > div:not(:first-of-type){
+/* .header__layout-3 .header__action > div:not(:first-of-type){
   margin-left: 3rem;
-}
+} */
 .header__layout-3 .header__wishlist .header-icon svg{
   width: 27px;
   height: 23px;
@@ -3159,9 +3159,9 @@ nav.mobile {
   width: auto;
 }
 @media only screen and (max-width: 768px) {
-  .header__layout-3 .header__minicart header-total-price{
+  /* .header__layout-3 .header__minicart header-total-price{
     display: none;
-  }
+  } */
   .header__layout-3 .header-mega-store {
     justify-content: space-between;
   }
@@ -3178,7 +3178,7 @@ nav.mobile {
     color: #fff;
   }
   .header__layout-3 .header__minicart h-count svg{
-      width: 20px;
+      width: 27px;
   }
   /* .header-search.header-search__mega .search__input{
     display: none;
@@ -3186,9 +3186,9 @@ nav.mobile {
   .header__layout-3 #button_search_default ~ .top-search-toggle{
     display: block;
   } */
-  .header__layout-3 .header__action .minicart{
+  /* .header__layout-3 .header__action .minicart{
     margin: 0 1rem 0 0 !important;
-  }
+  } */
 }
 @media (min-width: 768px) {
   .rounded-md {
