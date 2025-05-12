@@ -1618,6 +1618,7 @@ mini-cart-remove-button.loading .remove-icon {
   --white: #ffffff;
   --light-cool-gray: #E5E8EC;
   --light-gray: #F1F5F6;
+  --gray-medium: #999999;
   --dark-blue-gray: #515D66;
   --dark-blue: #2B38D1;
 }
@@ -1675,8 +1676,20 @@ mini-cart-remove-button.loading .remove-icon {
   justify-content: space-between;
 }
 
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
 .f-wrap {
   flex-wrap: wrap;
+}
+
+.f-1 {
+  flex: 1;
 }
 
 .f-50p {
@@ -1705,6 +1718,10 @@ mini-cart-remove-button.loading .remove-icon {
 
 .gap-5 {
   gap: 0.5rem !important;
+}
+
+.gap-10 {
+  gap: 1rem !important;
 }
 
 .gap-20 {
@@ -1741,6 +1758,26 @@ mini-cart-remove-button.loading .remove-icon {
 
 .fs-30 {
   font-size: 3rem;
+}
+
+.bor {
+  border: solid transparent;
+}
+
+.bor-1 {
+  border-width: 0.1rem;
+}
+
+.bor-gray-medium {
+  border-color: var(--gray-medium);
+}
+
+.rounded-5 {
+  border-radius: 0.5rem;
+}
+
+.p-2 {
+  padding: 0.2rem;
 }
 
 .mt-0 {
@@ -1789,6 +1826,11 @@ mini-cart-remove-button.loading .remove-icon {
   margin-right: 0 !important;
 }
 
+.my-0 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .my-20 {
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -1830,6 +1872,18 @@ mini-cart-remove-button.loading .remove-icon {
   line-height: 100%;
 }
 
+.products-wrapper.grid {
+  display: grid;
+  grid-auto-flow: column;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 16px;
+}
+
+.products-wrapper.grid .product-card {
+  scroll-snap-align: start;
+}
+
 @media (max-width: 380.98px) {
   .gap-xs-10 {
     gap: 1rem !important;
@@ -1842,6 +1896,18 @@ mini-cart-remove-button.loading .remove-icon {
   }
 }
 
+@media (min-width: 768px) {
+  .row-md {
+    flex-direction: row;
+  }
+
+  .products-wrapper.grid {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    overflow-x: unset;
+  }
+}
+
 @media (min-width: 992px) {
   .d-lg-block {
     display: block;
@@ -1849,6 +1915,14 @@ mini-cart-remove-button.loading .remove-icon {
 
   .d-lg-flex {
     display: flex;
+  }
+
+  .row-lg {
+    flex-direction: row;
+  }
+
+  .justify-lg-between {
+    justify-content: space-between;
   }
 
   .f-lg-nowrap {

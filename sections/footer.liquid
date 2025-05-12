@@ -354,8 +354,8 @@
   {% endif %}
   <div class="footer__bottom">
     <div class="{{ container }}">
-      {% comment %} justify-center justify-md-end flex-md-nowrap gap-20 gap-xl-30 {% endcomment %}
-      <div class="footer_bottom-inner justify-between flex flex-wrap align-center border-top py-30">
+      {% comment %} justify-between justify-md-end flex-wrap flex-md-nowrap gap-20 gap-xl-30 {% endcomment %}
+      <div class="footer_bottom-inner flex align-center justify-center justify-lg-between column row-lg gap-5 border-top py-30">
         {%- if section_st.enable_country_selector
           or section_st.enable_language_selector
           or section_st.copyright_text
@@ -377,29 +377,77 @@
           </div>
         {% endif %}
 
-        <div>
-          <p>Payment Method:</p>
-          <div>
-            <span>
-            
+        <div class="d-flex align-center gap-10 column row-md">
+          <p class="my-0 lh">Payment Method:</p>
+          <div class="d-flex gap-5">
+            <span class="bor bor-1 bor-gray-medium d-flex justify-center align-center rounded-5 p-2">
+              <img
+                src="{{ 'bg1.svg' | asset_url }}"
+                alt="{{ shop.name }}"
+                class="" 
+                width="100%" 
+                height="auto"
+              /> 
             </span>
-            <span>
-              
+    
+            <span class="bor bor-1 bor-gray-medium d-flex justify-center align-center rounded-5 p-2">
+              <img
+                src="{{ 'bg2.svg' | asset_url }}"
+                alt="{{ shop.name }}"
+                class="" 
+                width="100%" 
+                height="auto"
+              /> 
             </span>
-            <span>
-              
+    
+            <span class="bor bor-1 bor-gray-medium d-flex justify-center align-center rounded-5 p-2">
+              <img
+                src="{{ 'bg3.svg' | asset_url }}"
+                alt="{{ shop.name }}"
+                class="" 
+                width="100%" 
+                height="auto"
+              /> 
             </span>
-            <span>
-              
+    
+            <span class="bor bor-1 bor-gray-medium d-flex justify-center align-center rounded-5 p-2">
+              <img
+                src="{{ 'bg4.svg' | asset_url }}"
+                alt="{{ shop.name }}"
+                class="" 
+                width="100%" 
+                height="auto"
+              /> 
             </span>
-            <span>
-              
+    
+            <span class="bor bor-1 bor-gray-medium d-flex justify-center align-center rounded-5 p-2">
+              <img
+                src="{{ 'bg5.svg' | asset_url }}"
+                alt="{{ shop.name }}"
+                class="" 
+                width="100%" 
+                height="auto"
+              /> 
             </span>
-            <span>
-              
+    
+            <span class="bor bor-1 bor-gray-medium d-flex justify-center align-center rounded-5 p-2">
+              <img
+                src="{{ 'bg6.svg' | asset_url }}"
+                alt="{{ shop.name }}"
+                class="" 
+                width="100%" 
+                height="auto"
+              /> 
             </span>
-            <span>
-              
+    
+            <span class="bor bor-1 bor-gray-medium d-flex justify-center align-center rounded-5 p-2">
+              <img
+                src="{{ 'bg7.svg' | asset_url }}"
+                alt="{{ shop.name }}"
+                class="" 
+                width="100%" 
+                height="auto"
+              /> 
             </span>
           </div>
         </div>
