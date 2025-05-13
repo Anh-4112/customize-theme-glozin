@@ -507,7 +507,7 @@ class MotionElement extends HTMLElement {
   }
 }
 customElements.define('motion-element', MotionElement);
-
+/* ===== Customize ===== */
 class SlideSection extends HTMLElement {
   constructor() {
     super();
@@ -759,6 +759,7 @@ class SlideSection extends HTMLElement {
     });
   }
 }
+/* ===== Customize ===== */
 customElements.define('slide-section', SlideSection);
 
 class PopupBase extends HTMLElement {

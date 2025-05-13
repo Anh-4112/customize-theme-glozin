@@ -61,6 +61,15 @@ body {
   padding-left: var(--bs-gutter-x);
   padding-right: var(--bs-gutter-x);
 }
+
+/* ===== Customize ===== */
+.customize-mobile {
+display: block;
+}
+.customize-pc {
+  display: none !important;
+}
+
 @media (min-width: 1025px) {
   body.enable-vertical-menu .content-for-layout,
   body.enable-vertical-menu .shopify-section-group-header-group,
@@ -1866,6 +1875,14 @@ header.active li.visible .submenu:not(.submenu-vertical) {
   }
 }
 @media (min-width: 768px) {
+  /* ===== Customize ===== */
+  .customize-mobile {
+    display: none !important;
+  }
+  .customize-pc {
+    display: block !important;
+  }
+
   :is(.grid-cols, .flex-cols) {
     --col: var(--col-desktop-small, var(--col-desktop));
   }
