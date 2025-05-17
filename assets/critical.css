@@ -2568,7 +2568,8 @@ header.active li.visible .submenu:not(.submenu-vertical) {
   height: var(--swiper-width, clamp(3.5rem, 5vw, 5rem));
   margin-top: 0;
   transform: translateY(-50%);
-  top: var(--arrows-offset-top, 50%);
+  /* top: var(--arrows-offset-top, 50%); */
+  top: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2604,9 +2605,9 @@ header.active li.visible .submenu:not(.submenu-vertical) {
   .swiper-actions.original-style {
     margin-bottom: 0;
   }
-  .swiper-actions:not(.show-on-mobile) {
+  /* .swiper-actions:not(.show-on-mobile) {
     display: none;
-  }
+  } */
   .w-1024-full {
     width: 100%;
   }

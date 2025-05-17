@@ -5,21 +5,6 @@
   if section_st.reset_spacing
     assign reset_spacing = ' remove_spacing'
   endif
-  assign column_gap = section_st.column_gap
-
-  assign column_gap_1 = section_st.column_gap_1
-  assign items_per_row = section_st.items_per_row
-  assign items_to_show = section_st.items_to_show
-  assign show_arrow_1 = section_st.show_arrow_1
-
-  assign column_gap_2 = section_st.column_gap_2
-  assign items_per_row_2 = section_st.items_per_row_2
-  assign items_to_show_2 = section_st.items_to_show_2
-
-  assign column_gap_3 = section_st.column_gap_3
-  assign items_per_row_3 = section_st.items_per_row_3
-  assign items_to_show_3 = section_st.items_to_show_3
-  assign show_arrow_3 = section_st.show_arrow_3
 
   assign show_view_all_button = section_st.show_view_all_button
   assign button_label = section_st.button_label
@@ -41,9 +26,15 @@
   assign reveal = section_st.reveal
   assign scroll_animation = settings.scroll_animation
 
-  assign items_per_row_mobile_1 = section_st.items_per_row_mobile_1
-  assign items_per_row_mobile_2 = section_st.items_per_row_mobile_2
-  assign items_per_row_mobile_3 = section_st.items_per_row_mobile_3
+  assign column_gap = section_st.column_gap
+  assign items_per_row = section_st.items_per_row
+  assign items_to_show = section_st.items_to_show
+  assign show_arrow_1 = section_st.show_arrow_1
+  assign column_gap_2 = section_st.column_gap_2
+  assign items_to_show_2 = section_st.items_to_show_2
+  assign column_gap_3 = section_st.column_gap_3
+  assign items_to_show_3 = section_st.items_to_show_3
+  assign show_arrow_3 = section_st.show_arrow_3
 -%}
 {%- capture style -%}
   --section-pt: {{ section_st.padding_top }}; --section-pb: {{ section_st.padding_bottom }};
@@ -55,20 +46,19 @@
   class="w-body mx-auto mb-30 bg-light-gray section{% if section_st.padding_top < 30 %} pt-min{% endif %}{% if section_st.padding_bottom < 30 %} pb-min{% endif %} sec__products-carousel color-{{ color_scheme }} gradient{{ reset_spacing }}{% if reveal %} overflow-hidden{% endif %}"
   style="{{ style | strip | strip_newlines }}"
 >
-  <div class="d-md-flex gap-5 {{ section_width }}">
+  <div class="d-md-flex gap-10 {{ section_width }}">
     {% if section_st.items_per_row_mobile > 1 and section_st.items_per_row_mobile < 2 %}
       <div class="free-scroll">
     {% endif %}
 
     {% if section_st.collection.products.size > 0 %}
       {% comment %} Product 1 {% endcomment %}
-      <slide-section
+      <slide-cus-mobile
         class="customize-mobile f-1 mt-10 swiper{% if reveal %} reveal_on_scroll{% endif %}"
         data-section-id="{{ section.id }}"
         data-effect="slide"
         data-speed="500"
-        data-spacing="{{ column_gap_1 }}"
-        data-mobile="{{ items_per_row_mobile_1 }}"
+        data-spacing="{{ column_gap }}"
         data-free-scroll="{{ data_free_scroll }}"
         data-pagination-progressbar="{% if carousel_pagination == 'show_progress_bar' %}true{% else %}false{% endif %}"
         style="{{ col_style | strip | strip_newlines }}"
@@ -100,15 +90,14 @@
             %}
           {% endfor %}
         </div>
-      </slide-section>
+      </slide-cus-mobile>
 
-      <slide-section
-        class="customize-pc f-1 mt-10 swiper{% if reveal %} reveal_on_scroll{% endif %}"
+      <slide-cus-pc
+        class="customize-pc f-md-25p-g5 f-lg-1 mt-10 swiper{% if reveal %} reveal_on_scroll{% endif %}"
         data-section-id="{{ section.id }}"
         data-effect="slide"
         data-speed="500"
-        data-spacing="{{ column_gap_1 }}"
-        data-desktop="{{ items_per_row }}"
+        data-spacing="{{ column_gap }}"
         data-free-scroll="{{ data_free_scroll }}"
         data-pagination-progressbar="{% if carousel_pagination == 'show_progress_bar' %}true{% else %}false{% endif %}"
         style="{{ col_style | strip | strip_newlines }}"
@@ -130,7 +119,7 @@
             {% if is_even == 0 %}
               {% if current_product %}
                 <div class="swiper-slide">
-                  <div class="flex column-md gap-20">
+                  <div class="flex column-md gap-5">
                     {% render 'product-item',
                       card_product: current_product,
                       section_id: section.id,
@@ -180,11 +169,11 @@
             {% endif %}
           {% endfor %}
         </div>
-      </slide-section>
+      </slide-cus-pc>
 
       {% comment %} Product 2 {% endcomment %}
-      <slide-section
-        class="f-1 mt-10 bg-white bor bor-2 bor-crimson-red rounded-5 swiper{% if reveal %} reveal_on_scroll{% endif %}"
+      <slide-cus
+        class="f-1 f-md-50p-g10 f-lg-1 mt-10 bg-white bor bor-2 bor-crimson-red rounded-5 swiper{% if reveal %} reveal_on_scroll{% endif %}"
         data-section-id="{{ section.id }}"
         data-autoplay="{{ autoplay }}"
         data-effect="slide"
@@ -192,8 +181,6 @@
         data-speed="500"
         data-autoplay-speed="{{ autorotate_speed }}"
         data-spacing="{{ column_gap_2 }}"
-        data-mobile="{{ items_per_row_mobile_2 }}"
-        data-desktop="{{ items_per_row_2 }}"
         data-free-scroll="{{ data_free_scroll }}"
         data-pagination-progressbar="{% if carousel_pagination == 'show_progress_bar' %}true{% else %}false{% endif %}"
         style="{{ col_style | strip | strip_newlines }}"
@@ -272,7 +259,7 @@
         {% endif %}
 
         <div class="swiper-wrapper">
-          {% for product in section_st.collection-2.products limit: items_to_show_2 %}
+          {% for product in section_st.collection_2.products limit: items_to_show_2 %}
             {% render 'product-item',
               card_product: product,
               section_id: section.id,
@@ -294,16 +281,15 @@
             %}
           {% endfor %}
         </div>
-      </slide-section>
+      </slide-cus>
 
       {% comment %} Product 3 {% endcomment %}
-      <slide-section
+      <slide-cus-mobile
         class="customize-mobile f-1 mt-10 swiper{% if reveal %} reveal_on_scroll{% endif %}"
         data-section-id="{{ section.id }}"
         data-effect="slide"
         data-speed="500"
         data-spacing="{{ column_gap_3 }}"
-        data-mobile="{{ items_per_row_mobile_3 }}"
         data-free-scroll="{{ data_free_scroll }}"
         data-pagination-progressbar="{% if carousel_pagination == 'show_progress_bar' %}true{% else %}false{% endif %}"
         style="{{ col_style | strip | strip_newlines }}"
@@ -313,7 +299,7 @@
           {%- render 'swiper-navigation' -%}
         {% endif %}
         <div class="swiper-wrapper">
-          {% for product in section_st.collection-3.products limit: items_to_show_3 %}
+          {% for product in section_st.collection_3.products limit: items_to_show_3 %}
             {% render 'product-item',
               card_product: product,
               section_id: section.id,
@@ -335,15 +321,14 @@
             %}
           {% endfor %}
         </div>
-      </slide-section>
+      </slide-cus-mobile>
 
-      <slide-section
-        class="customize-pc f-1 mt-10 swiper{% if reveal %} reveal_on_scroll{% endif %}"
+      <slide-cus-pc
+        class="customize-pc f-md-25p-g5 f-lg-1 mt-10 swiper{% if reveal %} reveal_on_scroll{% endif %}"
         data-section-id="{{ section.id }}"
         data-effect="slide"
         data-speed="500"
         data-spacing="{{ column_gap_3 }}"
-        data-desktop="{{ items_per_row_3 }}"
         data-free-scroll="{{ data_free_scroll }}"
         data-pagination-progressbar="{% if carousel_pagination == 'show_progress_bar' %}true{% else %}false{% endif %}"
         style="{{ col_style | strip | strip_newlines }}"
@@ -354,7 +339,7 @@
         {% endif %}
 
         <div class="swiper-wrapper">
-          {% assign products = section_st.collection-3.products %}
+          {% assign products = section_st.collection_3.products %}
           {% assign limit = items_to_show_3 | minus: 1 %}
 
           {% for i in (0..limit) %}
@@ -365,7 +350,7 @@
             {% if is_even == 0 %}
               {% if current_product %}
                 <div class="swiper-slide">
-                  <div class="flex column-md gap-20">
+                  <div class="flex column-md gap-5">
                     {% render 'product-item',
                       card_product: current_product,
                       section_id: section.id,
@@ -415,7 +400,7 @@
             {% endif %}
           {% endfor %}
         </div>
-      </slide-section>
+      </slide-cus-pc>
     {% endif %}
 
     {% if section_st.items_per_row_mobile > 1 and section_st.items_per_row_mobile < 2 %}
@@ -484,28 +469,10 @@
     },
     {
       "type": "range",
-      "id": "items_per_row",
-      "label": "t:sections.all.items.items_per_row.label",
-      "min": 2,
-      "max": 4,
-      "step": 1,
-      "default": 2
-    },
-    {
-      "type": "range",
-      "id": "items_per_row_mobile_1",
-      "label": "Items Per Row Mobile",
-      "min": 1,
-      "max": 2,
-      "step": 0.5,
-      "default": 2
-    },
-    {
-      "type": "range",
-      "id": "column_gap_1",
+      "id": "column_gap",
       "label": "t:sections.all.items.column_gap.label",
       "min": 0,
-      "max": 50,
+      "max": 30,
       "step": 5,
       "default": 5,
       "unit": "px"
@@ -530,7 +497,7 @@
     },
     {
       "type": "collection",
-      "id": "collection-2",
+      "id": "collection_2",
       "label": "t:sections.products-carousel.settings.products.collection"
     },
     {
@@ -541,24 +508,6 @@
       "max": 4,
       "step": 1,
       "default": 4
-    },
-    {
-      "type": "range",
-      "id": "items_per_row_2",
-      "label": "t:sections.all.items.items_per_row.label",
-      "min": 1,
-      "max": 4,
-      "step": 1,
-      "default": 1
-    },
-    {
-      "type": "range",
-      "id": "items_per_row_mobile_2",
-      "label": "Items Per Row Mobile",
-      "min": 1,
-      "max": 2,
-      "step": 0.5,
-      "default": 1
     },
     {
       "type": "range",
@@ -600,7 +549,7 @@
     },
     {
       "type": "collection",
-      "id": "collection-3",
+      "id": "collection_3",
       "label": "t:sections.products-carousel.settings.products.collection"
     },
     {
@@ -614,28 +563,10 @@
     },
     {
       "type": "range",
-      "id": "items_per_row_3",
-      "label": "t:sections.all.items.items_per_row.label",
-      "min": 2,
-      "max": 4,
-      "step": 1,
-      "default": 2
-    },
-    {
-      "type": "range",
-      "id": "items_per_row_mobile_3",
-      "label": "Items Per Row Mobile",
-      "min": 1,
-      "max": 2,
-      "step": 0.5,
-      "default": 2
-    },
-    {
-      "type": "range",
       "id": "column_gap_3",
       "label": "t:sections.all.items.column_gap.label",
       "min": 0,
-      "max": 50,
+      "max": 30,
       "step": 5,
       "default": 5,
       "unit": "px"
@@ -646,6 +577,8 @@
       "label": "t:sections.all.carousel_settings.show-next-back.label",
       "default": false
     },
+
+    
     {
       "type": "header",
       "content": "t:sections.all.section_padding.label"

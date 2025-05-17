@@ -524,7 +524,7 @@
         {% if type != 'product-set' %}
           <a
             aria-label="{{ card_product.title }}"
-            class="{% if product_truncation_title != 'none' %}product-title__truncate {% endif %}product-item__name {{ settings.product_name_text_transform }} heading-style no-underline fs-custom block lh-normal"
+            class="text-start fs-14 {% if product_truncation_title != 'none' %}product-title__truncate {% endif %}product-item__name {{ settings.product_name_text_transform }} heading-style no-underline fs-custom block lh-normal"
             style="--font-size: {{ settings.product_size }};{% if product_truncation_title != 'none' %} --line-clamp: {{ product_truncation_title }};{% endif %}"            {% if template_disable_product_url == true %}
               role="link" aria-disabled="true"
             {% else %}
@@ -555,7 +555,7 @@
         {% if template_enable_price == true %}
           {% if hidden_price != true %}
             <div
-              class="product-item__price{% if type == 'list' or type == 'sticky' %} text-start{% else %} justify-content-{{ settings.product_alignment }} fs-custom{% endif %} flex gap-custom lh-normal {{ priceclass }}"
+              class="justify-start product-item__price{% if type == 'list' or type == 'sticky' %} text-start{% else %} justify-content-{{ settings.product_alignment }} fs-custom{% endif %} flex gap-custom lh-normal {{ priceclass }}"
               style="--font-size: {{ settings.price_size }}; --gap: 3px;"
             >
               {%- render 'price', scope: 'item', product: card_product, show_badges: false, class: priceclass -%}

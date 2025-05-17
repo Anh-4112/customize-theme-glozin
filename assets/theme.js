@@ -9249,3 +9249,130 @@ class ProductWithBanner extends HTMLElement {
   }
 }
 customElements.define('product-with-banner', ProductWithBanner);
+
+// ====================================================
+class SlideCus extends SlideSection {
+  constructor() {
+    super();
+  }
+
+  initSlide() {
+    // Fix số cột theo breakpoint
+    const fixedBreakpoints = {
+      0: 1,
+      576: 2,
+      768:1,
+    };
+
+    // Cập nhật dataset để SlideSection đọc đúng số cột
+    this.dataset.mobile = fixedBreakpoints[0];
+    this.dataset.tablet = fixedBreakpoints[576];
+    this.dataset.tablet = fixedBreakpoints[768];
+
+    // Gọi initSlide gốc của SlideSection để khởi tạo Swiper
+    super.initSlide();
+
+    // Sau khi init, chỉnh sửa lại các tham số
+    if (this.globalSlide) {
+      const spacing = this.globalSlide.params.spaceBetween;
+
+      this.globalSlide.params.breakpoints = {
+        0: {
+          slidesPerView: fixedBreakpoints[0],
+          spaceBetween: spacing,
+        },
+        576: {
+          slidesPerView: fixedBreakpoints[576],
+          spaceBetween: spacing,
+        },
+        768: {
+          slidesPerView: fixedBreakpoints[768],
+          spaceBetween: spacing,
+        },
+      };
+
+      this.globalSlide.update();
+    }
+  }
+}
+customElements.define('slide-cus', SlideCus);
+/* --- */ 
+class SlideCusMobile extends SlideSection {
+  constructor() {
+    super();
+  }
+
+  initSlide() {
+    // Fix số cột theo breakpoint
+    const fixedBreakpoints = {
+      0: 2,
+      576: 3,
+    };
+
+    // Cập nhật dataset để SlideSection đọc đúng số cột
+    this.dataset.mobile = fixedBreakpoints[0];
+    this.dataset.tablet = fixedBreakpoints[576];
+
+    // Gọi initSlide gốc của SlideSection để khởi tạo Swiper
+    super.initSlide();
+
+    // Sau khi init, chỉnh sửa lại các tham số
+    if (this.globalSlide) {
+      const spacing = this.globalSlide.params.spaceBetween;
+
+      this.globalSlide.params.breakpoints = {
+        0: {
+          slidesPerView: fixedBreakpoints[0],
+          spaceBetween: spacing,
+        },
+        576: {
+          slidesPerView: fixedBreakpoints[576],
+          spaceBetween: spacing,
+        },
+      };
+
+      this.globalSlide.update();
+    }
+  }
+}
+customElements.define('slide-cus-mobile', SlideCusMobile);
+/* --- */ 
+class SlideCusPc extends SlideSection {
+  constructor() {
+    super();
+  }
+
+  initSlide() {
+    // Fix số cột theo breakpoint
+    const fixedBreakpoints = {
+      0: 1,
+      992: 2,
+    };
+
+    // Cập nhật dataset để SlideSection đọc đúng số cột
+    this.dataset.mobile = fixedBreakpoints[0];
+    this.dataset.tablet = fixedBreakpoints[992];
+
+    // Gọi initSlide gốc của SlideSection để khởi tạo Swiper
+    super.initSlide();
+
+    // Sau khi init, chỉnh sửa lại các tham số
+    if (this.globalSlide) {
+      const spacing = this.globalSlide.params.spaceBetween;
+
+      this.globalSlide.params.breakpoints = {
+        0: {
+          slidesPerView: fixedBreakpoints[0],
+          spaceBetween: spacing,
+        },
+        992: {
+          slidesPerView: fixedBreakpoints[992],
+          spaceBetween: spacing,
+        },
+      };
+
+      this.globalSlide.update();
+    }
+  }
+}
+customElements.define('slide-cus-pc', SlideCusPc);
