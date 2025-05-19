@@ -46,7 +46,7 @@
   class="w-body mx-auto mb-30 bg-light-gray section{% if section_st.padding_top < 30 %} pt-min{% endif %}{% if section_st.padding_bottom < 30 %} pb-min{% endif %} sec__products-carousel color-{{ color_scheme }} gradient{{ reset_spacing }}{% if reveal %} overflow-hidden{% endif %}"
   style="{{ style | strip | strip_newlines }}"
 >
-  <div class="d-md-flex gap-10 {{ section_width }}">
+  <div class="d-md-flex {{ section_width }}">
     {% if section_st.items_per_row_mobile > 1 and section_st.items_per_row_mobile < 2 %}
       <div class="free-scroll">
     {% endif %}
@@ -65,7 +65,7 @@
         data-arrow-centerimage="1"
       >
         {% if show_arrow_1 %}
-          {%- render 'swiper-navigation' -%}
+          {%- render 'swiper-navigation-custom' -%}
         {% endif %}
         <div class="swiper-wrapper">
           {% for product in section_st.collection.products limit: items_to_show %}
@@ -93,7 +93,7 @@
       </slide-cus-mobile>
 
       <slide-cus-pc
-        class="customize-pc f-md-25p-g5 f-lg-1 mt-10 swiper{% if reveal %} reveal_on_scroll{% endif %}"
+        class="customize-pc f-md-25p f-lg-1 mt-10 swiper{% if reveal %} reveal_on_scroll{% endif %}"
         data-section-id="{{ section.id }}"
         data-effect="slide"
         data-speed="500"
@@ -103,10 +103,6 @@
         style="{{ col_style | strip | strip_newlines }}"
         data-arrow-centerimage="1"
       >
-        {% if show_arrow_1 %}
-          {%- render 'swiper-navigation' -%}
-        {% endif %}
-
         <div class="swiper-wrapper">
           {% assign products = section_st.collection.products %}
           {% assign limit = items_to_show | minus: 1 %}
@@ -173,7 +169,7 @@
 
       {% comment %} Product 2 {% endcomment %}
       <slide-cus
-        class="f-1 f-md-50p-g10 f-lg-1 mt-10 bg-white bor bor-2 bor-crimson-red rounded-5 swiper{% if reveal %} reveal_on_scroll{% endif %}"
+        class="f-1 f-md-50p f-lg-1 mt-10 mx-md-10 bg-white bor bor-2 bor-crimson-red rounded-5 swiper{% if reveal %} reveal_on_scroll{% endif %}"
         data-section-id="{{ section.id }}"
         data-autoplay="{{ autoplay }}"
         data-effect="slide"
@@ -296,7 +292,7 @@
         data-arrow-centerimage="1"
       >
         {% if show_arrow_3 %}
-          {%- render 'swiper-navigation' -%}
+          {%- render 'swiper-navigation-custom' -%}
         {% endif %}
         <div class="swiper-wrapper">
           {% for product in section_st.collection_3.products limit: items_to_show_3 %}
@@ -324,7 +320,7 @@
       </slide-cus-mobile>
 
       <slide-cus-pc
-        class="customize-pc f-md-25p-g5 f-lg-1 mt-10 swiper{% if reveal %} reveal_on_scroll{% endif %}"
+        class="customize-pc f-md-25p f-lg-1 mt-10 swiper{% if reveal %} reveal_on_scroll{% endif %}"
         data-section-id="{{ section.id }}"
         data-effect="slide"
         data-speed="500"
@@ -334,10 +330,6 @@
         style="{{ col_style | strip | strip_newlines }}"
         data-arrow-centerimage="1"
       >
-        {% if show_arrow_1 %}
-          {%- render 'swiper-navigation' -%}
-        {% endif %}
-
         <div class="swiper-wrapper">
           {% assign products = section_st.collection_3.products %}
           {% assign limit = items_to_show_3 | minus: 1 %}

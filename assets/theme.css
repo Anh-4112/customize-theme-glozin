@@ -1649,6 +1649,10 @@ mini-cart-remove-button.loading .remove-icon {
   color: var(--dark-blue);
 }
 
+.relative {
+  position: relative;
+}
+
 .w-body {
   width: 147rem;
   max-width: 100%;
@@ -1814,6 +1818,20 @@ mini-cart-remove-button.loading .remove-icon {
   border-radius: 0.5rem !important;
 }
 
+.swiper-rtl, .swiper-cus-left {
+  background-color: #2B38D1;
+  left: 0 !important;
+  right: auto;
+  border: none !important;
+}
+
+.swiper-rtl, .swiper-cus-right {
+  background-color: #2B38D1;
+  right: 0 !important;
+  left: auto;
+  border: none !important;
+}
+
 .p-2 {
   padding: 0.2rem;
 }
@@ -1958,12 +1976,17 @@ mini-cart-remove-button.loading .remove-icon {
     overflow-x: unset;
   }
 
-  .f-md-25p-g5 {
-    flex: 0 0 calc(25% - 0.5rem);
+  .f-md-25p {
+    flex: 0 0 25%;
   }
 
-  .f-md-50p-g10 {
-    flex: 0 0 calc(50% - 1rem);
+  .f-md-50p {
+    flex: 0 0 calc(50% - 2rem);
+  }
+
+  .mx-md-10 {
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
 }
 
