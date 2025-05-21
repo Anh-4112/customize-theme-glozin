@@ -1637,6 +1637,10 @@ mini-cart-remove-button.loading .remove-icon {
   background-color: var(--dark-blue);
 }
 
+.bg-hover-dark-blue:hover {
+  background-color: var(--dark-blue) !important;
+}
+
 .cl-white {
   color: var(--white) !important;
 }
@@ -1820,20 +1824,29 @@ mini-cart-remove-button.loading .remove-icon {
 
 .swiper-rtl, .swiper-cus-left {
   background-color: #2B38D1;
-  left: 0 !important;
-  right: auto;
   border: none !important;
+}
+
+.swiper-rtl, .swiper-cus-left:hover {
+  opacity: 1 !important;
 }
 
 .swiper-rtl, .swiper-cus-right {
   background-color: #2B38D1;
-  right: 0 !important;
-  left: auto;
   border: none !important;
+}
+
+.swiper-rtl, .swiper-cus-right:hover {
+  opacity: 1 !important;
 }
 
 .p-2 {
   padding: 0.2rem;
+}
+
+.px-7 {
+  padding-right: 0.7rem !important;
+  padding-left: 0.7rem !important;
 }
 
 .mt-0 {
@@ -1895,6 +1908,10 @@ mini-cart-remove-button.loading .remove-icon {
 .my-20 {
   margin-top: 2rem;
   margin-bottom: 2rem;
+}
+
+.right-0 {
+  right: 0 !important;
 }
 
 .submenu-topbar {

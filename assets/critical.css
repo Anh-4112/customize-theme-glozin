@@ -1073,6 +1073,9 @@ picture {
 .h-5 {
   height: 5px;
 }
+.h-30 {
+  height: 3rem;
+}
 .h-40 {
   height: 4rem;
 }
@@ -1581,13 +1584,19 @@ header.active li.visible .submenu:not(.submenu-vertical) {
   top: 1rem;
 }
 .top-15 {
-  top: 1.5rem;
+  top: 2rem;
+}
+.top-30 {
+  top: 3rem;
 }
 .top-100 {
   top: 100%;
 }
 .right-0 {
   right: 0;
+}
+.right-5 {
+  right: 0.5rem;
 }
 .right-30 {
   right: 3rem;
@@ -2226,6 +2235,9 @@ header.active li.visible .submenu:not(.submenu-vertical) {
   .top-1025-15 {
     top: 1.5rem;
   }
+  .right-1025-0 {
+    right: 0rem;
+  }
   .right-1025-15 {
     right: 1.5rem;
   }
@@ -2608,6 +2620,29 @@ header.active li.visible .submenu:not(.submenu-vertical) {
   /* .swiper-actions:not(.show-on-mobile) {
     display: none;
   } */
+
+  :where(.swiper-actions:not(.show-arrow) .swiper-arrow),
+  :is(.swiper-actions:not(.show-arrow) .swiper-arrow.swiper-button-disabled) {
+    opacity: 0;
+    visibility: hidden;
+  }
+  .swiper:hover
+    .swiper-actions:not(.show-arrow)
+    :is(.swiper-button-next, .swiper-button-prev) {
+    opacity: 0.75;
+    visibility: visible;
+    --swiper-navigation-sides-offset: 20px;
+  }
+  /* .swiper:hover
+    :is(.swiper-actions:not(.show-arrow) .swiper-arrow.swiper-button-disabled) {
+    opacity: 0.75;
+    visibility: visible;
+  } */
+  :where(.swiper-arrow:hover) {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+  }
+
   .w-1024-full {
     width: 100%;
   }

@@ -195,7 +195,7 @@
         "collection": "collection-1",
         "items_to_show": 4,
         "column_gap": 5,
-        "show_arrow_1": true,
+        "show_arrow_1": false,
         "heading": "TODAY’S OFFER",
         "collection_2": "collection-2",
         "items_to_show_2": 4,
@@ -206,7 +206,7 @@
         "collection_3": "collection-3",
         "items_to_show_3": 4,
         "column_gap_3": 5,
-        "show_arrow_3": true,
+        "show_arrow_3": false,
         "padding_top": 0,
         "padding_bottom": 0,
         "reset_spacing": false

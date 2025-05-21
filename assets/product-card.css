@@ -106,7 +106,7 @@ review-product.inline-loading:after {
     transform: none;
   }
   .product-grid .product__action-animation {
-    transform: translateX(1.5rem);
+    transform: translateX(0.5rem);
   }
 
   .product-grid
