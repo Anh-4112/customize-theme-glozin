@@ -248,9 +248,16 @@ a.hover-heading-color:hover {
   font-weight: var(--heading-weight, 600);
   color: var(--color-heading);
 }
-:where(a:hover),
+/* :where(a:hover),
 :where(a:hover strong) {
   color: var(--color-link-hover);
+} */
+:root {
+  --dark-blue: #2B38D1;
+}
+:where(a:hover),
+:where(a:hover strong) {
+  color: var(--dark-blue);
 }
 .bg-white {
   background-color: var(--color-white);
