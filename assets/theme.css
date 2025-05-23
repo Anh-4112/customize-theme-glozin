@@ -1640,6 +1640,7 @@ mini-cart-remove-button.loading .remove-icon {
 /* ===== CSS Customize ===== */
 :root {
   --white: #ffffff;
+  --white-smoke: #e3e0e0;
   --black: #111111;
   --light-cool-gray: #E5E8EC;
   --light-gray: #F1F5F6;
@@ -1660,8 +1661,16 @@ mini-cart-remove-button.loading .remove-icon {
   background-color: var(--light-gray);
 }
 
+.bg-white-smoke {
+  background-color: var(--white-smoke);
+}
+
 .bg-dark-blue {
   background-color: var(--dark-blue) !important;
+}
+
+.bg-crimson-red {
+  background-color: var(--crimson-red) !important;
 }
 
 .cl-white {
@@ -1697,12 +1706,20 @@ mini-cart-remove-button.loading .remove-icon {
   max-width: 100%;
 }
 
+.w-full {
+  width: 100%;
+}
+
 .w-110 {
   width: 11rem !important;
 }
 
-.w-90p {
-  width: 90%;
+.h-full {
+  height: 100%;
+}
+
+.h-5 {
+  height: 0.5rem;
 }
 
 .height-150 {
@@ -1797,10 +1814,6 @@ mini-cart-remove-button.loading .remove-icon {
   font: inherit;
 }
 
-.text-start {
-    text-align: start !important;
-}
-
 .lh {
   line-height: 100% !important;
 }
@@ -1867,6 +1880,10 @@ mini-cart-remove-button.loading .remove-icon {
 
 .rounded-5 {
   border-radius: 0.5rem !important;
+}
+
+.overflow-h {
+  overflow: hidden;
 }
 
 .swiper-rtl, .swiper-cus-left {
@@ -2113,6 +2130,14 @@ mini-cart-remove-button.loading .remove-icon {
 
   .mt-lg-0 {
     margin-top: 0;
+  }
+}
+@media (min-width: 1025px) {
+  .w-1025-90p {
+    width: 90% !important;
+  }
+  .translate-y-0 {
+    transform: translateY(0) !important;
   }
 }
 

@@ -449,7 +449,7 @@
                           id="{{ product_form_id }}-submit"
                           type="submit"
                           name="add"
-                          class="bg-1025-dark-blue cl-1025-white bg-1025-hover-blue w-90p {% if product_style == 'card' %}invisible-1025 {% endif %}product__add-cart product-item__button-submit transition btn btn-white shadow text-center w-30 h-30 w-1025-auto h-1025-auto inline-flex content-center relative absolute-1025 z-5 bottom-1025-15"
+                          class="bg-1025-dark-blue cl-1025-white bg-1025-hover-blue w-1025-90p {% if product_style == 'card' %}invisible-1025 {% endif %}product__add-cart product-item__button-submit transition btn btn-white shadow text-center w-30 h-30 w-1025-auto h-1025-auto inline-flex content-center relative absolute-1025 z-5 bottom-1025-15"
                           aria-haspopup="dialog"
                           aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
                           aria-live="polite"
@@ -569,15 +569,35 @@
           {% endif %}
         {%- endif -%}
         {% comment %} In stock {% endcomment %}
-        {% if card_product.available %}
-          <p class="product-stock in-stock fs-12 fw-600 cl-black my-0 pt-12 pb-5">
-            <span class="fw-500 cl-green">In stock</span>
-            {% if card_product.variants.first.inventory_management %} {{ card_product.variants.first.inventory_quantity }}
-            <span class="fw-500 cl-crimson-red">products</span>
+        {% assign variant = card_product.variants.first %}
+        {% assign inventory_quantity = variant.inventory_quantity %}
+
+        {% if variant.inventory_management and inventory_quantity > 0 %}
+          <p class="fs-11 fw-500 my-0 pt-12 pb-5">
+            {% if inventory_quantity <= 10 %}
+              <span class="cl-crimson-red">
+                Only
+              </span>
+              <span class="fw-600 cl-crimson-red">
+                {{ inventory_quantity }}
+              </span>
+              <span class="cl-crimson-red">
+                left in stock!
+              </span>
+            {% else %}
+              <span class="cl-green">
+                In stock
+              </span>
+              <span class="fw-600 cl-black">
+                {{ inventory_quantity }}
+              </span>
+              <span class="cl-dark-blue-gray">
+                products
+              </span>
             {% endif %}
           </p>
         {% else %}
-          <p class="product-stock out-of-stock fs-12 fw-500">Out of stock</p>
+          <p class="fs-11 fw-600 cl-black my-0 pt-12 pb-5">Out of stock</p>
         {% endif %}
 
         {% comment %}

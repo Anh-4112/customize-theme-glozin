@@ -289,22 +289,6 @@
           </a>
         {%- endif -%}
 
-        {% comment %}
-        {% if template_enable_product_badges == true %}
-          {% render 'product-badges',
-            card_product: card_product,
-            type: 'product_item',
-            class: bage_positon,
-            sticky: type
-          %}
-        {% endif %}
-        {% if type == 'product-set' and product_set_badge %}
-          <div class="label-set px-15 py-5 absolute z-1 subheading_weight pointer-none {% if settings.rtl %} right-10 right-1025-15 {% else %} left-10 left-1025-15 {% endif %} top-1025-15 top-10 btn-rounded color-white fs-11">
-            <span>{{ 'products.product.label_set' | t: index: indexFor }}</span>
-          </div>
-        {% endif %}
-        {% endcomment %}
-
         {% if type != 'list' and type != 'sticky' %}
           {% comment %} Product item wishlist using only wishlist page {% endcomment %}
           {% if template_enable_remove_in_wishlist_page == true %}
@@ -314,7 +298,7 @@
               {% endif %}
               <button-wishlist
                 tabindex="0"
-                class="product-item__button pointer product-item__button-wishlist tooltip btn-hover transition btn-hover transition shadow btn-white rounded-50 p-0 border w-45 h-45 inline-flex content-center absolute top-10 top-1025-15{% if settings.rtl %} left-10 left-1025-15{% else %} right-10 right-1025-15{% endif %}"
+                class="product-item__button pointer product-item__button-wishlist bg-hover-dark-blue tooltip btn-hover transition btn-hover transition shadow btn-white rounded-50 p-0 border w-45 h-45 inline-flex content-center absolute top-10 top-1025-15{% if settings.rtl %} left-10 left-1025-15{% else %} right-10 right-1025-15{% endif %}"
                 data-product-id="{{ card_product.id }}"
                 data-action="{{ action_when_click_added_wishlist }}"
                 data-tooltip-remove="{{ 'products.product.actions.wishlist.remove' | t }}"
@@ -330,11 +314,12 @@
               </button-wishlist>
             {%- endif -%}
           {% endif %}
-          <div class="product-item__action transition flex flex-column gap-5 absolute static-1025 bottom-10{% if settings.rtl %} left-10{% else %} right-10{% endif %}{% if settings.show_action_on_mobile and product_style != 'card' %} invisible-1025{% elsif settings.show_action_on_mobile and product_style == 'card' %} visible-1025{% elsif settings.show_action_on_mobile == false and product_style == 'card' %} visible-1025{% endif %}{% if settings.show_action_on_mobile == false %} invisible{% endif %}">
+          
+          <div class="product-item__action transition flex flex-column gap-10 absolute static-1025 top-15 right-5{% if settings.show_action_on_mobile and product_style != 'card' %} invisible-1025{% elsif settings.show_action_on_mobile and product_style == 'card' %} visible-1025{% elsif settings.show_action_on_mobile == false and product_style == 'card' %} visible-1025{% endif %}{% if settings.show_action_on_mobile == false %} invisible{% endif %}">
             {% if template_enable_action == true %}
               {% if show_quick_view == true or show_compare == true or show_wishlist == true %}
                 {% if type != 'product-set' %}
-                  <div class="product-item__button-action heading-color transition flex gap-5 absolute-1025 z-5{% if product_style == 'morden' %} inset-x-0 bottom-10 bottom-1025-15 flex-row justify-center action__morden-style{% endif %}{% if product_style != 'morden' %} flex-column bottom-10 bottom-1025-auto top-1025-15{% if settings.rtl %} left-10 left-1025-15{% else %} right-10 right-1025-15{% endif %}{% endif %}{% if product_style != 'card' %} product__action-animation{% endif %}">
+                  <div class="product-item__button-action heading-color transition flex gap-10 absolute-1025 z-5{% if product_style == 'morden' %} inset-x-0 bottom-10 bottom-1025-15 flex-row justify-center action__morden-style{% endif %}{% if product_style != 'morden' %} flex-column bottom-10 bottom-1025-auto top-1025-30{% if settings.rtl %} left-10 left-1025-15{% else %} right-10 right-1025-5{% endif %}{% endif %}{% if product_style != 'card' %} product__action-animation{% endif %}">
                     {% comment %} Product item wishlist {% endcomment %}
                     {%- if show_wishlist == true -%}
                       {% if wishlist == empty %}
@@ -342,7 +327,7 @@
                       {% endif %}
                       <button-wishlist
                         tabindex="0"
-                        class="product-item__button pointer product-item__button-wishlist tooltip relative btn-hover transition btn-hover transition btn-white rounded-50 p-0 shadow w-45 h-45 inline-flex content-center"
+                        class="product-item__button pointer product-item__button-wishlist tooltip relative btn-hover transition btn-hover transition btn-white rounded-50 p-0 shadow w-30 h-30 inline-flex content-center"
                         data-product-id="{{ card_product.id }}"
                         data-action="{{ action_when_click_added_wishlist }}"
                         data-tooltip-remove="{{ 'products.product.actions.wishlist.remove' | t }}"
@@ -352,8 +337,9 @@
                         <svg width="14" height="13" fill="none">
                           <use href="#icon-wishlist" />
                         </svg>
-                        <span class="tooltip-content invisible rounded-3 absolute pointer-none{% if product_style == 'morden' %} tooltip-top{% endif %}{% if product_style != 'morden' %}{% if settings.rtl %} tooltip-right{% else %} tooltip-left{% endif %}{% endif %}">
-                          {{- 'products.product.actions.wishlist.add' | t -}}
+                        <span class="tooltip-content px-7 invisible rounded-3 absolute pointer-none{% if product_style == 'morden' %} tooltip-top{% endif %}{% if product_style != 'morden' %}{% if settings.rtl %} tooltip-right{% else %} tooltip-left{% endif %}{% endif %}">
+                          {% comment %} {{- 'products.product.actions.wishlist.add' | t -}} {% endcomment %}
+                          Wishlist
                         </span>
                       </button-wishlist>
                     {%- endif -%}
@@ -365,7 +351,7 @@
                       {% endif %}
                       <button-compare
                         tabindex="0"
-                        class="{% if product_style == 'card' %}invisible-1025 product__action-animation transition {% endif %}product-item__button pointer product-item__button-compare tooltip relative btn-hover transition btn-white rounded-50 p-0 shadow w-45 h-45 inline-flex-1025 hidden content-center"
+                        class="product-item__button pointer product-item__button-quickview tooltip relative btn-hover transition btn-white rounded-50 p-0 shadow w-30 h-30 inline-flex content-center"
                         data-product-id="{{ card_product.id }}"
                         data-action="{{ action_when_click_added_compare }}"
                         data-tooltip-remove="{{ 'products.product.actions.compare.remove' | t }}"
@@ -375,7 +361,7 @@
                         <svg width="14" height="14" fill="none">
                           <use href="#icon-compare" />
                         </svg>
-                        <span class="tooltip-content invisible rounded-3 absolute pointer-none{% if product_style == 'morden' %} tooltip-top{% endif %}{% if product_style != 'morden' %}{% if settings.rtl %} tooltip-right{% else %} tooltip-left{% endif %}{% endif %}">
+                        <span class="tooltip-content px-7 invisible rounded-3 absolute pointer-none{% if product_style == 'morden' %} tooltip-top{% endif %}{% if product_style != 'morden' %}{% if settings.rtl %} tooltip-right{% else %} tooltip-left{% endif %}{% endif %}">
                           {{- 'products.product.actions.compare.add' | t -}}
                         </span>
                       </button-compare>
@@ -385,7 +371,7 @@
                       <button-quickview
                         data-custom-class="quickview"
                         tabindex="0"
-                        class="{% if product_style == 'card' %}invisible-1025 product__action-animation transition {% endif %}product-item__button pointer product-item__button-quickview tooltip relative btn-hover transition btn-white rounded-50 p-0 shadow w-45 h-45 inline-flex-1025 hidden content-center"
+                        class="product-item__button pointer product-item__button-quickview tooltip relative btn-hover transition btn-white rounded-50 p-0 shadow w-30 h-30 inline-flex content-center"
                         data-url="/products/{{ card_product.handle }}?section_id=product-quickview&ajax=1"
                       >
                         <svg width="14" height="12" fill="none" class="hidden-on-load">
@@ -394,65 +380,17 @@
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="spin opacity-0 icon-load">
                           <use href="#icon-load"></use>
                         </svg>
-                        <span class="tooltip-content invisible rounded-3 absolute pointer-none{% if product_style == 'morden' %} tooltip-top{% endif %}{% if product_style != 'morden' %}{% if settings.rtl %} tooltip-right{% else %} tooltip-left{% endif %}{% endif %}">
+                        <span class="tooltip-content px-7 invisible rounded-3 absolute pointer-none{% if product_style == 'morden' %} tooltip-top{% endif %}{% if product_style != 'morden' %}{% if settings.rtl %} tooltip-right{% else %} tooltip-left{% endif %}{% endif %}">
                           {{- 'products.product.actions.quickview.label' | t -}}
                         </span>
                       </button-quickview>
                     {%- endif -%}
-                  </div>
-                {% endif %}
-              {% endif %}
-
-              {% comment %}
-              {% if product_style != 'morden' %}
-                {% if template_enable_add_cart == true and show_add_cart and theme_st.enable_catalog_mode == false %}
-                  {%- liquid
-                    assign product_form_id = 'quick-add-' | append: section_id | append: card_product.id
-                    assign qty_rules = false
-                    if card_product.selected_or_first_available_variant.quantity_rule.template > 1 or card_product.selected_or_first_available_variant.quantity_rule.max != null or card_product.selected_or_first_available_variant.quantity_rule.increment > 1
-                      assign qty_rules = true
-                    endif
-                  -%}
-                  {%- if card_product.variants.size > 1 or qty_rules -%}
-                    {% comment %} Case select options {% endcomment %}
-                    <select-option
-                      tabindex="0"
-                      data-custom-class="quickview"
-                      data-item="overlay-quickbuy"
-                      data-url="/products/{{ card_product.handle }}?section_id=product-quickview&ajax=1"
-                      class="{% if product_style == 'card' %}invisible-1025 {% endif %}product__add-cart product-item__select-options transition btn btn-white shadow text-center w-45 h-45 w-1025-auto h-1025-auto inline-flex content-center relative absolute-1025 z-5 bottom-1025-15 left-1025-15 right-1025-15"
-                    >
-                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="spin opacity-0 icon-load">
-                        <use href="#icon-load"></use>
-                      </svg>
-                      <svg width="12" height="14" fill="none" class="block hidden-1025 hidden-on-load icon-cart">
-                        <use href="#icon-cart" />
-                      </svg>
-                      <span class="hidden block-1025 hidden-on-load">
-                        {{- 'products.product.actions.select_options.label' | t -}}
-                      </span>
-                    </select-option>
-                    <noscript>
-                      <a
-                        href="{{ card_product.url }}"
-                        class="{% if product_style == 'card' %}invisible-1025 {% endif %}product__add-cart product-item__select-options transition btn btn-white shadow text-center w-45 h-45 w-1025-auto h-1025-auto inline-flex content-center relative absolute-1025 z-5 bottom-1025-15 left-1025-15 right-1025-15"
-                        aria-label="{{- 'products.product.actions.select_options.label' | t -}}"
-                      >
-                        <svg width="12" height="14" fill="none" class="block hidden-1025">
-                          <use href="#icon-cart" />
-                        </svg>
-                        <span class="hidden block-1025">
-                          {{- 'products.product.actions.select_options.label' | t -}}
-                        </span>
-                      </a>
-                    </noscript>
-                  {%- else -%}
                     {% comment %} Case add cart directly {% endcomment %}
                     <product-form class="product-item__product-form">
                       {%- form 'product',
                         card_product,
                         id: product_form_id,
-                        class: 'form',
+                        class: 'form d-flex justify-center',
                         novalidate: 'novalidate',
                         data-type: 'add-to-cart-form'
                       -%}
@@ -466,7 +404,7 @@
                           id="{{ product_form_id }}-submit"
                           type="submit"
                           name="add"
-                          class="{% if product_style == 'card' %}invisible-1025 {% endif %}product__add-cart product-item__button-submit transition btn btn-white shadow text-center w-45 h-45 w-1025-auto h-1025-auto inline-flex content-center relative absolute-1025 z-5 bottom-1025-15 left-1025-15 right-1025-15"
+                          class="bg-dark-blue cl-white translate-y-0 {% if product_style == 'card' %}invisible-1025 {% endif %}product__add-cart product-item__button-submit transition btn btn-white shadow text-center w-30 h-30 w-1025-auto h-1025-auto inline-flex content-center relative absolute-1025 z-5"
                           aria-haspopup="dialog"
                           aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
                           aria-live="polite"
@@ -483,48 +421,78 @@
                             disabled
                           {% endif %}
                         >
-                          <svg width="12" height="14" fill="none" class="block hidden-1025 hidden-on-load icon-cart">
+                          {% comment %}  hidden-1025 bottom-1025-15 {% endcomment %}
+                          <svg width="12" height="14" fill="none" class="block icon-cart hidden-on-load">
                             <use href="#icon-cart" />
                           </svg>
                           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="spin opacity-0 icon-load">
                             <use href="#icon-load"></use>
                           </svg>
-                          <span class="hidden block-1025 hidden-on-load btn-action">
-                            {%- if card_product.selected_or_first_available_variant.available -%}
-                              {{ 'products.product.actions.add_to_cart.default.label' | t }}
-
-                            {%- else -%}
-                              {{ 'products.product.actions.add_to_cart.sold_out.label' | t }}
-                            {%- endif -%}
-                          </span>
                           <span class="sold-out-message hidden">
                             {{ 'products.product.actions.add_to_cart.sold_out.label' | t }}
                           </span>
                         </button>
                       {%- endform -%}
                     </product-form>
+                  </div>
+                {% endif %}
+              {% endif %}
+              {% if product_style != 'morden' %}
+                {% if template_enable_add_cart == true and show_add_cart and theme_st.enable_catalog_mode == false %}
+                  {%- liquid
+                    assign product_form_id = 'quick-add-' | append: section_id | append: card_product.id
+                    assign qty_rules = false
+                    if card_product.selected_or_first_available_variant.quantity_rule.template > 1 or card_product.selected_or_first_available_variant.quantity_rule.max != null or card_product.selected_or_first_available_variant.quantity_rule.increment > 1
+                      assign qty_rules = true
+                    endif
+                  -%}
+                  {%- if card_product.variants.size > 1 or qty_rules -%}
+                    {% comment %} Case select options {% endcomment %}
+                    <select-option
+                      tabindex="0"
+                      data-custom-class="quickview"
+                      data-item="overlay-quickbuy"
+                      data-url="/products/{{ card_product.handle }}?section_id=product-quickview&ajax=1"
+                      class="{% if product_style == 'card' %}invisible-1025 {% endif %}product__add-cart product-item__select-options transition btn btn-white shadow text-center w-30 h-30 w-1025-auto h-1025-auto inline-flex content-center relative absolute-1025 z-5 bottom-1025-15 left-1025-15 right-1025-15"
+                    >
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="spin opacity-0 icon-load">
+                        <use href="#icon-load"></use>
+                      </svg>
+                      <svg width="12" height="14" fill="none" class="block hidden-1025 hidden-on-load icon-cart">
+                        <use href="#icon-cart" />
+                      </svg>
+                      <span class="hidden block-1025 hidden-on-load">
+                        {{- 'products.product.actions.select_options.label' | t -}}
+                      </span>
+                    </select-option>
+                    <noscript>
+                      <a
+                        href="{{ card_product.url }}"
+                        class="{% if product_style == 'card' %}invisible-1025 {% endif %}product__add-cart product-item__select-options transition btn btn-white shadow text-center w-30 h-30 w-1025-auto h-1025-auto inline-flex content-center relative absolute-1025 z-5 bottom-1025-15 left-1025-15 right-1025-15"
+                        aria-label="{{- 'products.product.actions.select_options.label' | t -}}"
+                      >
+                        <svg width="12" height="14" fill="none" class="block hidden-1025">
+                          <use href="#icon-cart" />
+                        </svg>
+                        <span class="hidden block-1025">
+                          {{- 'products.product.actions.select_options.label' | t -}}
+                        </span>
+                      </a>
+                    </noscript>
                   {%- endif -%}
                 {% endif %}
               {% endif %}
-              {% endcomment %}
-
             {% endif %}
           </div>
         {% endif %}
       </div>
       {% comment %} Product information {% endcomment %}
-      <div class="mt-0 mx-20 product-item__information word-break{% if type == 'list' or type == 'sticky' %} text-start align-self-center type-list{% else %} text-{{ settings.product_alignment }} mt-15{% endif %}">
-        {% comment %} Product item vendor {% endcomment %}
-        {%- if template_enable_product_vendor == true -%}
-          {%- if show_vendor -%}
-            <div class="product-item__vendor dark-grey">{{ card_product.vendor }}</div>
-          {%- endif -%}
-        {% endif %}
+      <div class="mt-0 mx-20 product-item__information word-break{% if type == 'list' or type == 'sticky' %} text-start align-self-center type-list{% else %} mt-15{% endif %}">
         {% comment %} Product item title {% endcomment %}
         {% if type != 'product-set' %}
           <a
             aria-label="{{ card_product.title }}"
-            class="text-start fs-14 {% if product_truncation_title != 'none' %}product-title__truncate {% endif %}product-item__name {{ settings.product_name_text_transform }} heading-style no-underline fs-custom block lh-normal"
+            class="fs-14 {% if product_truncation_title != 'none' %}product-title__truncate {% endif %}product-item__name {{ settings.product_name_text_transform }} heading-style no-underline fs-custom block lh-normal"
             style="--font-size: {{ settings.product_size }};{% if product_truncation_title != 'none' %} --line-clamp: {{ product_truncation_title }};{% endif %}"            {% if template_disable_product_url == true %}
               role="link" aria-disabled="true"
             {% else %}
@@ -535,7 +503,6 @@
           </a>
         {% endif %}
         {% comment %} Product item rating {% endcomment %}
-
         {%- if template_enable_rate == true -%}
           {%- if show_rate -%}
             {%- if card_product.metafields.judgeme.badge -%}
@@ -551,22 +518,33 @@
             {%- endif -%}
           {%- endif -%}
         {%- endif -%}
+        <div class="d-flex gap-1 pt-12">
+          <svg width="12" height="12" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.96853 3.78143C10.0011 3.88335 10.0043 3.98868 9.9783 4.0974C9.95226 4.20612 9.89692 4.29785 9.81228 4.37259L7.63455 6.37033L8.27908 9.32616C8.29861 9.43488 8.28885 9.5402 8.24978 9.64213C8.21723 9.74405 8.15864 9.82899 8.074 9.89694C7.98286 9.96489 7.8852 9.99887 7.78103 9.99887C7.67687 10.0057 7.57921 9.98188 7.48806 9.92752L4.99783 8.36806L2.5076 9.92752C2.46853 9.94791 2.42296 9.96489 2.37088 9.97848C2.3253 9.99207 2.27973 9.99887 2.23416 9.99887C2.18207 9.99887 2.12674 9.98868 2.06814 9.96829C2.01606 9.9547 1.96723 9.93092 1.92166 9.89694C1.83702 9.82899 1.77517 9.74405 1.73611 9.64213C1.70356 9.5402 1.69705 9.43488 1.71658 9.32616L2.36111 6.37033L0.183377 4.37259C0.0987413 4.29785 0.0434028 4.20612 0.0173611 4.0974C-0.00868056 3.98868 -0.00542535 3.88335 0.0271267 3.78143C0.0596788 3.67271 0.115017 3.58437 0.193142 3.51642C0.277778 3.44847 0.372179 3.4077 0.476345 3.39411L3.36697 3.12911L4.50955 0.336353C4.54861 0.234428 4.61372 0.152888 4.70486 0.0917327C4.79601 0.0305776 4.89366 0 4.99783 0C5.102 0 5.19965 0.0305776 5.2908 0.0917327C5.38194 0.152888 5.44705 0.234428 5.48611 0.336353L6.62869 3.12911L9.51931 3.39411C9.62348 3.4077 9.71463 3.44847 9.79275 3.51642C9.87739 3.58437 9.93598 3.67271 9.96853 3.78143Z" fill="#FFB800"></path>
+          </svg>
+          <svg width="12" height="12" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.96853 3.78143C10.0011 3.88335 10.0043 3.98868 9.9783 4.0974C9.95226 4.20612 9.89692 4.29785 9.81228 4.37259L7.63455 6.37033L8.27908 9.32616C8.29861 9.43488 8.28885 9.5402 8.24978 9.64213C8.21723 9.74405 8.15864 9.82899 8.074 9.89694C7.98286 9.96489 7.8852 9.99887 7.78103 9.99887C7.67687 10.0057 7.57921 9.98188 7.48806 9.92752L4.99783 8.36806L2.5076 9.92752C2.46853 9.94791 2.42296 9.96489 2.37088 9.97848C2.3253 9.99207 2.27973 9.99887 2.23416 9.99887C2.18207 9.99887 2.12674 9.98868 2.06814 9.96829C2.01606 9.9547 1.96723 9.93092 1.92166 9.89694C1.83702 9.82899 1.77517 9.74405 1.73611 9.64213C1.70356 9.5402 1.69705 9.43488 1.71658 9.32616L2.36111 6.37033L0.183377 4.37259C0.0987413 4.29785 0.0434028 4.20612 0.0173611 4.0974C-0.00868056 3.98868 -0.00542535 3.88335 0.0271267 3.78143C0.0596788 3.67271 0.115017 3.58437 0.193142 3.51642C0.277778 3.44847 0.372179 3.4077 0.476345 3.39411L3.36697 3.12911L4.50955 0.336353C4.54861 0.234428 4.61372 0.152888 4.70486 0.0917327C4.79601 0.0305776 4.89366 0 4.99783 0C5.102 0 5.19965 0.0305776 5.2908 0.0917327C5.38194 0.152888 5.44705 0.234428 5.48611 0.336353L6.62869 3.12911L9.51931 3.39411C9.62348 3.4077 9.71463 3.44847 9.79275 3.51642C9.87739 3.58437 9.93598 3.67271 9.96853 3.78143Z" fill="#FFB800"></path>
+          </svg>
+          <svg width="12" height="12" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.96853 3.78143C10.0011 3.88335 10.0043 3.98868 9.9783 4.0974C9.95226 4.20612 9.89692 4.29785 9.81228 4.37259L7.63455 6.37033L8.27908 9.32616C8.29861 9.43488 8.28885 9.5402 8.24978 9.64213C8.21723 9.74405 8.15864 9.82899 8.074 9.89694C7.98286 9.96489 7.8852 9.99887 7.78103 9.99887C7.67687 10.0057 7.57921 9.98188 7.48806 9.92752L4.99783 8.36806L2.5076 9.92752C2.46853 9.94791 2.42296 9.96489 2.37088 9.97848C2.3253 9.99207 2.27973 9.99887 2.23416 9.99887C2.18207 9.99887 2.12674 9.98868 2.06814 9.96829C2.01606 9.9547 1.96723 9.93092 1.92166 9.89694C1.83702 9.82899 1.77517 9.74405 1.73611 9.64213C1.70356 9.5402 1.69705 9.43488 1.71658 9.32616L2.36111 6.37033L0.183377 4.37259C0.0987413 4.29785 0.0434028 4.20612 0.0173611 4.0974C-0.00868056 3.98868 -0.00542535 3.88335 0.0271267 3.78143C0.0596788 3.67271 0.115017 3.58437 0.193142 3.51642C0.277778 3.44847 0.372179 3.4077 0.476345 3.39411L3.36697 3.12911L4.50955 0.336353C4.54861 0.234428 4.61372 0.152888 4.70486 0.0917327C4.79601 0.0305776 4.89366 0 4.99783 0C5.102 0 5.19965 0.0305776 5.2908 0.0917327C5.38194 0.152888 5.44705 0.234428 5.48611 0.336353L6.62869 3.12911L9.51931 3.39411C9.62348 3.4077 9.71463 3.44847 9.79275 3.51642C9.87739 3.58437 9.93598 3.67271 9.96853 3.78143Z" fill="#FFB800"></path>
+          </svg>
+          <svg width="12" height="12" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.96853 3.78143C10.0011 3.88335 10.0043 3.98868 9.9783 4.0974C9.95226 4.20612 9.89692 4.29785 9.81228 4.37259L7.63455 6.37033L8.27908 9.32616C8.29861 9.43488 8.28885 9.5402 8.24978 9.64213C8.21723 9.74405 8.15864 9.82899 8.074 9.89694C7.98286 9.96489 7.8852 9.99887 7.78103 9.99887C7.67687 10.0057 7.57921 9.98188 7.48806 9.92752L4.99783 8.36806L2.5076 9.92752C2.46853 9.94791 2.42296 9.96489 2.37088 9.97848C2.3253 9.99207 2.27973 9.99887 2.23416 9.99887C2.18207 9.99887 2.12674 9.98868 2.06814 9.96829C2.01606 9.9547 1.96723 9.93092 1.92166 9.89694C1.83702 9.82899 1.77517 9.74405 1.73611 9.64213C1.70356 9.5402 1.69705 9.43488 1.71658 9.32616L2.36111 6.37033L0.183377 4.37259C0.0987413 4.29785 0.0434028 4.20612 0.0173611 4.0974C-0.00868056 3.98868 -0.00542535 3.88335 0.0271267 3.78143C0.0596788 3.67271 0.115017 3.58437 0.193142 3.51642C0.277778 3.44847 0.372179 3.4077 0.476345 3.39411L3.36697 3.12911L4.50955 0.336353C4.54861 0.234428 4.61372 0.152888 4.70486 0.0917327C4.79601 0.0305776 4.89366 0 4.99783 0C5.102 0 5.19965 0.0305776 5.2908 0.0917327C5.38194 0.152888 5.44705 0.234428 5.48611 0.336353L6.62869 3.12911L9.51931 3.39411C9.62348 3.4077 9.71463 3.44847 9.79275 3.51642C9.87739 3.58437 9.93598 3.67271 9.96853 3.78143Z" fill="#FFB800"></path>
+          </svg>
+          <svg width="12" height="12" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.96853 3.78143C10.0011 3.88335 10.0043 3.98868 9.9783 4.0974C9.95226 4.20612 9.89692 4.29785 9.81228 4.37259L7.63455 6.37033L8.27908 9.32616C8.29861 9.43488 8.28885 9.5402 8.24978 9.64213C8.21723 9.74405 8.15864 9.82899 8.074 9.89694C7.98286 9.96489 7.8852 9.99887 7.78103 9.99887C7.67687 10.0057 7.57921 9.98188 7.48806 9.92752L4.99783 8.36806L2.5076 9.92752C2.46853 9.94791 2.42296 9.96489 2.37088 9.97848C2.3253 9.99207 2.27973 9.99887 2.23416 9.99887C2.18207 9.99887 2.12674 9.98868 2.06814 9.96829C2.01606 9.9547 1.96723 9.93092 1.92166 9.89694C1.83702 9.82899 1.77517 9.74405 1.73611 9.64213C1.70356 9.5402 1.69705 9.43488 1.71658 9.32616L2.36111 6.37033L0.183377 4.37259C0.0987413 4.29785 0.0434028 4.20612 0.0173611 4.0974C-0.00868056 3.98868 -0.00542535 3.88335 0.0271267 3.78143C0.0596788 3.67271 0.115017 3.58437 0.193142 3.51642C0.277778 3.44847 0.372179 3.4077 0.476345 3.39411L3.36697 3.12911L4.50955 0.336353C4.54861 0.234428 4.61372 0.152888 4.70486 0.0917327C4.79601 0.0305776 4.89366 0 4.99783 0C5.102 0 5.19965 0.0305776 5.2908 0.0917327C5.38194 0.152888 5.44705 0.234428 5.48611 0.336353L6.62869 3.12911L9.51931 3.39411C9.62348 3.4077 9.71463 3.44847 9.79275 3.51642C9.87739 3.58437 9.93598 3.67271 9.96853 3.78143Z" fill="#FFB800"></path>
+          </svg>
+        </div>
         {% comment %} Product item price {% endcomment %}
         {% if template_enable_price == true %}
           {% if hidden_price != true %}
             <div
-              class="justify-start product-item__price{% if type == 'list' or type == 'sticky' %} text-start{% else %} justify-content-{{ settings.product_alignment }} fs-custom{% endif %} flex gap-custom lh-normal {{ priceclass }}"
+              class="pt-12 mt-0 cl-dark-blue justify-start product-item__price{% if type == 'list' or type == 'sticky' %} text-start{% else %} justify-content-{{ settings.product_alignment }} fs-custom{% endif %} flex gap-custom lh-normal {{ priceclass }}"
               style="--font-size: {{ settings.price_size }}; --gap: 3px;"
             >
               {%- render 'price', scope: 'item', product: card_product, show_badges: false, class: priceclass -%}
             </div>
           {% endif %}
-        {% endif %}
-        {% comment %} Product item color swatches {% endcomment %}
-        {% if template_enable_color_swatches == true %}
-          {%- if show_variant -%}
-            {%- render 'color-swatches' | product: card_product | type: "item" -%}
-          {%- endif -%}
         {% endif %}
         {% comment %} Product item short description {% endcomment %}
         {%- if template_enable_product_short_description == true
@@ -583,6 +561,37 @@
             </div>
           {% endif %}
         {%- endif -%}
+
+        {% comment %} Progress {% endcomment %}
+        {% assign variant = card_product.variants.first %}
+        {% assign total_quantity = card_product.metafields.custom.total_quantity | default: variant.inventory_quantity %}
+        {% assign sold_quantity = total_quantity | minus: variant.inventory_quantity %}
+        {% assign sold_percent = sold_quantity | times: 100 | divided_by: total_quantity %}
+
+        <div class="pt-12 product-progress-wrapper ">
+          <div class="w-full h-5 bg-white-smoke rounded-5 overflow-h">
+            <div class="h-full bg-crimson-red rounded-5" style="width: {{ sold_percent }}%;"></div>
+          </div>
+        </div>
+
+        {% comment %} In stock {% endcomment %}
+        {% assign variant = card_product.variants.first %}
+        {% assign total_quantity = card_product.metafields.custom.total_quantity | default: variant.inventory_quantity %}
+        {% assign sold_quantity = total_quantity | minus: variant.inventory_quantity %}
+
+        {% if variant.inventory_management %}
+          {% if variant.inventory_quantity > 0 %}
+            <p class="my-0 pt-12 fs-12 fw-600 cl-black">
+              <span class="fw-500 cl-dark-blue-gray">Sold:</span>
+              {{ sold_quantity }}/{{ total_quantity }}
+              <span class="fw-500 cl-dark-blue-gray">products</span> 
+            </p>
+          {% else %}
+            <p class="my-0 pt-12">Out of stock</p>
+          {% endif %}
+        {% endif %}
+
+        {% comment %}
         {% if type == 'list' or type == 'sticky' %}
           <div class="flex flex-wrap gap-10 product-list-action">
             {% if template_enable_add_cart == true and show_add_cart and theme_st.enable_catalog_mode == false %}
@@ -819,6 +828,7 @@
             {% endif %}
           {% endif %}
         {% endif %}
+        {% endcomment %}
       </div>
       {% if template_disable_script_trigger_product_data != true %}
         {%- liquid

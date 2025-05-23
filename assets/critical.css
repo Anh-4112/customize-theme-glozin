@@ -1048,7 +1048,7 @@ picture {
   width: var(--custom-width);
 }
 .w-30 {
-  width: 30px;
+  width: 3rem;
 }
 .w-50-percent {
   width: 50%;
@@ -2242,8 +2242,14 @@ header.active li.visible .submenu:not(.submenu-vertical) {
   .top-1025-15 {
     top: 1.5rem;
   }
+  .top-1025-30 {
+    top: 3rem;
+  }
   .right-1025-0 {
     right: 0rem;
+  }
+  .right-1025-5 {
+    right: 0.5rem;
   }
   .right-1025-15 {
     right: 1.5rem;
