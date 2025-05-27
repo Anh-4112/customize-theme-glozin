@@ -9294,6 +9294,21 @@ class SlideCus extends SlideSection {
       this.globalSlide.update();
     }
   }
+  connectedCallback() {
+    const images = this.querySelectorAll('img');
+    const promises = Array.from(images).map(img => {
+      if (img.complete) return Promise.resolve();
+      return new Promise(resolve => {
+        img.onload = img.onerror = resolve;
+      });
+    });
+
+    Promise.all(promises).then(() => {
+      requestAnimationFrame(() => {
+        this.initSlide();
+      });
+    });
+  }
 }
 customElements.define('slide-cus', SlideCus);
 /* --- */ 
@@ -9334,6 +9349,21 @@ class SlideCusMobile extends SlideSection {
       this.globalSlide.update();
     }
   }
+  connectedCallback() {
+    const images = this.querySelectorAll('img');
+    const promises = Array.from(images).map(img => {
+      if (img.complete) return Promise.resolve();
+      return new Promise(resolve => {
+        img.onload = img.onerror = resolve;
+      });
+    });
+
+    Promise.all(promises).then(() => {
+      requestAnimationFrame(() => {
+        this.initSlide();
+      });
+    });
+  }
 }
 customElements.define('slide-cus-mobile', SlideCusMobile);
 /* --- */ 
@@ -9372,7 +9402,23 @@ class SlideCusPc extends SlideSection {
       };
 
       this.globalSlide.update();
+
     }
+  }
+  connectedCallback() {
+    const images = this.querySelectorAll('img');
+    const promises = Array.from(images).map(img => {
+      if (img.complete) return Promise.resolve();
+      return new Promise(resolve => {
+        img.onload = img.onerror = resolve;
+      });
+    });
+
+    Promise.all(promises).then(() => {
+      requestAnimationFrame(() => {
+        this.initSlide();
+      });
+    });
   }
 }
 customElements.define('slide-cus-pc', SlideCusPc);

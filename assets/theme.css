@@ -1774,6 +1774,10 @@ mini-cart-remove-button.loading .remove-icon {
   flex: 0 0 50% !important;
 }
 
+.f-50p-g5 {
+  flex: 0 0 calc(50% - 00.5rem)  !important;
+}
+
 .f-100p {
   flex: 0 0 100% !important;
 }
@@ -2066,11 +2070,15 @@ mini-cart-remove-button.loading .remove-icon {
   }
 
   .f-md-25p {
-    flex: 0 0 25%;
+    flex: 0 0 25% !important;
   }
 
   .f-md-50p {
-    flex: 0 0 calc(50% - 2rem);
+    flex: 0 0 50%;
+  }
+
+  .f-md-50p-g20 {
+    flex: 0 0 calc(50% - 2rem) !important;
   }
 
   .mx-md-10 {
@@ -2100,12 +2108,20 @@ mini-cart-remove-button.loading .remove-icon {
     flex-wrap: nowrap !important;
   }
 
+  .f-lg-17p {
+    flex: 0 0 17% !important;
+  }
+
   .f-lg-25p {
     flex: 0 0 25% !important;
   }
 
+  .f-lg-33p {
+    flex: 0 0 33% !important;
+  }
+
   .f-lg-1 {
-    flex: 1;
+    flex: 1 !important;
   }
 
   .f-lg-50p {

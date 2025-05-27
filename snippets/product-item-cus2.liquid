@@ -562,6 +562,50 @@
           {% endif %}
         {%- endif -%}
 
+        {% if block_st.product.metafields.custom.countdown_timer
+          and block_st.product.metafields.custom.countdown_timer != blank
+        %}
+          {{ 'countdown.css' | asset_url | stylesheet_tag }}
+          <div class="countdown-timer p-20 inline-flex product-timer flex-column gap-10 rounded-5 {{ block_st.timer_style  }}">
+            <div class="countdown-messeage ln-normal heading-style">
+              {{ 'sections.shopable_video.countdown_message' | t }}
+            </div>
+            <countdown-timer
+              class="hidden flex flex-wrap fs-16 primary-color"
+              data-endtime="{{ block_st.product.metafields.custom.countdown_timer }}"
+              data-days="{{ 'products.product.countdown.days' | t }}"
+              data-hours="{{ 'products.product.countdown.hours' | t }}"
+              data-mins="{{ 'products.product.countdown.mins' | t }}"
+              data-secs="{{ 'products.product.countdown.secs' | t }}"
+            >
+            </countdown-timer>
+          </div>
+          {%- if product.metafields.custom.countdown_timer
+            and product.metafields.custom.countdown_timer != blank
+          -%}
+            <div
+              class="countdown-timer mb-20 inline-flex flex-column gap-5 product-timer rounded-5 p-20 pt-15 default"
+              style="--gap: 7;"
+            >
+              <div class="countdown-messeage ln-normal heading-style">
+                {{ 'sections.shopable_video.countdown_message' | t }}
+              </div>
+
+              <countdown-timer
+                class="hidden flex flex-wrap fs-18 primary-color {{ block_st.timer_style }}"
+                {{ block.shopify_attributes }}
+                data-endtime="{{ product.metafields.custom.countdown_timer }}"
+                data-days="{{ 'products.product.countdown.days' | t }}"
+                data-hours="{{ 'products.product.countdown.hours' | t }}"
+                data-mins="{{ 'products.product.countdown.mins' | t }}"
+                data-secs="{{ 'products.product.countdown.secs' | t }}"
+                style="--color-heading: var(--color-primary);"
+              >
+              </countdown-timer>
+            </div>
+          {% endif %}
+        {% endif %}
+
         {% comment %} Progress {% endcomment %}
         {% assign variant = card_product.variants.first %}
         {% assign total_quantity = card_product.metafields.custom.total_quantity | default: variant.inventory_quantity %}
@@ -591,244 +635,8 @@
           {% endif %}
         {% endif %}
 
-        {% comment %}
-        {% if type == 'list' or type == 'sticky' %}
-          <div class="flex flex-wrap gap-10 product-list-action">
-            {% if template_enable_add_cart == true and show_add_cart and theme_st.enable_catalog_mode == false %}
-              {%- liquid
-                assign product_form_id = 'quick-add-' | append: section_id | append: card_product.id
-                assign qty_rules = false
-                if card_product.selected_or_first_available_variant.quantity_rule.template > 1 or card_product.selected_or_first_available_variant.quantity_rule.max != null or card_product.selected_or_first_available_variant.quantity_rule.increment > 1
-                  assign qty_rules = true
-                endif
-              -%}
-              {%- if card_product.variants.size > 1 or qty_rules -%}
-                {% comment %} Case select options {% endcomment %}
-                <select-option
-                  tabindex="0"
-                  data-item="overlay-quickbuy"
-                  class="product-item__select-options bls-add-cart-list pointer transition btn-primary block relative grow-1 max-w-custom text-center"
-                  data-url="/products/{{ card_product.handle }}?section_id=product-quickview&ajax=1"
-                  style="--max-width: 23rem;"
-                  data-custom-class="quickview"
-                >
-                  <span class="hidden-on-load">
-                    {{- 'products.product.actions.select_options.label' | t -}}
-                  </span>
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="spin opacity-0 icon-load">
-                    <use href="#icon-load"></use>
-                  </svg>
-                </select-option>
-              {%- else -%}
-                {% comment %} Case add cart directly {% endcomment %}
-                <product-form class="product-item__product-form grow-1 max-w-custom" style="--max-width: 23rem;">
-                  {%- form 'product',
-                    card_product,
-                    id: product_form_id,
-                    class: 'form',
-                    novalidate: 'novalidate',
-                    data-type: 'add-to-cart-form'
-                  -%}
-                    <input
-                      type="hidden"
-                      name="id"
-                      value="{{ card_product.selected_or_first_available_variant.id }}"
-                      disabled
-                    >
-                    <button
-                      id="{{ product_form_id }}-submit"
-                      type="submit"
-                      name="add"
-                      class="product-item__button-submit bls-add-cart-list pointer transition btn-primary block relative text-center w-full"
-                      style="--max-width: 23rem;"
-                      aria-haspopup="dialog"
-                      aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
-                      aria-live="polite"
-                      aria-label="
-                        {%- if card_product.selected_or_first_available_variant.available -%}
-                          {{ 'products.product.actions.add_to_cart.default.label' | t }}
-                        {%- else -%}
-                          {{ 'products.product.actions.add_to_cart.sold_out.label' | t }}
-                        {%- endif -%}
-                      "
-                      data-sold-out-message="true"
-                      {% if card_product.selected_or_first_available_variant.available == false %}
-                        disabled
-                      {% endif %}
-                    >
-                      <span class="hidden-on-load btn-action">
-                        {%- if card_product.selected_or_first_available_variant.available -%}
-                          {{ 'products.product.actions.add_to_cart.default.label' | t }}
-                        {%- else -%}
-                          {{ 'products.product.actions.add_to_cart.sold_out.label' | t }}
-                        {%- endif -%}
-                      </span>
-                      <span class="sold-out-message hidden hidden-on-load">
-                        {{ 'products.product.actions.add_to_cart.sold_out.label' | t }}
-                      </span>
-                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="spin opacity-0 icon-load">
-                        <use href="#icon-load"></use>
-                      </svg>
-                    </button>
-                  {%- endform -%}
-                </product-form>
-              {%- endif -%}
-            {% endif %}
-            {% if template_enable_action == true %}
-              {% comment %} Product item wishlist {% endcomment %}
-              {%- if show_wishlist == true -%}
-                {% if wishlist == empty %}
-                  {% assign action_when_click_added_wishlist = 'remove' %}
-                {% endif %}
-                <button-wishlist
-                  tabindex="0"
-                  class="product-item__button pointer product-item__button-wishlist tooltip relative btn-hover transition btn-hover transition btn-white rounded-50 p-0 border w-45 h-45 inline-flex content-center"
-                  data-product-id="{{ card_product.id }}"
-                  data-action="{{ action_when_click_added_wishlist }}"
-                  data-tooltip-remove="{{ 'products.product.actions.wishlist.remove' | t }}"
-                  data-tooltip-add="{{ 'products.product.actions.wishlist.add' | t }}"
-                  data-tooltip-redirect="{{ 'products.product.actions.wishlist.redirect' | t }}"
-                >
-                  <svg width="14" height="13" fill="none">
-                    <use href="#icon-wishlist" />
-                  </svg>
-                  <span class="tooltip-content invisible rounded-3 absolute pointer-none tooltip-top">
-                    {{- 'products.product.actions.wishlist.add' | t -}}
-                  </span>
-                </button-wishlist>
-              {%- endif -%}
-              {% comment %} Product item compare {% endcomment %}
-              {%- if show_compare == true -%}
-                {% assign action_when_click_added_compare = 'go_to_page' %}
-                {% if compare == empty %}
-                  {% assign action_when_click_added_compare = 'remove' %}
-                {% endif %}
-                <button-compare
-                  tabindex="0"
-                  class="product-item__button pointer product-item__button-wishlist tooltip relative btn-hover transition btn-hover transition btn-white rounded-50 p-0 border w-45 h-45 inline-flex content-center"
-                  data-product-id="{{ card_product.id }}"
-                  data-action="{{ action_when_click_added_compare }}"
-                  data-tooltip-remove="{{ 'products.product.actions.compare.remove' | t }}"
-                  data-tooltip-add="{{ 'products.product.actions.compare.add' | t }}"
-                  data-tooltip-redirect="{{ 'products.product.actions.compare.redirect' | t }}"
-                >
-                  <svg width="14" height="14" fill="none">
-                    <use href="#icon-compare" />
-                  </svg>
-                  <span class="tooltip-content invisible rounded-3 absolute pointer-none tooltip-top">
-                    {{- 'products.product.actions.compare.add' | t -}}
-                  </span>
-                </button-compare>
-              {%- endif -%}
 
-              {%- liquid
-                assign product_form_id = 'quick-add-' | append: section_id | append: card_product.id
-                assign qty_rules = false
-                if card_product.selected_or_first_available_variant.quantity_rule.template > 1 or card_product.selected_or_first_available_variant.quantity_rule.max != null or card_product.selected_or_first_available_variant.quantity_rule.increment > 1
-                  assign qty_rules = true
-                endif
-              -%}
-            {% endif %}
-          </div>
-        {% else %}
-          {% if product_style == 'morden' %}
-            {% if template_enable_add_cart == true and show_add_cart and theme_st.enable_catalog_mode == false %}
-              {%- liquid
-                assign product_form_id = 'quick-add-' | append: section_id | append: card_product.id
-                assign qty_rules = false
-                if card_product.selected_or_first_available_variant.quantity_rule.template > 1 or card_product.selected_or_first_available_variant.quantity_rule.max != null or card_product.selected_or_first_available_variant.quantity_rule.increment > 1
-                  assign qty_rules = true
-                endif
-              -%}
-              {%- if card_product.variants.size > 1 or qty_rules -%}
-                {% comment %} Case select options {% endcomment %}
-                <select-option
-                  tabindex="0"
-                  data-custom-class="quickview"
-                  data-item="overlay-quickbuy"
-                  data-url="/products/{{ card_product.handle }}?section_id=product-quickview&ajax=1"
-                  class="w-full product__add-cart product-item__select-options transition btn-outline text-center{% if settings.show_action_on_mobile == false %} inline-flex{% else %} hidden inline-flex-1025{% endif %} content-center relative mt-20 morden-style"
-                >
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="spin opacity-0 icon-load">
-                    <use href="#icon-load"></use>
-                  </svg>
-                  <span class="block hidden-on-load">
-                    {{- 'products.product.actions.select_options.label' | t -}}
-                  </span>
-                </select-option>
-                <noscript>
-                  <a
-                    href="{{ card_product.url }}"
-                    class="w-full product__add-cart product-item__select-options transition btn-outline text-center{% if settings.show_action_on_mobile == false %} inline-flex{% else %} hidden inline-flex-1025{% endif %} content-center relative mt-20 morden-style"
-                    aria-label="{{- 'products.product.actions.select_options.label' | t -}}"
-                  >
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="spin opacity-0 icon-load">
-                      <use href="#icon-load"></use>
-                    </svg>
-                    <span class="block hidden-on-load">
-                      {{- 'products.product.actions.select_options.label' | t -}}
-                    </span>
-                  </a>
-                </noscript>
-              {%- else -%}
-                {% comment %} Case add cart directly {% endcomment %}
-                <product-form class="product-item__product-form{% if settings.show_action_on_mobile != true %} hidden block-1025{% endif %}">
-                  {%- form 'product',
-                    card_product,
-                    id: product_form_id,
-                    class: 'form',
-                    novalidate: 'novalidate',
-                    data-type: 'add-to-cart-form'
-                  -%}
-                    <input
-                      type="hidden"
-                      name="id"
-                      value="{{ card_product.selected_or_first_available_variant.id }}"
-                      disabled
-                    >
-                    <button
-                      id="{{ product_form_id }}-submit"
-                      type="submit"
-                      name="add"
-                      class="w-full product__add-cart product-item__select-options transition btn-outline text-center inline-flex content-center relative mt-20 morden-style"
-                      aria-haspopup="dialog"
-                      aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
-                      aria-live="polite"
-                      arial-label="
-                        {%- if card_product.selected_or_first_available_variant.available -%}
-                          {{ 'products.product.actions.add_to_cart.default.label' | t }}
 
-                        {%- else -%}
-                          {{ 'products.product.actions.add_to_cart.sold_out.label' | t }}
-                        {%- endif -%}
-                      "
-                      data-sold-out-message="true"
-                      {% if card_product.selected_or_first_available_variant.available == false %}
-                        disabled
-                      {% endif %}
-                    >
-                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="spin opacity-0 icon-load">
-                        <use href="#icon-load"></use>
-                      </svg>
-                      <span class="block hidden-on-load btn-action">
-                        {%- if card_product.selected_or_first_available_variant.available -%}
-                          {{ 'products.product.actions.add_to_cart.default.label' | t }}
-
-                        {%- else -%}
-                          {{ 'products.product.actions.add_to_cart.sold_out.label' | t }}
-                        {%- endif -%}
-                      </span>
-                      <span class="sold-out-message hidden">
-                        {{ 'products.product.actions.add_to_cart.sold_out.label' | t }}
-                      </span>
-                    </button>
-                  {%- endform -%}
-                </product-form>
-              {%- endif -%}
-            {% endif %}
-          {% endif %}
-        {% endif %}
-        {% endcomment %}
       </div>
       {% if template_disable_script_trigger_product_data != true %}
         {%- liquid
@@ -937,26 +745,9 @@
           </a>
         </div>
       </div>
-      {% comment %}
-      <div class="product-item__information word-break{% if type == 'list' or type == 'sticky' %} text-start align-self-center type-list{% else %} text-{{ settings.product_alignment }} mt-15{% endif %}">
-        <a
-          draggable="false"
-          aria-disabled="true"
-          role="link"
-          class="product-item__name"
-          title="{{ 'onboarding.product_title_example' | t }}"
-          aria-label="{{ 'onboarding.product_title_example' | t }}"
-        >
-          {{ 'onboarding.product_title_example' | t }}
-        </a>
-        <div
-          class="product-item__price mt-5 justify-content-{{ settings.product_alignment }} fs-custom flex"
-          style="--font-size: {{ settings.price_size }}"
-        >
-          {%- render 'price' | scope: 'item', show_badges: false, class: priceclass -%}
-        </div>
-      </div>
-      {% endcomment %}
+
+
+
     </motion-element>
   </div>
 {% endif %}

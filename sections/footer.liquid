@@ -72,7 +72,8 @@
               -%}
           {%- endcase -%}
         {%- endfor -%}
-        <div class="footer__blocks flex flex-col-custom flex-wrap justify-between">
+        {% comment %}  flex-col-custom {% endcomment %}
+        <div class="footer__blocks flex flex-wrap justify-between">
           {%- for block in section.blocks -%}
             {%- liquid
               assign block_st = block.settings
@@ -85,7 +86,7 @@
                       hold
                     {% endif %}
                     data-motion-delay="{{ forloop.index0 | times: 50 }}"
-                    class=" {% if scroll_animation == 'slide_in' %} opacity-0 {% endif %} footer-block w-full col-md-w-custom-50 col-md-w-custom{% if block.type == 'store_info' %} pb-30 border-bottom border-bottom-md-0{% else %} mb-0 mb-md-20 border-bottom border-bottom-md-0{% endif %} {{ block.type }}"
+                    class="f-lg-33p{% if scroll_animation == 'slide_in' %} opacity-0 {% endif %} footer-block w-full col-md-w-custom-50 col-md-w-custom{% if block.type == 'store_info' %} pb-30 border-bottom border-bottom-md-0{% else %} mb-0 mb-md-20 border-bottom border-bottom-md-0{% endif %} {{ block.type }}"
                     style="--col-width: {{ block_st.content_width }}; --menu-list: {{ menu_item }}"
                     {{ block.shopify_attributes }}
                   >
@@ -208,7 +209,7 @@
                         hold
                       {% endif %}
                       data-motion-delay="{{ forloop.index0 | times: 50 }}"
-                      class=" {% if scroll_animation == 'slide_in' %} opacity-0 {% endif %} footer-block w-full col-md-w-custom-50 col-md-w-custom{% if block.type == 'store_info' %} pb-30 border-bottom border-bottom-md-0{% else %} mb-0 mb-md-20 border-bottom border-bottom-md-0{% endif %} {{ block.type }}"
+                      class="f-50p-g5 f-md-25p f-lg-17p{% if scroll_animation == 'slide_in' %} opacity-0 {% endif %} footer-block w-full col-md-w-custom-50 col-md-w-custom{% if block.type == 'store_info' %} pb-30 border-bottom border-bottom-md-0{% else %} mb-0 mb-md-20 border-bottom border-bottom-md-0{% endif %} {{ block.type }}"
                       style="--col-width: {{ block_st.content_width }}; --menu-list: {{ menu_item }}"
                       {{ block.shopify_attributes }}
                     >
@@ -255,7 +256,7 @@
                       hold
                     {% endif %}
                     data-motion-delay="{{ forloop.index0 | times: 50 }}"
-                    class=" {% if scroll_animation == 'slide_in' %} opacity-0 {% endif %} footer-block w-full col-md-w-custom-50 col-md-w-custom{% if block.type == 'store_info' %} pb-30 border-bottom border-bottom-md-0{% else %} mb-0 mb-md-20 border-bottom border-bottom-md-0{% endif %} {{ block.type }}"
+                    class="f-md-50p f-lg-33p{% if scroll_animation == 'slide_in' %} opacity-0 {% endif %} footer-block w-full col-md-w-custom-50 col-md-w-custom{% if block.type == 'store_info' %} pb-30 border-bottom border-bottom-md-0{% else %} mb-0 mb-md-20 border-bottom border-bottom-md-0{% endif %} {{ block.type }}"
                     style="--col-width: {{ block_st.content_width }}; --menu-list: {{ menu_item }}"
                     {{ block.shopify_attributes }}
                   >

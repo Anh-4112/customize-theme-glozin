@@ -67,7 +67,8 @@ variant-radios-detail {
 
 .product-item__button.active {
   color: var(--btn-primary-color);
-  background-color: var(--btn-primary-bg-color);
+  /* background-color: var(--btn-primary-bg-color); */
+  background-color: #2B38D1;
   border-color: var(--btn-primary-bg-color);
 }
 .swatch-large {

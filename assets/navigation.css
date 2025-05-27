@@ -327,7 +327,8 @@
   }
   .level0:hover > menu-item > a,
   .level0:hover > menu-item open-children-toggle {
-    color: var(--color-link-hover);
+    /* color: var(--color-link-hover); */
+    color: #2B38D1;
   }
   .dropdown-menu .sub-children-menu {
     left: 100%;

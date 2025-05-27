@@ -18,6 +18,16 @@
         "name": "list.metaobject_reference",
         "category": "REFERENCE"
       }
+    },
+    {
+      "key": "countdown_timer",
+      "namespace": "custom",
+      "name": "Countdown Timer",
+      "description": "",
+      "type": {
+        "name": "date_time",
+        "category": "DATE_TIME"
+      }
     }
   ],
   "variant": [],

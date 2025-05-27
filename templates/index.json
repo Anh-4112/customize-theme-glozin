@@ -202,7 +202,7 @@
         "column_gap_2": 5,
         "infinite": true,
         "autoplay": true,
-        "autorotate_speed": 2,
+        "autorotate_speed": 4,
         "collection_3": "collection-3",
         "items_to_show_3": 4,
         "column_gap_3": 5,
