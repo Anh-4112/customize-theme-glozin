@@ -759,8 +759,8 @@ class SlideSection extends HTMLElement {
     });
   }
 }
-/* ===== Customize ===== */
 customElements.define('slide-section', SlideSection);
+/* ===== Customize ===== */
 
 class PopupBase extends HTMLElement {
   constructor() {

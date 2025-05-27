@@ -1095,6 +1095,9 @@ picture {
 .h-50 {
   height: 5rem;
 }
+.h-60 {
+  height: 6rem;
+}
 .h-custom {
   height: var(--custom-height);
 }

@@ -65,7 +65,7 @@
 {% comment %} Case card product has data, handle data {% endcomment %}
 {% if card_product and card_product != empty %}
   <div
-    class="product-item product__item-js {{ class }} style-as-{{ product_style }}"
+    class="h-full bg-white product-item product__item-js {{ class }} style-as-{{ product_style }}"
     {% if type == 'sticky' %}
       data-section="{{ section_id }}"
       data-color-trigger="{{ settings.color_swatch_trigger }}"
@@ -90,7 +90,7 @@
       style="{% if indexFor and scroll_animation %}--animation-order: {{ indexFor }};  {% endif %}{% if type == 'list' %}--gap: 15{% endif %}"
     >
       {% comment %} Product inner media {% endcomment %}
-      <div class="mx-20 product-item__inner hover-effect overflow-hidden relative{% if type == 'list' or type == 'sticky' %} col-w-custom{% endif %}">
+      <div class="mx-20 pt-10 bg-white product-item__inner hover-effect overflow-hidden relative{% if type == 'list' or type == 'sticky' %} col-w-custom{% endif %}">
         {% assign product_media = card_product.featured_media %}
         {% comment %} Case product has image {% endcomment %}
         {%- if product_media -%}
@@ -132,7 +132,7 @@
               href="{{ card_product.url }}"
             {% endif %}
             aria-label="{{ card_product.title }}"
-            class="product__media product-item__media--ratio rounded block{% if card_product.media[1] != blank and show_secondary_image %} show_secondary{% endif %}"
+            class="mx-10 my-10 product__media product-item__media--ratio rounded block{% if card_product.media[1] != blank and show_secondary_image %} show_secondary{% endif %}"
             style="--aspect-ratio: {{ ratio }};"
           >
             {% if type_video %}
