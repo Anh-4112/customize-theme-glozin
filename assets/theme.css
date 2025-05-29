@@ -1653,10 +1653,6 @@ mini-cart-remove-button.loading .remove-icon {
   --crimson-red: #DD3842;
 }
 
-.a {
-  gap: 0.5rem;
-}
-
 .bg-white {
   background-color: var(--white) !important;
 }
