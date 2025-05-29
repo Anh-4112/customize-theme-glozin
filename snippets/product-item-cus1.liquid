@@ -62,10 +62,10 @@
     assign priceclass = 'justify-center'
   endif
 %}
-{% comment %} Case card product has data, handle data {% endcomment %}
+{% comment %} Case card product has data, handle data  bg-white product-item product__item-js {{ class }} style-as-{{ product_style }}{% endcomment %}
 {% if card_product and card_product != empty %}
   <div
-    class="h-full bg-white product-item product__item-js {{ class }} style-as-{{ product_style }}"
+    class="grid-item grid-md-item grid-lg-item"
     {% if type == 'sticky' %}
       data-section="{{ section_id }}"
       data-color-trigger="{{ settings.color_swatch_trigger }}"
@@ -75,7 +75,7 @@
     {% endif %}
   >
     <motion-element
-      class="bg-white product-item__wrapper block {% if direction == 'horizontal' %} flex-column  {% endif %} {{settings.product_hover_effect }}{% if type == 'list' or type == 'sticky' %} flex gap-custom align-center{% else %} product-grid{% endif %} {% if scroll_animation != 'none' and scroll_animation != null %} scroll-trigger {{ scroll_animation }} {% endif %}"
+      class="h-full bg-white product-item__wrapper block {% if direction == 'horizontal' %} flex-column  {% endif %} {{settings.product_hover_effect }}{% if type == 'list' or type == 'sticky' %} flex gap-custom align-center{% else %} product-grid{% endif %} {% if scroll_animation != 'none' and scroll_animation != null %} scroll-trigger {{ scroll_animation }} {% endif %}"
       {% if indexFor and scroll_animation %}
         data-cascade
       {% endif %}
@@ -546,7 +546,7 @@
         {% if template_enable_price == true %}
           {% if hidden_price != true %}
             <div
-              class="pt-12 mt-0 cl-dark-blue justify-start product-item__price{% if type == 'list' or type == 'sticky' %} text-start{% else %} justify-content-{{ settings.product_alignment }} fs-custom{% endif %} flex gap-custom lh-normal {{ priceclass }}"
+              class="pt-12 mt-0 cl-dark-blue product-item__price{% if type == 'list' or type == 'sticky' %} text-start{% else %} fs-custom{% endif %} flex gap-custom lh-normal {{ priceclass }}"
               style="--font-size: {{ settings.price_size }}; --gap: 3px;"
             >
               {%- render 'price', scope: 'item', product: card_product, show_badges: false, class: priceclass -%}

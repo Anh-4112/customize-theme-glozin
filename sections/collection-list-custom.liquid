@@ -29,12 +29,8 @@
   assign column_gap = section_st.column_gap
   assign items_per_row = section_st.items_per_row
   assign items_to_show = section_st.items_to_show
-  assign show_arrow_1 = section_st.show_arrow_1
   assign column_gap_2 = section_st.column_gap_2
   assign items_to_show_2 = section_st.items_to_show_2
-  assign column_gap_3 = section_st.column_gap_3
-  assign items_to_show_3 = section_st.items_to_show_3
-  assign show_arrow_3 = section_st.show_arrow_3
 -%}
 {%- capture style -%}
   --section-pt: {{ section_st.padding_top }}; --section-pb: {{ section_st.padding_bottom }};
@@ -46,14 +42,14 @@
   class="w-body mx-auto mb-30 bg-light-gray section{% if section_st.padding_top < 30 %} pt-min{% endif %}{% if section_st.padding_bottom < 30 %} pb-min{% endif %} sec__products-carousel color-{{ color_scheme }} gradient{{ reset_spacing }}{% if reveal %} overflow-hidden{% endif %}"
   style="{{ style | strip | strip_newlines }}"
 >
-  <div class="d-md-flex {{ section_width }}">
+  <div class="d-lg-flex {{ section_width }}">
     {% if section_st.items_per_row_mobile > 1 and section_st.items_per_row_mobile < 2 %}
       <div class="free-scroll">
     {% endif %}
 
     {% if section_st.collection.products.size > 0 %}
       {% comment %} Product 1 {% endcomment %}
-      <slide-cus-mobile
+      {% comment %} <slide-cus-mobile
         class="customize-mobile f-1 mt-10 swiper{% if reveal %} reveal_on_scroll{% endif %}"
         data-section-id="{{ section.id }}"
         data-effect="slide"
@@ -91,9 +87,8 @@
           {% endfor %}
         </div>
       </slide-cus-mobile>
-
       <slide-cus-pc
-        class="customize-pc f-md-25p f-lg-1 mt-10 swiper{% if reveal %} reveal_on_scroll{% endif %}"
+        class="customize-pc f-md-25p f-lg-1 mt-10 overflow-hidden"
         data-section-id="{{ section.id }}"
         data-effect="slide"
         data-speed="500"
@@ -165,11 +160,35 @@
             {% endif %}
           {% endfor %}
         </div>
-      </slide-cus-pc>
+      </slide-cus-pc> {% endcomment %}
+
+      <div class="a my-5 f-1 d-grid grid-layout grid-md-layout grid-lg-layout">
+          {% for product in section_st.collection.products limit: items_to_show %}
+            {% render 'product-item-cus1',
+              card_product: product,
+              section_id: section.id,
+              container: section_width,
+              colunm: items_per_row,
+              colunm_mobile: section_st.items_per_row_mobile,
+              padding: column_gap,
+              class: ' swiper-slide',
+              template_enable_action: true,
+              template_enable_product_vendor: true,
+              template_enable_rate: true,
+              template_enable_product_short_description: true,
+              template_enable_color_swatches: true,
+              template_enable_price: true,
+              template_enable_add_cart: true,
+              scroll_animation: scroll_animation,
+              indexFor: forloop.index,
+              template_enable_product_badges: true,
+            %}
+          {% endfor %}
+      </div>
 
       {% comment %} Product 2 {% endcomment %}
       <slide-cus
-        class="f-1 f-md-50p-g20 f-lg-1 mt-10 mx-md-10 bg-white bor bor-2 bor-crimson-red rounded-5 swiper{% if reveal %} reveal_on_scroll{% endif %}"
+        class="my-5 mx-lg-10 f-1 bg-white bor bor-2 bor-crimson-red rounded-5 swiper{% if reveal %} reveal_on_scroll{% endif %}"
         data-section-id="{{ section.id }}"
         data-autoplay="{{ autoplay }}"
         data-effect="slide"
@@ -280,7 +299,31 @@
       </slide-cus>
 
       {% comment %} Product 3 {% endcomment %}
-      <slide-cus-mobile
+      <div class="a my-5 f-1 d-grid grid-layout grid-md-layout grid-lg-layout">
+        {% for product in section_st.collection_3.products limit: items_to_show %}
+          {% render 'product-item-cus1',
+            card_product: product,
+            section_id: section.id,
+            container: section_width,
+            colunm: items_per_row,
+            colunm_mobile: section_st.items_per_row_mobile,
+            padding: column_gap,
+            class: ' swiper-slide',
+            template_enable_action: true,
+            template_enable_product_vendor: true,
+            template_enable_rate: true,
+            template_enable_product_short_description: true,
+            template_enable_color_swatches: true,
+            template_enable_price: true,
+            template_enable_add_cart: true,
+            scroll_animation: scroll_animation,
+            indexFor: forloop.index,
+            template_enable_product_badges: true,
+          %}
+        {% endfor %}
+      </div>
+
+      {% comment %} <slide-cus-mobile
         class="customize-mobile f-1 mt-10 swiper{% if reveal %} reveal_on_scroll{% endif %}"
         data-section-id="{{ section.id }}"
         data-effect="slide"
@@ -318,7 +361,6 @@
           {% endfor %}
         </div>
       </slide-cus-mobile>
-
       <slide-cus-pc
         class="customize-pc f-md-25p f-lg-1 mt-10 swiper{% if reveal %} reveal_on_scroll{% endif %}"
         data-section-id="{{ section.id }}"
@@ -392,7 +434,7 @@
             {% endif %}
           {% endfor %}
         </div>
-      </slide-cus-pc>
+      </slide-cus-pc> {% endcomment %}
     {% endif %}
 
     {% if section_st.items_per_row_mobile > 1 and section_st.items_per_row_mobile < 2 %}
@@ -450,32 +492,6 @@
       "id": "collection",
       "label": "t:sections.products-carousel.settings.products.collection"
     },
-    {
-      "type": "range",
-      "id": "items_to_show",
-      "label": "t:sections.all.items.items_to_show.label",
-      "min": 4,
-      "max": 8,
-      "step": 2,
-      "default": 4
-    },
-    {
-      "type": "range",
-      "id": "column_gap",
-      "label": "t:sections.all.items.column_gap.label",
-      "min": 0,
-      "max": 30,
-      "step": 5,
-      "default": 5,
-      "unit": "px"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_arrow_1",
-      "label": "t:sections.all.carousel_settings.show-next-back.label",
-      "default": false
-    },
-
 
     {
       "type": "header",
@@ -544,32 +560,6 @@
       "id": "collection_3",
       "label": "t:sections.products-carousel.settings.products.collection"
     },
-    {
-      "type": "range",
-      "id": "items_to_show_3",
-      "label": "t:sections.all.items.items_to_show.label",
-      "min": 4,
-      "max": 8,
-      "step": 2,
-      "default": 4
-    },
-    {
-      "type": "range",
-      "id": "column_gap_3",
-      "label": "t:sections.all.items.column_gap.label",
-      "min": 0,
-      "max": 30,
-      "step": 5,
-      "default": 5,
-      "unit": "px"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_arrow_3",
-      "label": "t:sections.all.carousel_settings.show-next-back.label",
-      "default": false
-    },
-
     
     {
       "type": "header",

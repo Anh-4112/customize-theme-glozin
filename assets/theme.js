@@ -9251,81 +9251,6 @@ class ProductWithBanner extends HTMLElement {
 customElements.define('product-with-banner', ProductWithBanner);
 
 // ====================================================
-// class SlideCus extends SlideSection {
-//   constructor() {
-//     super();
-//   }
-  
-//   initSlide() {
-//     // Fix số cột theo breakpoint
-//     const fixedBreakpoints = {
-//       0: 1,
-//       576: 2,
-//       768:1,
-//     };
-//     // Cập nhật dataset để SlideSection đọc đúng số cột
-//     this.dataset.mobile = fixedBreakpoints[0];
-//     this.dataset.tablet = fixedBreakpoints[576];
-//     this.dataset.tablet = fixedBreakpoints[768];
-//     // Gọi initSlide gốc của SlideSection để khởi tạo Swiper
-//     super.initSlide();
-//     // Sau khi init, chỉnh sửa lại các tham số
-//     if (this.globalSlide) {
-//       const spacing = this.globalSlide.params.spaceBetween;
-//       this.globalSlide.params.breakpoints = {
-//         0: {
-//           slidesPerView: fixedBreakpoints[0],
-//           spaceBetween: spacing,
-//         },
-//         576: {
-//           slidesPerView: fixedBreakpoints[576],
-//           spaceBetween: spacing,
-//         },
-//         768: {
-//           slidesPerView: fixedBreakpoints[768],
-//           spaceBetween: spacing,
-//         },
-//       };
-//       this.globalSlide.update();
-//     }
-//   }
-
-//   connectedCallback() {
-//     if (this._initialized) return;
-//     this._initialized = true;
-//     const images = this.querySelectorAll('img');
-//     const promises = Array.from(images).map(img => {
-//       if (img.complete) return Promise.resolve();
-//       return new Promise(resolve => {
-//         img.onload = img.onerror = resolve;
-//       });
-//     });
-//     Promise.all(promises).then(() => {
-//       requestIdleCallback(() => {
-//         requestAnimationFrame(() => {
-//           this.initSlide();
-//           this.setupResizeHandler();
-//         });
-//       });
-//     });
-//   }
-
-//   setupResizeHandler() {
-//     let resizeTimeout;
-//     window.addEventListener('resize', () => {
-//       clearTimeout(resizeTimeout);
-//       resizeTimeout = setTimeout(() => {
-//         if (this.globalSlide) {
-//           this.globalSlide.destroy(true, true); // hủy hoàn toàn
-//           this.globalSlide = null;
-//         }
-//         this.initSlide(); // khởi tạo lại
-//       }, 50); // chờ debounce resize
-//     });
-//   }
-// }
-// customElements.define('slide-cus', SlideCus);
-
 class SlideCus extends SlideSection {
   constructor() {
     super();
@@ -9335,7 +9260,10 @@ class SlideCus extends SlideSection {
 
   initSlide() {
     // Tránh init khi element chưa hiển thị (offsetWidth = 0)
-    if (this.offsetWidth === 0) return;
+    if (this.offsetWidth === 0) {
+    setTimeout(() => this.initSlide(), 100); // thử lại sau 100ms
+    return;
+  }
     // Cố định số cột cho từng breakpoint
     const fixedBreakpoints = {
       0: 1,
@@ -9345,7 +9273,7 @@ class SlideCus extends SlideSection {
     // Cập nhật dataset để SlideSection đọc đúng
     this.dataset.mobile = fixedBreakpoints[0];
     this.dataset.tablet = fixedBreakpoints[576];
-    this.dataset.tablet = fixedBreakpoints[768];
+    this.dataset.tablet768 = fixedBreakpoints[768];
     // Gọi hàm gốc từ SlideSection
     super.initSlide();
     // Nếu Swiper đã được tạo, cập nhật breakpoints chính xác
@@ -9385,7 +9313,7 @@ class SlideCus extends SlideSection {
       if ('requestIdleCallback' in window) {
         requestIdleCallback(callback);
       } else {
-        setTimeout(callback, 200);
+        setTimeout(callback, 100);
       }
     };
     Promise.all(promises).then(() => {
@@ -9411,7 +9339,7 @@ class SlideCus extends SlideSection {
         this.globalSlide = null;
       }
       this.initSlide();
-    }, 50); // Debounce resize
+    }, 100); // Debounce resize
   }
 
   disconnectedCallback() {
@@ -9475,7 +9403,7 @@ class SlideCusMobile extends SlideSection {
       if ('requestIdleCallback' in window) {
         requestIdleCallback(callback);
       } else {
-        setTimeout(callback, 200);
+        setTimeout(callback, 100);
       }
     };
     Promise.all(promises).then(() => {
@@ -9501,7 +9429,7 @@ class SlideCusMobile extends SlideSection {
         this.globalSlide = null;
       }
       this.initSlide();
-    }, 50); // Debounce resize
+    }, 100); // Debounce resize
   }
 
   disconnectedCallback() {
@@ -9565,7 +9493,7 @@ class SlideCusPc extends SlideSection {
       if ('requestIdleCallback' in window) {
         requestIdleCallback(callback);
       } else {
-        setTimeout(callback, 200);
+        setTimeout(callback, 100);
       }
     };
     Promise.all(promises).then(() => {
@@ -9591,7 +9519,7 @@ class SlideCusPc extends SlideSection {
         this.globalSlide = null;
       }
       this.initSlide();
-    }, 50); // Debounce resize
+    }, 100); // Debounce resize
   }
 
   disconnectedCallback() {
