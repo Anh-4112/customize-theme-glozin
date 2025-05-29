@@ -203,8 +203,8 @@
       render 'preload-page'
       sections 'header-group'
     -%}
-
-    <main id="MainContent" class="bg-light-gray content-for-layout focus-none" role="main" tabindex="-1">
+    {% comment %} id="MainContent"  {% endcomment %}
+    <main class="bg-light-gray content-for-layout focus-none" role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>
     {% sections 'footer-group' %}

@@ -9268,12 +9268,12 @@ class SlideCus extends SlideSection {
     const fixedBreakpoints = {
       0: 1,
       576: 2,
-      768:1,
+      992:1,
     };
     // Cập nhật dataset để SlideSection đọc đúng
     this.dataset.mobile = fixedBreakpoints[0];
     this.dataset.tablet = fixedBreakpoints[576];
-    this.dataset.tablet768 = fixedBreakpoints[768];
+    this.dataset.tablet992 = fixedBreakpoints[992];
     // Gọi hàm gốc từ SlideSection
     super.initSlide();
     // Nếu Swiper đã được tạo, cập nhật breakpoints chính xác
@@ -9286,186 +9286,6 @@ class SlideCus extends SlideSection {
         },
         576: {
           slidesPerView: fixedBreakpoints[576],
-          spaceBetween: spacing,
-        },
-        768: {
-          slidesPerView: fixedBreakpoints[768],
-          spaceBetween: spacing,
-        },
-      };
-      this.globalSlide.update();
-    }
-  }
-
-  connectedCallback() {
-    if (this._initialized) return;
-    this._initialized = true;
-    // Chờ tất cả ảnh load xong trước khi init
-    const images = this.querySelectorAll('img');
-    const promises = Array.from(images).map(img => {
-      if (img.complete) return Promise.resolve();
-      return new Promise(resolve => {
-        img.onload = img.onerror = resolve;
-      });
-    });
-    // Fallback cho requestIdleCallback
-    const runWhenIdle = callback => {
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(callback);
-      } else {
-        setTimeout(callback, 100);
-      }
-    };
-    Promise.all(promises).then(() => {
-      runWhenIdle(() => {
-        requestAnimationFrame(() => {
-          this.initSlide();
-          this.setupResizeHandler();
-        });
-      });
-    });
-  }
-
-  setupResizeHandler() {
-    this._resizeTimeout = null;
-    window.addEventListener('resize', this._resizeHandler);
-  }
-
-  handleResize() {
-    clearTimeout(this._resizeTimeout);
-    this._resizeTimeout = setTimeout(() => {
-      if (this.globalSlide) {
-        this.globalSlide.destroy(true, true); // Hủy toàn bộ Swiper instance
-        this.globalSlide = null;
-      }
-      this.initSlide();
-    }, 100); // Debounce resize
-  }
-
-  disconnectedCallback() {
-    // Gỡ bỏ listener khi element bị tháo khỏi DOM
-    window.removeEventListener('resize', this._resizeHandler);
-  }
-}
-customElements.define('slide-cus', SlideCus);
-
-/* --- */ 
-class SlideCusMobile extends SlideSection {
-  constructor() {
-    super();
-    this._initialized = false;
-    this._resizeHandler = this.handleResize.bind(this);
-  }
-
-  initSlide() {
-    // Tránh init khi element chưa hiển thị (offsetWidth = 0)
-    if (this.offsetWidth === 0) return;
-    // Cố định số cột cho từng breakpoint
-    const fixedBreakpoints = {
-      0: 2,
-      576: 3,
-    };
-    // Cập nhật dataset để SlideSection đọc đúng
-    this.dataset.mobile = fixedBreakpoints[0];
-    this.dataset.tablet = fixedBreakpoints[576];
-    // Gọi hàm gốc từ SlideSection
-    super.initSlide();
-    // Nếu Swiper đã được tạo, cập nhật breakpoints chính xác
-    if (this.globalSlide) {
-      const spacing = this.globalSlide.params.spaceBetween;
-      this.globalSlide.params.breakpoints = {
-        0: {
-          slidesPerView: fixedBreakpoints[0],
-          spaceBetween: spacing,
-        },
-        576: {
-          slidesPerView: fixedBreakpoints[576],
-          spaceBetween: spacing,
-        },
-      };
-      this.globalSlide.update();
-    }
-  }
-
-  connectedCallback() {
-    if (this._initialized) return;
-    this._initialized = true;
-    // Chờ tất cả ảnh load xong trước khi init
-    const images = this.querySelectorAll('img');
-    const promises = Array.from(images).map(img => {
-      if (img.complete) return Promise.resolve();
-      return new Promise(resolve => {
-        img.onload = img.onerror = resolve;
-      });
-    });
-    // Fallback cho requestIdleCallback
-    const runWhenIdle = callback => {
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(callback);
-      } else {
-        setTimeout(callback, 100);
-      }
-    };
-    Promise.all(promises).then(() => {
-      runWhenIdle(() => {
-        requestAnimationFrame(() => {
-          this.initSlide();
-          this.setupResizeHandler();
-        });
-      });
-    });
-  }
-
-  setupResizeHandler() {
-    this._resizeTimeout = null;
-    window.addEventListener('resize', this._resizeHandler);
-  }
-
-  handleResize() {
-    clearTimeout(this._resizeTimeout);
-    this._resizeTimeout = setTimeout(() => {
-      if (this.globalSlide) {
-        this.globalSlide.destroy(true, true); // Hủy toàn bộ Swiper instance
-        this.globalSlide = null;
-      }
-      this.initSlide();
-    }, 100); // Debounce resize
-  }
-
-  disconnectedCallback() {
-    // Gỡ bỏ listener khi element bị tháo khỏi DOM
-    window.removeEventListener('resize', this._resizeHandler);
-  }
-}
-customElements.define('slide-cus-mobile', SlideCusMobile);
-
-/* --- */ 
-class SlideCusPc extends SlideSection {
-  constructor() {
-    super();
-    this._initialized = false;
-    this._resizeHandler = this.handleResize.bind(this);
-  }
-
-  initSlide() {
-    // Tránh init khi element chưa hiển thị (offsetWidth = 0)
-    if (this.offsetWidth === 0) return;
-    // Cố định số cột cho từng breakpoint
-    const fixedBreakpoints = {
-      0: 1,
-      992: 2,
-    };
-    // Cập nhật dataset để SlideSection đọc đúng
-    this.dataset.mobile = fixedBreakpoints[0];
-    this.dataset.tablet = fixedBreakpoints[992];
-    // Gọi hàm gốc từ SlideSection
-    super.initSlide();
-    // Nếu Swiper đã được tạo, cập nhật breakpoints chính xác
-    if (this.globalSlide) {
-      const spacing = this.globalSlide.params.spaceBetween;
-      this.globalSlide.params.breakpoints = {
-        0: {
-          slidesPerView: fixedBreakpoints[0],
           spaceBetween: spacing,
         },
         992: {
@@ -9527,7 +9347,7 @@ class SlideCusPc extends SlideSection {
     window.removeEventListener('resize', this._resizeHandler);
   }
 }
-customElements.define('slide-cus-pc', SlideCusPc);
+customElements.define('slide-cus', SlideCus);
 
 /* --- */ 
 class CountdownTimerCustom extends CountdownTimer {
