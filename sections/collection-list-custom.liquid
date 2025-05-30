@@ -19,7 +19,6 @@
   if section_st.items_per_row_mobile > 1 and section_st.items_per_row_mobile < 2
     assign data_free_scroll = 'true'
   endif
-  assign carousel_pagination = section_st.carousel_pagination
   assign infinite = section_st.infinite
   assign autoplay = section_st.autoplay
   assign autorotate_speed = section_st.autorotate_speed
@@ -84,7 +83,6 @@
         data-autoplay-speed="{{ autorotate_speed }}"
         data-spacing="{{ column_gap_2 }}"
         data-free-scroll="{{ data_free_scroll }}"
-        data-pagination-progressbar="{% if carousel_pagination == 'show_progress_bar' %}true{% else %}false{% endif %}"
         style="{{ col_style | strip | strip_newlines }}"
         data-arrow-centerimage="1"
       >
@@ -159,7 +157,7 @@
             {% endif %}
           </div>
         {% endif %}
-        
+
         <div class="swiper-wrapper">
           {% for product in section_st.collection_2.products limit: items_to_show_2 %}
             {% render 'product-item-cus2',
@@ -168,7 +166,7 @@
               container: section_width,
               colunm: items_per_row,
               colunm_mobile: section_st.items_per_row_mobile,
-              padding: column_gap,
+              padding: column_gap_2,
               class: ' swiper-slide',
               template_enable_action: true,
               template_enable_product_vendor: true,
