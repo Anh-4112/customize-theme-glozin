@@ -119,7 +119,7 @@
               </div>
             {%- when 'text_slider' -%}
               <div class="topbar-item w-full text-slide{% if block_st.hidden_on_mobile %} hidden block-1025{% endif %}">
-                <slide-section
+                {% comment %} <slide-section
                   class="swiper bls__swiper text-center text-md-start gap-0 lazy-loading-swiper-before pl-lg-0"
                   data-section-id="{{ section.id }}"
                   data-loop="true"
@@ -131,7 +131,7 @@
                   data-desktop="1"
                   style="--color-dark: transparent;--swiper-navigation-color: currentColor; --col-gap: 0;--swiper-navigation-sides-offset: 1rem;"
                 >
-                  {% comment %} <div class="swiper-action gradient show-arrow static absolute-lg align-center left-0 inset-y-0 z-3 flex gap-20 pe-1025-25 pe-0">
+                  <div class="swiper-action gradient show-arrow static absolute-lg align-center left-0 inset-y-0 z-3 flex gap-20 pe-1025-25 pe-0">
                     <div
                       class="swiper-arrow swiper-button-prev original-style visible absolute left-10 static-lg-impo transform-md-none transition"
                       style="--swiper-navigation-sides-offset: 1rem;--swiper-width: 0.5rem;"
@@ -148,17 +148,16 @@
                         <use href="#icon-next" />
                       </svg>
                     </div>
-                  </div> {% endcomment %}
+                  </div>
                   <div class="swiper-wrapper">
                     {%- if block_st.text1 != blank -%}
                       <div class="swiper-slide text-center text-lg-start lh-normal">
-                        {% comment %} <div class="px-15">
+                        <div class="px-15">
                           {{- block_st.text1 -}}
-                        </div> {% endcomment %}
-                        {{- block_st.text1 -}}
+                        </div>
                       </div>
                     {% endif %}
-                    {% comment %} {%- if block_st.text2 != blank -%}
+                    {%- if block_st.text2 != blank -%}
                       <div class="swiper-slide text-center text-lg-start lh-normal">
                         <div class="px-15">
                           {{- block_st.text2 -}}
@@ -171,9 +170,11 @@
                           {{- block_st.text3 -}}
                         </div>
                       </div>
-                    {% endif %} {% endcomment %}
+                    {% endif %}
                   </div>
-                </slide-section>
+                </slide-section> {% endcomment %}
+                You are a student and students get 20% discount.
+                <a class="fw-600 " href="#">Learn More</a>
               </div>
             {%- when 'cur_lang' -%}
               <div class="gap-0 lang__currency-desktop justify-content-center justity-md-unset topbar-item{% if block_st.hidden_on_mobile %} hidden flex-1025{% else %} flex{% endif %} flex-wrap gap-10 gap-lg-25 align-center row-gap-0">

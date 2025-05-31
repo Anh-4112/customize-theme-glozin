@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "name": "t:sections.header.name",
   "type": "header",
   "sections": {
@@ -41,7 +41,7 @@
       ],
       "custom_css": [],
       "settings": {
-        "section_width": "stretch_width",
+        "section_width": "fluid_container",
         "color_scheme": "default",
         "show_mobile": false,
         "show_separator_line": false,
@@ -79,7 +79,7 @@
       ],
       "name": "t:sections.header.header_mega_store",
       "settings": {
-        "section_width": "stretch_width",
+        "section_width": "fluid_container",
         "color_scheme": "",
         "show_email": true,
         "show_phone": true,
