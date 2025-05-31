@@ -38,17 +38,17 @@
 {% if column_gap < 15 %}--col-gap: {{ column_gap }}px;{% else %}--col-gap: 15px;--col-gap-desktop: {{  column_gap }}px;{% endif %}
 {%- endcapture -%}
 <div
-  class="w-body mx-auto mb-30 bg-light-gray section{% if section_st.padding_top < 30 %} pt-min{% endif %}{% if section_st.padding_bottom < 30 %} pb-min{% endif %} sec__products-carousel color-{{ color_scheme }} gradient{{ reset_spacing }}{% if reveal %} overflow-hidden{% endif %}"
+  class="bg-light-gray section{% if section_st.padding_top < 30 %} pt-min{% endif %}{% if section_st.padding_bottom < 30 %} pb-min{% endif %} sec__products-carousel color-{{ color_scheme }} gradient{{ reset_spacing }}{% if reveal %} overflow-hidden{% endif %}"
   style="{{ style | strip | strip_newlines }}"
 >
-  <div class="d-lg-flex {{ section_width }}">
+  <div class="d-1025-flex {{ section_width }}">
     {% if section_st.items_per_row_mobile > 1 and section_st.items_per_row_mobile < 2 %}
       <div class="free-scroll">
     {% endif %}
 
     {% if section_st.collection.products.size > 0 %}
       {% comment %} Product 1 {% endcomment %}
-      <div class="gap-5 my-5 f-1 d-grid grid-layout grid-md-layout grid-lg-layout">
+      <div class="gap-5 my-5 f-1 d-grid grid-layout grid-md-layout grid-1025-layout">
           {% for product in section_st.collection.products limit: items_to_show %}
             {% render 'product-item-cus1',
               card_product: product,
@@ -73,18 +73,18 @@
       </div>
 
       {% comment %} Product 2 {% endcomment %}
-      <slide-cus
-        class="my-5 mx-lg-10 f-1 bg-white bor bor-2 bor-crimson-red rounded-5 swiper{% if reveal %} reveal_on_scroll{% endif %}"
+      <slide-section
+        class="my-5 mx-1025-10 f-1 bg-white bor bor-2 bor-crimson-red rounded-5 swiper{% if reveal %} reveal_on_scroll{% endif %}"
         data-section-id="{{ section.id }}"
         data-autoplay="{{ autoplay }}"
         data-effect="slide"
         data-loop="{{ infinite }}"
         data-speed="500"
         data-autoplay-speed="{{ autorotate_speed }}"
-        data-spacing="{{ column_gap_2 }}"
+        data-spacing="{{ column_gap }}"
+        data-desktop="1"
+        data-tablet="2"
         data-free-scroll="{{ data_free_scroll }}"
-        style="{{ col_style | strip | strip_newlines }}"
-        data-arrow-centerimage="1"
       >
         {%- if heading != blank or description != blank -%}
           <div
@@ -181,10 +181,10 @@
             %}
           {% endfor %}
         </div>
-      </slide-cus>
+      </slide-section>
 
       {% comment %} Product 3 {% endcomment %}
-      <div class="gap-5 my-5 f-1 d-grid grid-layout grid-md-layout grid-lg-layout">
+      <div class="gap-5 my-5 f-1 d-grid grid-layout grid-md-layout grid-1025-layout">
         {% for product in section_st.collection_3.products limit: items_to_show %}
           {% render 'product-item-cus1',
             card_product: product,

@@ -1642,6 +1642,7 @@ mini-cart-remove-button.loading .remove-icon {
   --white: #ffffff;
   --white-smoke: #e3e0e0;
   --black: #111111;
+  --charcoal-gray: #212529;
   --light-cool-gray: #E5E8EC;
   --light-gray: #F1F5F6;
   --gray-light: #c0bebe;
@@ -1685,6 +1686,10 @@ mini-cart-remove-button.loading .remove-icon {
   color: var(--black) !important;
 }
 
+.cl-charcoal-gray {
+  color: var(--charcoal-gray);
+}
+
 .cl-crimson-red {
   color: var(--crimson-red) !important;
 }
@@ -1707,11 +1712,6 @@ mini-cart-remove-button.loading .remove-icon {
 
 .relative {
   position: relative;
-}
-
-.w-body {
-  width: 147rem;
-  max-width: 100%;
 }
 
 .w-full {
@@ -2181,31 +2181,6 @@ mini-cart-remove-button.loading .remove-icon {
 }
 
 @media (min-width: 992px) {
-  .grid-lg-layout {
-    grid-template-columns: repeat(2, auto);
-    grid-template-rows: repeat(2, auto);
-  }
-
-  .grid-lg-item:nth-child(1) {
-    grid-column: 1/2;
-    grid-row: 1/2;
-  }
-
-  .grid-lg-item:nth-child(2) {
-    grid-column: 2/3;
-    grid-row: 1/2;
-  }
-
-  .grid-lg-item:nth-child(3) {
-    grid-column: 1/2;
-    grid-row: 2/3;
-  }
-
-  .grid-lg-item:nth-child(4) {
-    grid-column: 2/3;
-    grid-row: 2/3;
-  }
-
   .d-lg-block {
     display: block;
   }
@@ -2265,18 +2240,47 @@ mini-cart-remove-button.loading .remove-icon {
   .mt-lg-0 {
     margin-top: 0;
   }
-
-  .mx-lg-10 {
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
 }
 @media (min-width: 1025px) {
+  .grid-1025-layout {
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(2, auto);
+  }
+
+  .grid-1025-item:nth-child(1) {
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+
+  .grid-1025-item:nth-child(2) {
+    grid-column: 2/3;
+    grid-row: 1/2;
+  }
+
+  .grid-1025-item:nth-child(3) {
+    grid-column: 1/2;
+    grid-row: 2/3;
+  }
+
+  .grid-1025-item:nth-child(4) {
+    grid-column: 2/3;
+    grid-row: 2/3;
+  }
+
+  .d-1025-flex {
+    display: flex;
+  }
+
   .w-1025-90p {
     width: 90% !important;
   }
   .translate-y-0 {
     transform: translateY(0) !important;
+  }
+
+  .mx-1025-10 {
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
 }
 
