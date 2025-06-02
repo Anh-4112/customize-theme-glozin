@@ -4,9 +4,9 @@
     {% form 'localization', id: form_id %}
       <input type="hidden" name="country_code" value="{{ localization.country.iso_code }}">
       <div class="disclosure relative flex align-center">
-        <div class="button-localization pointer disclosure__button show-overlay flex align-center gap-10 {% if type == 'mobile-navigation' %}mobile-navigation__button{% endif %}">
+        <div class="mr-2 button-localization pointer disclosure__button show-overlay flex align-center gap-5 {% if type == 'mobile-navigation' %}mobile-navigation__button{% endif %}">
           <span class="flex align-center {% if type == 'mobile-navigation' %}flex-column gap-4{% else %}gap-10{% endif %}">
-            <span class="rounded-50 border localization-flags {% if type == 'mobile-navigation' %}mobile-navigation__flag{% endif %}">
+            {% comment %} <span class="rounded-50 border localization-flags {% if type == 'mobile-navigation' %}mobile-navigation__flag{% endif %}">
               {{-
                 localization.country
                 | image_url: width: localization.country.width
@@ -15,17 +15,19 @@
                   height: localization.country.height,
                   alt: localization.country.name
               -}}
-            </span>
+            </span> {% endcomment %}
             {% if type == 'mobile-navigation' %}
               <span class="block fs-small heading-style">
                 {{ localization.country.currency.iso_code }}
                 {{ localization.country.currency.symbol }}
               </span>
             {% else %}
+              {% comment %}
+              {{ localization.country.name }}
+              ({{ localization.country.currency.symbol }})
+              {% endcomment %}
               <span>
-                {{ localization.country.name }}
-                ({{ localization.country.currency.iso_code }}
-                {{ localization.country.currency.symbol }})
+                {{ localization.country.currency.iso_code }}                
               </span>
             {% endif %}
           </span>
@@ -54,7 +56,7 @@
                   arial-label="{{ country.name }}"
                 >
                   <span class="flex align-center gap-10">
-                    <span class="rounded-50 border localization-flags">
+                    {% comment %} <span class="rounded-50 border localization-flags">
                       {{-
                         country
                         | image_url: width: country.width
@@ -63,11 +65,14 @@
                           height: country.height,
                           alt: country.name
                       -}}
-                    </span>
+                    </span> {% endcomment %}
+
+                    {% comment %} 
+                    {{ country.name }}
+                    ({{ country.currency.symbol }})
+                    {% endcomment %}
                     <span>
-                      {{ country.name }}
-                      ({{ country.currency.iso_code }}
-                      {{ country.currency.symbol }})
+                      {{ country.currency.iso_code }}                      
                     </span>
                   </span>
                 </a>

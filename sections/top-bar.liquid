@@ -62,8 +62,9 @@
     style="{{ style | strip | strip_newlines }}"
   >
     <div class="{{ section_width }}">
+      {% comment %} flex-wrap flex-md-nowrap justify-between-1025  gap-10 gap-lg-25 {% endcomment %}
       <div
-        class="flex flex-wrap flex-md-nowrap justify-between justify-between-1025 align-center topbar__section-inner gap-10 gap-lg-25 fs-custom {{ section_st.font_weight }}"
+        class="flex justify-between align-center topbar__section-inner fs-custom {{ section_st.font_weight }}"
         style="--font-size: {{ section_st.font_size }};"
       >
         {%- for block in section.blocks -%}
@@ -118,7 +119,8 @@
                 {% endif %}
               </div>
             {%- when 'text_slider' -%}
-              <div class="topbar-item w-full text-slide{% if block_st.hidden_on_mobile %} hidden block-1025{% endif %}">
+              {% comment %}  text-slide {% endcomment %}
+              <div class="w-fit-content topbar-item{% if block_st.hidden_on_mobile %} hidden block-1025{% endif %}">
                 {% comment %} <slide-section
                   class="swiper bls__swiper text-center text-md-start gap-0 lazy-loading-swiper-before pl-lg-0"
                   data-section-id="{{ section.id }}"
@@ -173,16 +175,20 @@
                     {% endif %}
                   </div>
                 </slide-section> {% endcomment %}
-                You are a student and students get 20% discount.
-                <a class="fw-600 " href="#">Learn More</a>
+                {%- if block_st.text1 != blank -%}
+                  <p class="ls-06 my-0">
+                    {{- block_st.text1 -}}
+                  </p>
+                {% endif %}
               </div>
             {%- when 'cur_lang' -%}
-              <div class="gap-0 lang__currency-desktop justify-content-center justity-md-unset topbar-item{% if block_st.hidden_on_mobile %} hidden flex-1025{% else %} flex{% endif %} flex-wrap gap-10 gap-lg-25 align-center row-gap-0">
+              {% comment %}  justify-content-center flex-wrap gap-10 gap-lg-25 align-center row-gap-0 {% endcomment %}
+              <div class="w-fit-content gap-42 lang__currency-desktop justity-md-unset topbar-item{% if block_st.hidden_on_mobile %} hidden flex-1025{% else %} flex{% endif %}">
                 {%- if block_st.menu_link != blank -%}
-                  <ul class="linklist list-unstyled flex flex-wrap gap-10 gap-lg-25 gap-20">
+                  <ul class="linklist list-unstyled flex flex-wrap gap-20">
                     {%- for link in block_st.menu_link.links -%}
                       <li class="btn-topbar relative group">
-                        <a class="no-underline block" href="{{ link.url }}" aria-label="{{ link.title }}">
+                        <a class="ls-03 no-underline block" href="{{ link.url }}" aria-label="{{ link.title }}">
                           {{- link.title -}}
                           {%- if link.links.size > 0 -%}
                             <open-children-toggle class="inline-flex flex-end align-center ms-5{% if section_st.redirect_to_link == blank %} absolute inset-0 static-1025{% else %} touch-target-mb{% endif %}">
@@ -209,6 +215,7 @@
                     {%- endfor -%}
                   </ul>
                 {% endif %}
+
                 {%- if block_st.show_our_store and theme_st.store_page and theme_st.store_address -%}
                   <a
                     href="{{ pages[theme_st.store_page].url | default: '#' }}"
@@ -222,12 +229,16 @@
                     {% endif %}
                   </a>
                 {% endif %}
-                {%- if block_st.show_currency -%}
-                  {%- render 'country-switcher' -%}
-                {% endif %}
-                {%- if block_st.show_language -%}
-                  {%- render 'language-switcher' -%}
-                {% endif %}
+
+                <div class="flex gap-21 gap-lg-25">
+                  {%- if block_st.show_language -%}
+                    {%- render 'language-switcher' -%}
+                  {% endif %}
+  
+                  {%- if block_st.show_currency -%}
+                    {%- render 'country-switcher' -%}
+                  {% endif %}
+                </div>
               </div>
           {%- endcase -%}
         {%- endfor -%}

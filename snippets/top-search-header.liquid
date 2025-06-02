@@ -18,7 +18,7 @@
 {% if search_type == 'default' or search_type == 'popup' %}
   {{ 'search-type-default.css' | asset_url | stylesheet_tag }}
 {% endif %}
-<div class="header_search {% if type == 'header_mega' %}header_search-mega{% endif %}">
+<div class="ml-lg-5 mr-lg-10 header_search {% if type == 'header_mega' %}header_search-mega{% endif %}">
   <div class="block block-quick-search block-search predictive_search_suggest search_{{ search_type }}{% if search_type == 'default' %} search-type-default me-md-10{% endif %}">
     {%- if search_type == 'default' -%}
       <div class="block-search-full search-layout-form">

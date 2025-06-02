@@ -33,8 +33,8 @@
           </span>
         </h-count>
         {% if type == 'header_mega' %}
-          <header-total-price class="d-none d-sm-block">
-            <span class="text-icons d-inline-flex fs-11 fw-500 ml-15 text-left d-none-mb">
+          {% comment %} <header-total-price class="d-none d-sm-block">
+            <span class="text-icons inline-flex fs-11 fw-500">
               {% comment %} <span class="text-icons-top">{{ 'general.cart.label' | t }}</span> {% endcomment %}
               <span class="text-icons-top fs-11 fw-400 cl-dark-blue-gray">Your Cart</span>
               <span class="fs-14 menu-cart" data-cart-subtotal-price>
@@ -44,6 +44,16 @@
                   {{ cart.total_price | money }}
                 {% endif %}
               </span>
+            </span>
+          </header-total-price> {% endcomment %}
+          <header-total-price class="ml-20 lh d-none d-sm-block d-sm-flex column">
+            <span class="text-icons-top fs-11 fw-400 cl-dark-blue-gray">Your Cart</span>
+            <span class="fs-14 fw-500 menu-cart" data-cart-subtotal-price>
+              {% if settings.currency_code_enabled %}
+                {{ cart.total_price | money_with_currency }}
+              {% else %}
+                {{ cart.total_price | money }}
+              {% endif %}
             </span>
           </header-total-price>
         {% endif %}

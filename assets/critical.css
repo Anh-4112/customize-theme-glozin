@@ -241,6 +241,7 @@ video {
   ),
 a.hover-heading-color:hover {
   color: var(--color-heading);
+  text-decoration: underline;
 }
 
 :where(.heading-style) {
@@ -3170,7 +3171,7 @@ nav.mobile {
       margin-right: 1rem;
   }
   .header__layout-3 .h-count{
-    left: 1.6rem;
+    left: 2rem;
   }
   .fluid_container .header-search.header-search__mega{
     max-width: 700px;
@@ -3207,10 +3208,10 @@ nav.mobile {
 /* .header__layout-3 .header__action > div:not(:first-of-type){
   margin-left: 3rem;
 } */
-.header__layout-3 .header__wishlist .header-icon svg{
+/* .header__layout-3 .header__wishlist .header-icon svg{
   width: 27px;
   height: 23px;
-}
+} */
 .header__layout-3 .text-icons{
   display: flex;
   flex-direction: column;

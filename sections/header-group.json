@@ -17,7 +17,7 @@
         "text_slider_LFaC38": {
           "type": "text_slider",
           "settings": {
-            "text1": "Sign up for 10% off your first order. <a href=\"/account/\" title=\"/account/\"><strong>Sign Up</strong></a>",
+            "text1": "You are a student and students get 20% discount. <a href=\"/account/\" target=\"_blank\" title=\"/account/\"><strong>Learn More</strong></a>",
             "text2": "Summer sale discount off 50%. <a href=\"/collections/activewear\" title=\"Activewear\"><strong>Shop Sale</strong></a>",
             "text3": "Coats—every friday 75% Off . <a href=\"/collections/blazers\" title=\"Blazers\"><strong>Shop Sale</strong></a>",
             "change_every": 3,
@@ -27,9 +27,9 @@
         "cur_lang_aPwfT9": {
           "type": "cur_lang",
           "settings": {
-            "menu_link": "menu-store",
-            "show_currency": false,
-            "show_language": false,
+            "menu_link": "menu-topbar-2",
+            "show_currency": true,
+            "show_language": true,
             "show_our_store": false,
             "hidden_on_mobile": true
           }
@@ -46,8 +46,8 @@
         "show_mobile": false,
         "show_separator_line": false,
         "uppercase": false,
-        "font_size": 13,
-        "font_weight": "body_weight",
+        "font_size": 12,
+        "font_weight": "subheading_weight",
         "padding_top": 10,
         "padding_bottom": 10
       }
@@ -77,6 +77,7 @@
       "block_order": [
         "menu_promotion_JGWEMq"
       ],
+      "custom_css": [],
       "name": "t:sections.header.header_mega_store",
       "settings": {
         "section_width": "fluid_container",
@@ -112,8 +113,8 @@
         "show_currency": true,
         "show_language": true,
         "show_recently_viewed": true,
-        "padding_top": 25,
-        "padding_bottom": 25
+        "padding_top": 20,
+        "padding_bottom": 17
       }
     }
   },
