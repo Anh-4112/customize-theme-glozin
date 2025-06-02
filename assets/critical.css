@@ -176,7 +176,8 @@ video {
   transition: var(--transition);
 }
 :where(a:not(:hover)) {
-  color: var(--color-link);
+  /* color: var(--color-link); */
+  color: #212529;
 }
 .body-weight {
   font-weight: var(--body-weight);
@@ -320,9 +321,9 @@ select,
 .input-style {
   height: var(--input-height);
 }
-input[type='number'].heading-color {
+/* input[type='number'].heading-color {
   --input-color: var(--color-heading);
-}
+} */
 input[type='search'],
 input[type='tel'],
 input[type='text'],
@@ -334,16 +335,16 @@ input[type='password'],
 select,
 textarea,
 .input-style {
-  padding: var(--input-padding);
-  border: var(--inputs-border-width) solid var(--color-border);
+  /* padding: var(--input-padding); */
+  /* border: var(--inputs-border-width) solid var(--color-border); */
+  /* border-radius: var(--input-border-radius); */
+  /* -webkit-appearance: none; */
+  /* appearance: none; */
   background: var(--input-bg);
   color: var(--input-color);
-  /* border-radius: var(--input-border-radius); */
   font-family: var(--body-font);
   font-size: var(--input-font-size);
   font-weight: var(--body-weight);
-  -webkit-appearance: none;
-  appearance: none;
   transition: 0.25s;
 }
 html input[type='button'],
@@ -2800,12 +2801,12 @@ header-inner .button-localization {
   height: 1.8rem;
   position: absolute;
   top: -6px;
-  left: 1.3rem;
+  left: 2rem;
   background-color: var(--color-primary);
   color: var(--color-white);
 }
 .header__minicart .h-count {
-  left: 1rem;
+  left: 1.6rem;
 }
 .menu_label {
   font-size: 9px;
@@ -3171,22 +3172,22 @@ nav.mobile {
       max-width: 24rem;
       margin-right: 1rem;
   }
-  .header__layout-3 .h-count{
+  /* .header__layout-3 .h-count{
     left: 2rem;
-  }
+  } */
   .fluid_container .header-search.header-search__mega{
     max-width: 700px;
     margin: auto;
   }
 }
-.header_search-mega .search__input{
+/* .header_search-mega .search__input{
   --max-width: 100% !important; 
   background-color: var(--color-background);
   --input-height: 4.5rem !important;
-}
-.header_search-mega .search__input:focus{
+} */
+/* .header_search-mega .search__input:focus{
   border-color: var(--color-border);
-}
+} */
 .header-search.header-search__mega{
   background: none;
 }
@@ -3241,10 +3242,10 @@ nav.mobile {
     right: 0;
     padding: 0 15px;
   } */
-  input#search-template {
+  /* input#search-template {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
-  }
+  } */
   .header__layout-3 .top-search-toggle{
     color: #fff;
   }

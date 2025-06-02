@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "current": {
     "purchase_code": "bBC1eRHe-ezKf-6Csf-8aJJ1-N1ZB79Y2PX9D",
     "favicon": "{{ shop.brand.logo }}",
@@ -18,7 +18,14 @@
     "fluid_container_width": 1410,
     "spacing_desktop": 90,
     "space_mobile": 50,
+    "font_type_body": "google",
+    "font_body_google_embed": "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@200;300;400;500;600;700&display=swap\" rel=\"stylesheet\">",
+    "font_body_google": "Bai Jamjuree",
     "body_font_size": 15,
+    "font_type_heading": "google",
+    "font_body_heading_embed": "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@200;300;400;500;600;700&display=swap\" rel=\"stylesheet\">",
+    "font_heading_google": "Bai Jamjuree",
+    "heading_font_scale": 100,
     "heading_text_transform": "unset",
     "heading_letter_spacing": "negative",
     "menu_font": "heading_font",
@@ -64,7 +71,7 @@
     "vimeo": "",
     "linkedin": "",
     "whatsapp": "",
-    "enable_preload": false,
+    "enable_preload": true,
     "zoom_image": false,
     "scroll_animation": "fade_in",
     "store_phone": "Customersupport@example.com",

@@ -5,7 +5,7 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
-:is(
+/* :is(
     input[type='search'],
     input[type='tel'],
     input[type='text'],
@@ -18,7 +18,7 @@ input:-webkit-autofill:active {
   ):focus {
   outline: 0;
   border-color: var(--color-heading);
-}
+} */
 input[type='checkbox'] {
   display: inline-block;
   margin-block-end: 0.5rem;
@@ -1867,16 +1867,20 @@ mini-cart-remove-button.loading .remove-icon {
   line-height: 0;
 }
 
+.ws-09 {
+  word-spacing: 0.09rem;
+}
+
+.ls-0 {
+  letter-spacing: 0;
+}
+
 .ls-015 {
   letter-spacing: 0.015rem;
 }
 
 .ls-03 {
   letter-spacing: 0.03rem;
-}
-
-.ls-065 {
-  letter-spacing: 0.065rem;
 }
 
 .fw-400 {
@@ -1994,8 +1998,8 @@ mini-cart-remove-button.loading .remove-icon {
   margin-top: 3rem;
 }
 
-.ml-20 {
-  margin-left: 2rem;
+.ml-19 {
+  margin-left: 1.9rem;
 }
 
 .ml-30 {
@@ -2094,20 +2098,24 @@ mini-cart-remove-button.loading .remove-icon {
 }
 
 .search__input-custom {
-  border-top: solid 0.2rem var(--light-cool-gray) !important;
-  border-left: solid 0.2rem var(--light-cool-gray) !important;
-  border-bottom: solid 0.2rem var(--light-cool-gray) !important;
-  border-top-left-radius: 0.5rem !important;
-  border-bottom-left-radius: 0.5rem !important;
+  border: solid 0.2rem var(--light-cool-gray);
+  border-right: none;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  padding: 1.5rem 3rem;
+}
+
+.search__input-custom {
+  outline: unset;
 }
 
 .search__input-custom:focus-within {
-  border-color: var(--dark-blue) !important;
+  border-color: var(--dark-blue);
 }
 
 .search__button-custom {
-  border-top-right-radius: 0.5rem !important;
-  border-bottom-right-radius: 0.5rem !important;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 }
 
 .footer__block-info > p {
@@ -2314,8 +2322,8 @@ mini-cart-remove-button.loading .remove-icon {
     transform: translateY(0) !important;
   }
 
-  .mr-1025-23 {
-    margin-right: 2.3rem;
+  .mr-1025-22 {
+    margin-right: 2.2rem;
   }
 
   .mr-1025-31 {
