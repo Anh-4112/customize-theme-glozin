@@ -241,7 +241,7 @@ video {
   ),
 a.hover-heading-color:hover {
   color: var(--color-heading);
-  text-decoration: underline;
+  /* text-decoration: underline; */
 }
 
 :where(.heading-style) {
@@ -3154,7 +3154,8 @@ nav.mobile {
   margin-left: 1.5rem;
 }
 .header-information .header__recently-viewed svg{
-  margin-right: 1rem;
+  /* margin-right: 1rem; */
+  margin-right: 0.8rem;
 }
 .header-search.header-search__mega{
   margin-right: 3rem;

@@ -1723,7 +1723,7 @@ mini-cart-remove-button.loading .remove-icon {
 }
 
 .w-110 {
-  width: 11rem !important;
+  width: 11rem;
 }
 
 .h-full {
@@ -1867,12 +1867,16 @@ mini-cart-remove-button.loading .remove-icon {
   line-height: 0;
 }
 
+.ls-015 {
+  letter-spacing: 0.015rem;
+}
+
 .ls-03 {
   letter-spacing: 0.03rem;
 }
 
-.ls-06 {
-  letter-spacing: 0.06rem;
+.ls-065 {
+  letter-spacing: 0.065rem;
 }
 
 .fw-400 {

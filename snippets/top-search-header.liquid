@@ -63,10 +63,10 @@
                   spellcheck="false"
                   style="--input-padding: 1rem 1rem 1rem 4.5rem; --input-height: 4rem; --max-width: 200px;"
                 >
-
+                {% comment %} w-44  {% endcomment %}
                 <button
                   id="button_search_default"
-                  class="search__button-custom fw-500 fs-14 cl-white bg-dark-blue font-inherit w-110 search__button field__button{% if search_type == 'default' %} light-dark-grey{% else %} header-color{% endif %} hover-heading-color btn-reset w-44 content-center pointer"
+                  class="search__button-custom fw-500 fs-14 cl-white bg-dark-blue font-inherit w-110 search__button field__button{% if search_type == 'default' %} light-dark-grey{% else %} header-color{% endif %} hover-heading-color btn-reset content-center pointer"
                   aria-label="{{ 'general.search.search' | t }}"
                 >
                   {% comment %} <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" class="transition">
