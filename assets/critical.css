@@ -1336,6 +1336,9 @@ picture {
 .mt-0 {
   margin-top: 0;
 }
+.mt-2 {
+  margin-top: 2px;
+}
 .mt-3 {
   margin-top: 3px;
 }
@@ -1353,6 +1356,9 @@ picture {
 }
 .mt-25 {
   margin-top: 2.5rem;
+}
+.mb-2 {
+  margin-bottom: 0.2rem;
 }
 .mb-8 {
   margin-bottom: 8px;
@@ -1489,6 +1495,9 @@ picture {
 }
 .ms-5 {
   margin-inline-start: 5px;
+}
+.ms-068 {
+  margin-inline-start: 6.8px;
 }
 .ms-10 {
   margin-inline-start: 1rem;
@@ -2801,7 +2810,7 @@ header-inner .button-localization {
   height: 1.8rem;
   position: absolute;
   top: -6px;
-  left: 2rem;
+  left: 2.1rem;
   background-color: var(--color-primary);
   color: var(--color-white);
 }
@@ -3156,7 +3165,7 @@ nav.mobile {
 }
 .header-information .header__recently-viewed svg{
   /* margin-right: 1rem; */
-  margin-right: 0.8rem;
+  margin-right: 0.9rem;
 }
 .header-search.header-search__mega{
   margin-right: 3rem;

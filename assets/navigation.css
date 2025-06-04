@@ -222,8 +222,17 @@
   }
 }
 @media screen and (min-width: 1025px) {
+  .header-bottom__navigation ul.horizontal-list > li menu-item{
+    padding-left: 1.4rem;
+    padding-right: 1.4rem;
+  }
   .header-bottom__navigation ul.horizontal-list > li:first-of-type menu-item{
     padding-left: 0;
+    padding-right: 1.2rem;
+  }
+  .header-bottom__navigation ul.horizontal-list > li:nth-child(8) menu-item{
+    padding-left: 1.7rem;
+    padding-right: 0;
   }
   .header-bottom__navigation .min-h-1025-50{
     min-height: 55px;

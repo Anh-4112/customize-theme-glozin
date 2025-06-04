@@ -176,14 +176,14 @@
                   </div>
                 </slide-section> {% endcomment %}
                 {%- if block_st.text1 != blank -%}
-                  <p class="ls-0 ws-09 my-0">
+                  <p class="fw-500 my-0">
                     {{- block_st.text1 -}}
                   </p>
                 {% endif %}
               </div>
             {%- when 'cur_lang' -%}
               {% comment %}  justify-content-center flex-wrap gap-10 gap-lg-25 align-center row-gap-0 {% endcomment %}
-              <div class="w-fit-content gap-42 lang__currency-desktop justity-md-unset topbar-item{% if block_st.hidden_on_mobile %} hidden flex-1025{% else %} flex{% endif %}">
+              <div class="w-fit-content gap-42 mt-2 lang__currency-desktop justity-md-unset topbar-item{% if block_st.hidden_on_mobile %} hidden flex-1025{% else %} flex{% endif %}">
                 {%- if block_st.menu_link != blank -%}
                   <ul class="linklist list-unstyled flex flex-wrap gap-20">
                     {%- for link in block_st.menu_link.links -%}
