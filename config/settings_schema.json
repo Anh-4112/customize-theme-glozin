@@ -358,6 +358,10 @@
             "label": "t:settings_schema.typography.settings.letter_spacing.unset.label"
           },
           {
+            "value": "-0.009em",
+            "label": "-0.009"
+          },
+          {
             "value": "0.005em",
             "label": "t:settings_schema.typography.settings.letter_spacing.small.label"
           },

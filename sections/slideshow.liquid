@@ -152,7 +152,7 @@
                       {% if block_st.subheading != blank %}
                         <motion-element
                           data-motion="fade-up-lg"                   
-                              hold                                     
+                          hold                                     
                           data-motion-delay="100"
                           class="sec__content-subheading  {% if block_st.slider_effect == 'effect_fadeinup' %} opacity-0  {{ slider_effect }}  {% endif %}  block heading{% if section_st.subheading_spacing_bottom > 41 %} mb-big{% elsif section_st.subheading_spacing_bottom > 30 %} mb-medium {% else %} mb-custom{% endif %} fs-custom"
                           style="--font-size: {{ section_st.subheading_font_size }};--space-bottom: {{ section_st.subheading_spacing_bottom }}; font-weight:{{ section_st.subheading_font_weight }};"
@@ -179,7 +179,7 @@
                       {% if block_st.description != blank %}
                         <motion-element
                           data-motion="fade-up-lg"                     
-                            hold                 
+                          hold                 
                           data-motion-delay="300"
                           class="sec__content-des {% if block_st.slider_effect == 'effect_fadeinup' %} opacity-0  {{ slider_effect }}  {% endif %} block rich__text-m0 {% if section_st.des_spacing_bottom > 41 %} mb-big{% elsif section_st.des_spacing_bottom > 30 %} mb-medium {% else %} mb-custom{% endif %}{% if section_st.des_font_size > 24 %} fs-medium{% else %} fs-custom{% endif %} {{ section_st.des_font_weight }}"
                           style="--font-size: {{ section_st.des_font_size }};--space-bottom: {{ section_st.des_spacing_bottom }}"
@@ -192,7 +192,7 @@
                         {% comment %} customize {% endcomment %}
                         <motion-element
                           data-motion="fade-up-lg"                    
-                            hold                   
+                          hold                   
                           data-motion-delay="400"
                           class="sec__content-btn {% if block_st.slider_effect == 'effect_fadeinup' %} opacity-0  {{ slider_effect }}  {% endif %} align-center flex flex-wrap gap-15 justify-content-{{ block_st.content_alignment_mobile }} justify-content-md-{{ block_st.content_alignment }}"
                           style="margin-bottom: {{ section_st.btn_spacing_bottom }}px;"
@@ -206,6 +206,7 @@
                               {% endif %}
                               aria-label="{{ block_st.first_button_label }}"
                               class="inline-flex no-underline{% if block_st.first_button_style %} btn-outline{% else %} btn-primary{% endif %}"
+                              style="--py-btn-slideshow: {{ section_st.py_btn_slideshow }}; --px-btn-slideshow: {{ section_st.px_btn_slideshow }}; --fs-btn-slideshow: {{ section_st.fs_btn_slideshow }}; --fw-btn-slideshow: {{ section_st.fw_btn_slideshow }};"
                             >
                               {{ block_st.first_button_label }}
                             </a>
@@ -509,6 +510,68 @@
       "max": 20,
       "step": 1,
       "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "py_btn_slideshow",
+      "label": "Padding Y",
+      "default": 10,
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "px_btn_slideshow",
+      "label": "Padding X",
+      "default": 20,
+      "min": 15,
+      "max": 50,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "fs_btn_slideshow",
+      "label": "Font Size",
+      "default": 15,
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "fw_btn_slideshow",
+      "label": "Font Weight",
+      "default": "200",
+      "options": [
+        {
+          "value": "200",
+          "label": "200"
+        },
+        {
+          "value": "300",
+          "label": "300"
+        },
+        {
+          "value": "400",
+          "label": "400"
+        },
+        {
+          "value": "500",
+          "label": "500"
+        },
+        {
+          "value": "600",
+          "label": "600"
+        },
+        {
+          "value": "700",
+          "label": "700"
+        },
+      ]
     },
     {
       "type": "header",

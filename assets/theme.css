@@ -1718,10 +1718,6 @@ mini-cart-remove-button.loading .remove-icon {
   width: fit-content;
 }
 
-.w-full {
-  width: 100%;
-}
-
 .w-110 {
   width: 11rem;
 }
@@ -1966,10 +1962,6 @@ mini-cart-remove-button.loading .remove-icon {
   padding-left: 0.7rem !important;
 }
 
-.mt-0 {
-  margin-top: 0 !important;
-}
-
 .mt-5 {
   margin-top: 0.5rem !important;
 }
@@ -2107,6 +2099,15 @@ mini-cart-remove-button.loading .remove-icon {
 .swiper-button-next:hover {
   color: var(--btn-primary-hover-color);
   background-color: var(--btn-primary-hover-bg-color);
+}
+
+:where(.btn-primary, .btn-outline, .btn, .btn-white),
+:is(
+    body .sec__content
+  ) {
+    padding: calc(var(--py-btn-slideshow) * 1px) calc(var(--px-btn-slideshow) * 1px);
+    font-size: calc(var(--fs-btn-slideshow) * 1px);
+    font-weight: var(--fw-btn-slideshow);
 }
 
 .footer__block-info > p {
