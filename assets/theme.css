@@ -1647,7 +1647,7 @@ mini-cart-remove-button.loading .remove-icon {
   --light-gray: #F1F5F6;
   --gray-light: #c0bebe;
   --gray-medium: #999999;
-  --green: #008A00;
+  --green: #17F084;
   --dark-blue-gray: #515D66;
   --blue: #000fb1fa;
   --dark-blue: #2B38D1;
@@ -1853,6 +1853,10 @@ mini-cart-remove-button.loading .remove-icon {
 
 .font-inherit {
   font: inherit;
+}
+
+.lh-customize {
+  line-height: var(--lh-customize);
 }
 
 .lh {
@@ -2101,7 +2105,7 @@ mini-cart-remove-button.loading .remove-icon {
   background-color: var(--btn-primary-hover-bg-color);
 }
 
-:where(.btn-primary, .btn-outline, .btn, .btn-white),
+:where(.btn-primary-slideshow, .btn-outline-slideshow),
 :is(
     body .sec__content
   ) {

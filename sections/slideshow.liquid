@@ -154,8 +154,8 @@
                           data-motion="fade-up-lg"                   
                           hold                                     
                           data-motion-delay="100"
-                          class="sec__content-subheading  {% if block_st.slider_effect == 'effect_fadeinup' %} opacity-0  {{ slider_effect }}  {% endif %}  block heading{% if section_st.subheading_spacing_bottom > 41 %} mb-big{% elsif section_st.subheading_spacing_bottom > 30 %} mb-medium {% else %} mb-custom{% endif %} fs-custom"
-                          style="--font-size: {{ section_st.subheading_font_size }};--space-bottom: {{ section_st.subheading_spacing_bottom }}; font-weight:{{ section_st.subheading_font_weight }};"
+                          class="sec__content-subheading mt-custom {% if block_st.slider_effect == 'effect_fadeinup' %} opacity-0  {{ slider_effect }}  {% endif %}  block heading{% if section_st.subheading_spacing_bottom > 41 %} mb-big{% elsif section_st.subheading_spacing_bottom > 30 %} mb-medium {% else %} mb-custom{% endif %} fs-custom"
+                          style="--font-size: {{ section_st.subheading_font_size }}; font-weight:{{ section_st.subheading_font_weight }}; --space-bottom: {{ section_st.subheading_spacing_bottom }}; --space-top: {{ section_st.subheading_spacing_top }}px;"
                         >
                           {{ block_st.subheading | escape }}
                         </motion-element>
@@ -168,8 +168,8 @@
                           class="block  {% if block_st.slider_effect == 'effect_fadeinup' %} opacity-0 {{ slider_effect }} {% endif %}"
                         >
                           <h2
-                            class="sec__content-heading   heading-letter-spacing mt-0{% if section_st.heading_spacing_bottom > 41 %} mb-big{% elsif section_st.heading_spacing_bottom > 30 %} mb-medium {% else %} mb-custom{% endif %}{% if section_st.heading_uppercase %} uppercase{% endif %}{% if section_st.heading_font_size > 41 %} fs-big{% elsif section_st.heading_font_size > 24 %} fs-medium{% else %} fs-custom{% endif %}"
-                            style="--font-size: {{ section_st.heading_font_size }};--space-bottom: {{ section_st.heading_spacing_bottom }}; font-weight: {{ section_st.heading_font_weight }}"
+                            class="sec__content-heading heading-letter-spacing lh-customize mt-0{% if section_st.heading_spacing_bottom > 41 %} mb-big{% elsif section_st.heading_spacing_bottom > 30 %} mb-medium {% else %} mb-custom{% endif %}{% if section_st.heading_uppercase %} uppercase{% endif %}{% if section_st.heading_font_size > 41 %} fs-big{% elsif section_st.heading_font_size > 24 %} fs-medium{% else %} fs-custom{% endif %}"
+                            style="--font-size: {{ section_st.heading_font_size }}; --lh-customize: {{ section_st.heading_line_height }};--space-bottom: {{ section_st.heading_spacing_bottom }}; font-weight: {{ section_st.heading_font_weight }}"
                             {{ block.shopify_attributes }}
                           >
                             {{ block_st.heading }}
@@ -189,13 +189,12 @@
                         </motion-element>
                       {% endif %}
                       {% if block_st.first_button_label != blank or block_st.second_button_label != blank %}
-                        {% comment %} customize {% endcomment %}
                         <motion-element
                           data-motion="fade-up-lg"                    
                           hold                   
                           data-motion-delay="400"
-                          class="sec__content-btn {% if block_st.slider_effect == 'effect_fadeinup' %} opacity-0  {{ slider_effect }}  {% endif %} align-center flex flex-wrap gap-15 justify-content-{{ block_st.content_alignment_mobile }} justify-content-md-{{ block_st.content_alignment }}"
-                          style="margin-bottom: {{ section_st.btn_spacing_bottom }}px;"
+                          class="sec__content-btn mb-custom {% if block_st.slider_effect == 'effect_fadeinup' %} opacity-0  {{ slider_effect }} {% endif %} align-center flex flex-wrap gap-15 justify-content-{{ block_st.content_alignment_mobile }} justify-content-md-{{ block_st.content_alignment }}"
+                          style="--space-bottom: {{ section_st.btn_spacing_bottom }}"
                         >
                           {% if block_st.first_button_label != blank %}
                             <a
@@ -205,7 +204,7 @@
                                 href="{{ block_st.first_button_link | default: "#" }}"
                               {% endif %}
                               aria-label="{{ block_st.first_button_label }}"
-                              class="inline-flex no-underline{% if block_st.first_button_style %} btn-outline{% else %} btn-primary{% endif %}"
+                              class="inline-flex no-underline{% if block_st.first_button_style %} btn-outline btn-outline-slideshow{% else %} btn-primary btn-primary-slideshow{% endif %}"
                               style="--py-btn-slideshow: {{ section_st.py_btn_slideshow }}; --px-btn-slideshow: {{ section_st.px_btn_slideshow }}; --fs-btn-slideshow: {{ section_st.fs_btn_slideshow }}; --fw-btn-slideshow: {{ section_st.fw_btn_slideshow }};"
                             >
                               {{ block_st.first_button_label }}
@@ -219,7 +218,8 @@
                                 href="{{ block_st.second_button_link | default: "#" }}"
                               {% endif %}
                               aria-label="{{ block_st.second_button_label }}"
-                              class="inline-flex no-underline{% if block_st.second_button_style %} btn-outline{% else %} btn-primary{% endif %}"
+                              class="inline-flex no-underline{% if block_st.second_button_style %} btn-outline btn-outline-slideshow{% else %} btn-primary btn-primary-slideshow{% endif %}"
+                              style="--py-btn-slideshow: {{ section_st.py_btn_slideshow }}; --px-btn-slideshow: {{ section_st.px_btn_slideshow }}; --fs-btn-slideshow: {{ section_st.fs_btn_slideshow }}; --fw-btn-slideshow: {{ section_st.fw_btn_slideshow }};"
                             >
                               {{ block_st.second_button_label }}
                             </a>
@@ -384,6 +384,16 @@
     },
     {
       "type": "range",
+      "id": "subheading_spacing_top",
+      "label": "Spacing top",
+      "default": 0,
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
       "id": "subheading_spacing_bottom",
       "label": "t:sections.all.content_settings.spacing.spacing_bottom.label",
       "default": 10,
@@ -404,6 +414,16 @@
       "min": 20,
       "max": 120,
       "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "heading_line_height",
+      "label": "Line Height",
+      "default": 1,
+      "min": 1,
+      "max": 2,
+      "step": 0.1,
       "unit": "px"
     },
     {
@@ -505,9 +525,9 @@
       "type": "range",
       "id": "btn_spacing_bottom",
       "label": "t:sections.all.content_settings.spacing.spacing_bottom.label",
-      "default": 10,
+      "default": 0,
       "min": 0,
-      "max": 20,
+      "max": 10,
       "step": 1,
       "unit": "px"
     },

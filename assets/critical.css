@@ -1336,6 +1336,9 @@ picture {
 .mt-0 {
   margin-top: 0;
 }
+.mt-1 {
+  margin-top: 1px;
+}
 .mt-2 {
   margin-top: 2px;
 }
@@ -2628,7 +2631,7 @@ header.active li.visible .submenu:not(.submenu-vertical) {
     :is(.swiper-button-next, .swiper-button-prev) {
     opacity: 1;
     visibility: visible;
-    --swiper-navigation-sides-offset: 20px;
+    --swiper-navigation-sides-offset: 30px;
   }
   .swiper:hover
     :is(.swiper-actions:not(.show-arrow) .swiper-arrow.swiper-button-disabled) {
