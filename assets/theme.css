@@ -1867,22 +1867,6 @@ mini-cart-remove-button.loading .remove-icon {
   line-height: 0;
 }
 
-/* .ws-09 {
-  word-spacing: 0.09rem;
-} */
-
-/* .ls-0 {
-  letter-spacing: 0;
-}
-
-.ls-015 {
-  letter-spacing: 0.015rem;
-}
-
-.ls-03 {
-  letter-spacing: 0.03rem;
-} */
-
 .fw-400 {
   font-weight: 400 !important;
 }
@@ -2111,6 +2095,18 @@ mini-cart-remove-button.loading .remove-icon {
 .search__button-custom {
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: var(--btn-primary-color);
+  background-color: var(--btn-primary-bg-color);
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  color: var(--btn-primary-hover-color);
+  background-color: var(--btn-primary-hover-bg-color);
 }
 
 .footer__block-info > p {

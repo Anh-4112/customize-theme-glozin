@@ -347,7 +347,7 @@
         "type": "select",
         "id": "heading_letter_spacing",
         "label": "t:settings_schema.typography.settings.letter_spacing.label",
-        "default": "unset",
+        "default": "negative",
         "options": [
           {
             "value": "negative",

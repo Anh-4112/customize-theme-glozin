@@ -154,23 +154,22 @@
                           data-motion="fade-up-lg"                   
                               hold                                     
                           data-motion-delay="100"
-                          class="sec__content-subheading  {% if block_st.slider_effect == 'effect_fadeinup' %} opacity-0  {{ slider_effect }}  {% endif %}  block heading{% if section_st.subheading_spacing_bottom > 41 %} mb-big{% elsif section_st.subheading_spacing_bottom > 30 %} mb-medium {% else %} mb-custom{% endif %} fs-custom {{ section_st.subheading_font_weight }}"
-                          style="--font-size: {{ section_st.subheading_font_size }};--space-bottom: {{ section_st.subheading_spacing_bottom }}"
+                          class="sec__content-subheading  {% if block_st.slider_effect == 'effect_fadeinup' %} opacity-0  {{ slider_effect }}  {% endif %}  block heading{% if section_st.subheading_spacing_bottom > 41 %} mb-big{% elsif section_st.subheading_spacing_bottom > 30 %} mb-medium {% else %} mb-custom{% endif %} fs-custom"
+                          style="--font-size: {{ section_st.subheading_font_size }};--space-bottom: {{ section_st.subheading_spacing_bottom }}; font-weight:{{ section_st.subheading_font_weight }};"
                         >
-                          
                           {{ block_st.subheading | escape }}
                         </motion-element>
                       {% endif %}
                       {% if block_st.heading != blank %}
                         <motion-element
                           data-motion="fade-up-lg"
-                            hold
+                          hold
                           data-motion-delay="200"
                           class="block  {% if block_st.slider_effect == 'effect_fadeinup' %} opacity-0 {{ slider_effect }} {% endif %}"
                         >
                           <h2
-                            class="sec__content-heading   heading-letter-spacing mt-0{% if section_st.heading_spacing_bottom > 41 %} mb-big{% elsif section_st.heading_spacing_bottom > 30 %} mb-medium {% else %} mb-custom{% endif %}{% if section_st.heading_uppercase %} uppercase{% endif %}{% if section_st.heading_font_size > 41 %} fs-big{% elsif section_st.heading_font_size > 24 %} fs-medium{% else %} fs-custom{% endif %} {{ section_st.heading_font_weight }}"
-                            style="--font-size: {{ section_st.heading_font_size }};--space-bottom: {{ section_st.heading_spacing_bottom }}"
+                            class="sec__content-heading   heading-letter-spacing mt-0{% if section_st.heading_spacing_bottom > 41 %} mb-big{% elsif section_st.heading_spacing_bottom > 30 %} mb-medium {% else %} mb-custom{% endif %}{% if section_st.heading_uppercase %} uppercase{% endif %}{% if section_st.heading_font_size > 41 %} fs-big{% elsif section_st.heading_font_size > 24 %} fs-medium{% else %} fs-custom{% endif %}"
+                            style="--font-size: {{ section_st.heading_font_size }};--space-bottom: {{ section_st.heading_spacing_bottom }}; font-weight: {{ section_st.heading_font_weight }}"
                             {{ block.shopify_attributes }}
                           >
                             {{ block_st.heading }}
@@ -190,11 +189,13 @@
                         </motion-element>
                       {% endif %}
                       {% if block_st.first_button_label != blank or block_st.second_button_label != blank %}
+                        {% comment %} customize {% endcomment %}
                         <motion-element
                           data-motion="fade-up-lg"                    
                             hold                   
                           data-motion-delay="400"
                           class="sec__content-btn {% if block_st.slider_effect == 'effect_fadeinup' %} opacity-0  {{ slider_effect }}  {% endif %} align-center flex flex-wrap gap-15 justify-content-{{ block_st.content_alignment_mobile }} justify-content-md-{{ block_st.content_alignment }}"
+                          style="margin-bottom: {{ section_st.btn_spacing_bottom }}px;"
                         >
                           {% if block_st.first_button_label != blank %}
                             <a
@@ -352,20 +353,32 @@
       "type": "select",
       "id": "subheading_font_weight",
       "label": "t:sections.all.content_settings.font_weight.label",
-      "default": "body_weight",
+      "default": "200",
       "options": [
         {
-          "value": "body_weight",
-          "label": "t:sections.all.content_settings.font_weight.body_weight.label"
+          "value": "200",
+          "label": "200"
         },
         {
-          "value": "subheading_weight",
-          "label": "t:sections.all.content_settings.font_weight.subheading_weight.label"
+          "value": "300",
+          "label": "300"
         },
         {
-          "value": "heading_weight",
-          "label": "t:sections.all.content_settings.font_weight.heading_weight.label"
-        }
+          "value": "400",
+          "label": "400"
+        },
+        {
+          "value": "500",
+          "label": "500"
+        },
+        {
+          "value": "600",
+          "label": "600"
+        },
+        {
+          "value": "700",
+          "label": "700"
+        },
       ]
     },
     {
@@ -396,20 +409,32 @@
       "type": "select",
       "id": "heading_font_weight",
       "label": "t:sections.all.content_settings.font_weight.label",
-      "default": "heading_weight",
+      "default": "200",
       "options": [
         {
-          "value": "body_weight",
-          "label": "t:sections.all.content_settings.font_weight.body_weight.label"
+          "value": "200",
+          "label": "200"
         },
         {
-          "value": "subheading_weight",
-          "label": "t:sections.all.content_settings.font_weight.subheading_weight.label"
+          "value": "300",
+          "label": "300"
         },
         {
-          "value": "heading_weight",
-          "label": "t:sections.all.content_settings.font_weight.heading_weight.label"
-        }
+          "value": "400",
+          "label": "400"
+        },
+        {
+          "value": "500",
+          "label": "500"
+        },
+        {
+          "value": "600",
+          "label": "600"
+        },
+        {
+          "value": "700",
+          "label": "700"
+        },
       ]
     },
     {
@@ -468,6 +493,20 @@
       "default": 40,
       "min": 0,
       "max": 60,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "paragraph",
+      "content": "=== Button ==="
+    },
+    {
+      "type": "range",
+      "id": "btn_spacing_bottom",
+      "label": "t:sections.all.content_settings.spacing.spacing_bottom.label",
+      "default": 10,
+      "min": 0,
+      "max": 20,
       "step": 1,
       "unit": "px"
     },
@@ -825,7 +864,7 @@
           "type": "range",
           "id": "content_padding_inline",
           "min": 0,
-          "max": 120,
+          "max": 200,
           "step": 5,
           "unit": "px",
           "default": 30,
