@@ -2380,9 +2380,9 @@ header.active li.visible .submenu:not(.submenu-vertical) {
   }
 }
 @media screen and (max-width: 1199.98px) {
-  .shopify-section:not(.contact-us, .not-hide-br) br {
+  /* .shopify-section:not(.contact-us, .not-hide-br) br {
     display: none;
-  }
+  } */
 }
 .bg-transparent {
   background: transparent !important;
