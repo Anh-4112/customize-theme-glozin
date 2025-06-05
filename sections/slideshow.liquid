@@ -25,6 +25,16 @@
   --height: {{ section_st.mobile_height }}px;--height-desktop: {{ section_st.desktop_height }}px;
   {% endif %}
 {%- endcapture -%}
+<style>
+  .swiper-button-customize {
+    color: {{section_st.color_swiper}};
+    background-color: {{section_st.bg_swiper}};
+  }
+  .swiper-button-customize:hover {
+    color: {{section_st.color_hover_swiper}};
+    background-color: {{section_st.bg_hover_swiper}};
+  }
+</style>
 <div
   id="{{ section.id }}"
   class="bg-light-gray section{% if section_st.padding_top < 30 %} pt-min{% endif %}{% if section_st.padding_bottom < 30 %} pb-min{% endif %} gradient slideshow {{ slide_effect }} color-{{ color_scheme }}{{ reset_spacing }}"
@@ -154,8 +164,8 @@
                           data-motion="fade-up-lg"                   
                           hold                                     
                           data-motion-delay="100"
-                          class="sec__content-subheading mt-custom {% if block_st.slider_effect == 'effect_fadeinup' %} opacity-0  {{ slider_effect }}  {% endif %}  block heading{% if section_st.subheading_spacing_bottom > 41 %} mb-big{% elsif section_st.subheading_spacing_bottom > 30 %} mb-medium {% else %} mb-custom{% endif %} fs-custom"
-                          style="--font-size: {{ section_st.subheading_font_size }}; font-weight:{{ section_st.subheading_font_weight }}; --space-bottom: {{ section_st.subheading_spacing_bottom }}; --space-top: {{ section_st.subheading_spacing_top }}px;"
+                          class="sec__content-subheading cl-subheading mt-custom {% if block_st.slider_effect == 'effect_fadeinup' %} opacity-0  {{ slider_effect }}  {% endif %}  block heading{% if section_st.subheading_spacing_bottom > 41 %} mb-big{% elsif section_st.subheading_spacing_bottom > 30 %} mb-medium {% else %} mb-custom{% endif %} fs-custom"
+                          style="--color-subheading: {{ section_st.color_subheading }};--font-size: {{ section_st.subheading_font_size }}; font-weight:{{ section_st.subheading_font_weight }}; --space-bottom: {{ section_st.subheading_spacing_bottom }}; --space-top: {{ section_st.subheading_spacing_top }}px;"
                         >
                           {{ block_st.subheading | escape }}
                         </motion-element>
@@ -234,7 +244,8 @@
           {% endfor %}
         </div>
         {% if show_arrow %}
-          {%- render 'swiper-navigation', class: 'original-style' -%}
+          {%- render 'swiper-navigation', class: 'original-style swiper-button-customize' -%}
+
         {% endif %}
         {%- if carousel_pagination == 'show_dots' or carousel_pagination == 'show_dots_on_mobile' -%}
           <div
@@ -339,6 +350,12 @@
     {
       "type": "paragraph",
       "content": "t:sections.all.content_settings.subheading.label"
+    },
+    {
+      "type": "color",
+      "id": "color_subheading",
+      "label": "Color",
+      "default": "#fff"
     },
     {
       "type": "range",
@@ -592,6 +609,34 @@
           "label": "700"
         },
       ]
+    },
+    {
+      "type": "header",
+      "content": "Prev/Next"
+    },
+    {
+      "type": "color_background",
+      "id": "color_swiper",
+      "label": "Color",
+      "default": "#111"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_swiper",
+      "label": "Background",
+      "default": "#fff"
+    },
+    {
+      "type": "color_background",
+      "id": "color_hover_swiper",
+      "label": "Hover Color",
+      "default": "#fff"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_hover_swiper",
+      "label": "Hover Background",
+      "default": "#111"
     },
     {
       "type": "header",

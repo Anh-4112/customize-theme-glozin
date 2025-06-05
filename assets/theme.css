@@ -1648,6 +1648,7 @@ mini-cart-remove-button.loading .remove-icon {
   --gray-light: #c0bebe;
   --gray-medium: #999999;
   --green: #17F084;
+  --yellow: #FDE50B;
   --dark-blue-gray: #515D66;
   --blue: #000fb1fa;
   --dark-blue: #2B38D1;
@@ -1695,7 +1696,11 @@ mini-cart-remove-button.loading .remove-icon {
 }
 
 .cl-green {
-  color: var(--green) !important;
+  color: var(--green);
+}
+
+.cl-yellow {
+  color: var(--yellow);
 }
 
 .cl-dark-blue-gray {
@@ -2093,16 +2098,8 @@ mini-cart-remove-button.loading .remove-icon {
   border-bottom-right-radius: 0.5rem;
 }
 
-.swiper-button-prev,
-.swiper-button-next {
-  color: var(--btn-primary-color);
-  background-color: var(--btn-primary-bg-color);
-}
-
-.swiper-button-prev:hover,
-.swiper-button-next:hover {
-  color: var(--btn-primary-hover-color);
-  background-color: var(--btn-primary-hover-bg-color);
+.cl-subheading {
+  color: var(--color-subheading);
 }
 
 :where(.btn-primary-slideshow, .btn-outline-slideshow),
