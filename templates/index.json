@@ -156,7 +156,9 @@
             "color_btn_item": "#111",
             "bg_btn_item": "rgba(255, 255, 255, 0)",
             "color_hover_btn_item": "#111",
-            "bg_hover_btn_item": "rgba(255, 255, 255, 0)"
+            "bg_hover_btn_item": "rgba(255, 255, 255, 0)",
+            "justify_content_customize": "start",
+            "txt_align_customize": "start"
           }
         },
         "collection_qHEjjt": {
@@ -170,7 +172,9 @@
             "color_btn_item": "#111",
             "bg_btn_item": "rgba(255, 255, 255, 0)",
             "color_hover_btn_item": "#111",
-            "bg_hover_btn_item": "rgba(255, 255, 255, 0)"
+            "bg_hover_btn_item": "rgba(255, 255, 255, 0)",
+            "justify_content_customize": "start",
+            "txt_align_customize": "start"
           }
         },
         "collection_qDXhEd": {
@@ -184,7 +188,9 @@
             "color_btn_item": "#111",
             "bg_btn_item": "rgba(255, 255, 255, 0)",
             "color_hover_btn_item": "#111",
-            "bg_hover_btn_item": "rgba(255, 255, 255, 0)"
+            "bg_hover_btn_item": "rgba(255, 255, 255, 0)",
+            "justify_content_customize": "start",
+            "txt_align_customize": "start"
           }
         }
       },
@@ -205,9 +211,7 @@
         "image_ratio": "square",
         "custom_ratio": "",
         "show_product_count": false,
-        "text_alignment": "center",
-        "column_gap": 30,
-        "font_size": 14,
+        "font_size": 18,
         "font_weight": "heading_weight",
         "carousel_on_mobile": false,
         "items_per_row_mobile": 1,
@@ -243,4 +247,3 @@
     "collection_list_custom_3a6FBE"
   ]
 }
-  
