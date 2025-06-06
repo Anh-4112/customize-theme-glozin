@@ -43,12 +43,7 @@
 {% for block in section.blocks %}
   {% assign block_st = block.settings %}
 <style>
-  .wrapper-btn-item-{{ block.id }} {
-    justify-content: {{block_st.justify_content_customize}};
-  }
   .btn-item-{{ block.id }} {
-    padding: calc({{block_st.py_btn_item}} * 1px) calc({{block_st.px_btn_item}} * 1px);
-    text-align: {{block_st.txt_align_customize}};
     color: {{block_st.color_btn_item}};
     background-color: {{block_st.bg_btn_item}};
   }
@@ -134,7 +129,8 @@
               hold
             {% endif %}
             data-motion-delay="{{ forloop.index0 | times: 50 }}"
-            class="height-150 height-lg-200 collection-item grid-custom-item {% if scroll_animation != 'none' and scroll_animation != null %} scroll-trigger {{ scroll_animation }} {% endif %} {{ settings.hover_effect }}"
+            class="h-item-mobile h-item-pc collection-item grid-custom-item {% if scroll_animation != 'none' and scroll_animation != null %} scroll-trigger {{ scroll_animation }} {% endif %} {{ settings.hover_effect }}"
+            style="--h-item-mobile: {{ section_st.h_item_mobile }}; --h-item-pc: {{ section_st.h_item_pc }};"
             {{ block.shopify_attributes }}
             {%- if scroll_animation != 'none' -%}
               style="--animation-order: {{  forloop.index }};"
@@ -312,6 +308,30 @@
     },
     {
       "type": "header",
+      "content": "Height",
+    },
+    {
+      "type": "range",
+      "id": "h_item_mobile",
+      "label": "Height Mobile",
+      "default": 150,
+      "min": 150,
+      "max": 200,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "h_item_pc",
+      "label": "Height PC",
+      "default": 200,
+      "min": 200,
+      "max": 250,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "header",
       "content": "t:sections.collection-packery.settings.collection_information.header"
     },
     {
@@ -348,8 +368,126 @@
         }
       ]
     },
-
-    
+    {
+      "type": "paragraph",
+      "content": "Spacing Cover:",
+    },
+    {
+      "type": "range",
+      "id": "pt_collection_item",
+      "label": "Top:",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+    },
+    {
+      "type": "range",
+      "id": "pl_collection_item",
+      "label": "Left:",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+    },
+    {
+      "type": "range",
+      "id": "pb_collection_item",
+      "label": "Bottom:",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+    },
+    {
+      "type": "range",
+      "id": "pr_collection_item",
+      "label": "Right:",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+    },
+    {
+      "type": "select",
+      "id": "jc_item",
+      "label": "Justify Content",
+      "default": "center",
+      "options": [
+        {
+          "value": "start",
+          "label": "Start"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "end",
+          "label": "End"
+        },
+      ]
+    },
+        {
+      "type": "select",
+      "id": "ai_item",
+      "label": "Algin Item",
+      "default": "start",
+      "options": [
+        {
+          "value": "start",
+          "label": "Start"
+        },
+        {
+          "value": "end",
+          "label": "End"
+        },
+      ]
+    },
+    {
+      "type": "select",
+      "id": "txt_align",
+      "label": "Text Align",
+      "default": "center",
+      "options": [
+        {
+          "value": "start",
+          "label": "Start"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "end",
+          "label": "End"
+        },
+      ]
+    },
+    {
+      "type": "range",
+      "id": "py_btn_item",
+      "label": "Padding Y",
+      "default": 0,
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "px_btn_item",
+      "label": "Padding X",
+      "default": 0,
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px"
+    },
     {
       "type": "header",
       "content": "t:sections.all.mobile_options.label"
@@ -429,26 +567,6 @@
           "content": "=== Button ==="
         },
         {
-          "type": "range",
-          "id": "py_btn_item",
-          "label": "Padding Y",
-          "default": 0,
-          "min": 0,
-          "max": 20,
-          "step": 1,
-          "unit": "px"
-        },
-        {
-          "type": "range",
-          "id": "px_btn_item",
-          "label": "Padding X",
-          "default": 0,
-          "min": 0,
-          "max": 30,
-          "step": 1,
-          "unit": "px"
-        },
-        {
           "type": "color_background",
           "id": "color_btn_item",
           "label": "Color",
@@ -471,46 +589,6 @@
           "id": "bg_hover_btn_item",
           "label": "Hover Background",
           "default": "#111"
-        },
-        {
-          "type": "select",
-          "id": "justify_content_customize",
-          "label": "Justify Content",
-          "default": "center",
-          "options": [
-            {
-              "value": "start",
-              "label": "Start"
-            },
-            {
-              "value": "center",
-              "label": "Center"
-            },
-            {
-              "value": "end",
-              "label": "End"
-            },
-          ]
-        },
-        {
-          "type": "select",
-          "id": "txt_align_customize",
-          "label": "Text Align",
-          "default": "center",
-          "options": [
-            {
-              "value": "start",
-              "label": "Start"
-            },
-            {
-              "value": "center",
-              "label": "Center"
-            },
-            {
-              "value": "end",
-              "label": "End"
-            },
-          ]
         },
       ]
     }

@@ -1,6 +1,6 @@
 .collection-packery--grid
   :is(
-    .collection-item,
+    /* .collection-item, */
     .collection-item__wrapper,
     .collection-item__media,
     .collection-item__media a

@@ -1723,10 +1723,10 @@ header.active li.visible .submenu:not(.submenu-vertical) {
 }
 .inset-0 {
   inset: 0;
-  left: 0;
+  /* left: 0;
   right: 0;
   bottom: 0;
-  top: 0;
+  top: 0; */
 }
 .top-left {
   align-self: baseline;

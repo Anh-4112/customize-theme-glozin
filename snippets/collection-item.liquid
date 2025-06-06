@@ -24,6 +24,15 @@
   assign image_custom_width = section_st.image_custom_width
   assign image_width = section_st.image_width
   assign font_size = section_st.font_size
+  assign pt_collection_item = section_st.pt_collection_item
+  assign pl_collection_item = section_st.pl_collection_item
+  assign pb_collection_item = section_st.pb_collection_item
+  assign pr_collection_item = section_st.pr_collection_item
+  assign py_btn_item = section_st.py_btn_item
+  assign px_btn_item = section_st.px_btn_item
+  assign txt_align = section_st.txt_align
+  assign jc_item = section_st.jc_item
+  assign ai_item = section_st.ai_item
   assign ratio = ''
   if image_ratio != 'adapt'
     case image_ratio
@@ -113,9 +122,17 @@
     </div>
 
     {% comment %} collection information {% endcomment %}
-    {% comment %} justify-content-{{ section_st.text_alignment }} text-{{ section_st.text_alignment }} {% endcomment %}
+    {% comment %} justify-content-{{ section_st.text_alignment }} text-{{ section_st.text_alignment }} bottom-15 bottom-md-30 inset-x-15 inset-x-md-30 {% endcomment %}
     <div
-      class="{{ wrapper_button_class }} collection-item__information{% if collection_information_position == 'below_image' %} mt-custom{% else %} absolute inset-x-15 bottom-15 inset-x-md-30 bottom-md-30 z-3 flex {% endif %}{% if collection_information_position == 'overlay_image' and  design == 'morden' %} flex-column align-item-{{  section_st.text_alignment }} gap-5{% endif %}"
+      class="jc-item ai-item p-collection-item collection-item__information{% if collection_information_position == 'below_image' %} mt-custom{% else %} absolute inset-0 z-3 flex {% endif %}{% if collection_information_position == 'overlay_image' and  design == 'morden' %} flex-column align-item-{{  section_st.text_alignment }} gap-5{% endif %}"
+      style="
+        --pt-collection-item: {{ pt_collection_item }};
+        --pl-collection-item: {{ pl_collection_item }};
+        --pb-collection-item: {{ pb_collection_item }};
+        --pr-collection-item: {{ pr_collection_item }};
+        --jc-item: {{ jc_item }};
+        --ai-item: {{ ai_item }};
+      "
       {% if collection_information_position == 'below_image' %}
         style="--space-top: {{ section_st.information_spacing }}px;"
       {% endif %}
@@ -127,8 +144,14 @@
       {% comment %} {% if collection_information_position == 'overlay_image' and  design == 'default' %} btn btn-white{% endif %} {% endcomment %}
       <a
         aria-label="{{ card_collection.title }}"
-        class="{{ button_class }} rounded-35 collection-item__name no-underline word-break heading-color {{ section_st.font_weight }}{% if font_size > 14 %} fs-medium-list{% else %} fs-custom{% endif %}{% if collection_information_position == 'below_image' %} mb-10{% else %} inline-flex gap-5 align-center justify-content-{{ section_st.text_alignment }}{% endif %}"
-        style="--font-size: {{ font_size }};--space-bottom: {{ section_st.spacing }}"
+        class="{{ button_class }} txt-align px-btn-item py-btn-item rounded-35 h-fit-content collection-item__name no-underline word-break heading-color {{ section_st.font_weight }}{% if font_size > 14 %} fs-medium-list{% else %} fs-custom{% endif %}{% if collection_information_position == 'below_image' %} mb-10{% else %} inline-flex gap-5 align-center justify-content-{{ section_st.text_alignment }}{% endif %}"
+        style="
+          --font-size: {{ font_size }};
+          --space-bottom: {{ section_st.spacing }};
+          --py-btn-item: {{ py_btn_item }};
+          --px-btn-item: {{ px_btn_item }};
+          --txt-align: {{ txt_align }};
+        "
         href="{{ card_collection.url }}"
       >
         <span class="collection-item__name-inner lh-normal inline-block{% if collection_information_position == 'overlay_image' and design == 'morden' %} heading_weight{% endif %} overflow-visible-important relative">
