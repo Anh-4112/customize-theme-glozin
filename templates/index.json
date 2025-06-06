@@ -148,25 +148,43 @@
         "collection_fxLq4q": {
           "type": "collection",
           "settings": {
-            "collection": "",
+            "collection": "collection-1",
             "collection_image": "shopify://shop_images/banner-1.jpg",
-            "collection_title": ""
+            "collection_title": "Trending <br>New Phone Pro",
+            "py_btn_item": 0,
+            "px_btn_item": 0,
+            "color_btn_item": "#111",
+            "bg_btn_item": "rgba(255, 255, 255, 0)",
+            "color_hover_btn_item": "#111",
+            "bg_hover_btn_item": "rgba(255, 255, 255, 0)"
           }
         },
         "collection_qHEjjt": {
           "type": "collection",
           "settings": {
-            "collection": "",
+            "collection": "collection-2",
             "collection_image": "shopify://shop_images/banner-2.jpg",
-            "collection_title": ""
+            "collection_title": "Top Product <br>MateBook Pro 2022",
+            "py_btn_item": 0,
+            "px_btn_item": 0,
+            "color_btn_item": "#111",
+            "bg_btn_item": "rgba(255, 255, 255, 0)",
+            "color_hover_btn_item": "#111",
+            "bg_hover_btn_item": "rgba(255, 255, 255, 0)"
           }
         },
         "collection_qDXhEd": {
           "type": "collection",
           "settings": {
-            "collection": "",
+            "collection": "collection-3",
             "collection_image": "shopify://shop_images/banner-3.jpg",
-            "collection_title": ""
+            "collection_title": "iPad Pro <br>Up To 20% Off",
+            "py_btn_item": 0,
+            "px_btn_item": 0,
+            "color_btn_item": "#111",
+            "bg_btn_item": "rgba(255, 255, 255, 0)",
+            "color_hover_btn_item": "#111",
+            "bg_hover_btn_item": "rgba(255, 255, 255, 0)"
           }
         }
       },
@@ -225,3 +243,4 @@
     "collection_list_custom_3a6FBE"
   ]
 }
+  

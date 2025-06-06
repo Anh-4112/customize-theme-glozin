@@ -40,6 +40,24 @@
 {% endif %}
 
 {% endcapture %}
+{% for block in section.blocks %}
+  {% assign block_st = block.settings %}
+<style>
+  .wrapper-btn-item-{{ block.id }} {
+    justify-content: {{block_st.justify_content_customize}};
+  }
+  .btn-item-{{ block.id }} {
+    padding: calc({{block_st.py_btn_item}} * 1px) calc({{block_st.px_btn_item}} * 1px);
+    text-align: {{block_st.txt_align_customize}};
+    color: {{block_st.color_btn_item}};
+    background-color: {{block_st.bg_btn_item}};
+  }
+  .btn-item-{{ block.id }}:hover {
+    color: {{block_st.color_hover_btn_item}};
+    background-color: {{block_st.bg_hover_btn_item}};
+  }
+</style>
+{% endfor %}
 <section
   class="bg-light-gray section{% if section_st.padding_top < 30 %} pt-min{% endif %}{% if section_st.padding_bottom < 30 %} pb-min{% endif %} sec__collection-packery color-{{ color_scheme }} gradient{{ reset_spacing }}"
   style="{{ style | strip | strip_newlines }}"
@@ -62,7 +80,7 @@
           "
           >
           <h2
-            class="section__header-heading  heading-letter-spacing {{ header_size  }} mt-0{% if section_st.description != blank %} mb-10{% else %} mb-0{% endif %}"
+            class="section__header-heading heading-letter-spacing {{ header_size  }} mt-0{% if section_st.description != blank %} mb-10{% else %} mb-0{% endif %}"
             style="
               {%- if scroll_animation != 'none' -%}
                 --animation-order: 0
@@ -107,12 +125,14 @@
       >
         {% for block in section.blocks %}
           {% assign block_st = block.settings %}
+          {% assign button_class = 'btn-item-' | append: block.id %}
+          {% assign wrapper_button_class = 'wrapper-btn-item-' | append: block.id %}
           <motion-element
-                data-motion="fade-up-lg"
-                data-motion-delay="50"
-                {% if scroll_animation != 'slide_in' %}
-                  hold
-                {% endif %}
+            data-motion="fade-up-lg"
+            data-motion-delay="50"
+            {% if scroll_animation != 'slide_in' %}
+              hold
+            {% endif %}
             data-motion-delay="{{ forloop.index0 | times: 50 }}"
             class="height-150 height-lg-200 collection-item grid-custom-item {% if scroll_animation != 'none' and scroll_animation != null %} scroll-trigger {{ scroll_animation }} {% endif %} {{ settings.hover_effect }}"
             {{ block.shopify_attributes }}
@@ -125,7 +145,9 @@
             section: section,
             block: block,
             collection_information_position: collection_information_position,
-            design: design
+            design: design,
+            button_class: button_class,
+            wrapper_button_class: wrapper_button_class
           %}
         </motion-element>
         {% endfor %}
@@ -289,36 +311,6 @@
       "label": "t:sections.collection-packery.settings.collection.show_product_count"
     },
     {
-      "type": "select",
-      "id": "text_alignment",
-      "label": "t:sections.all.content_settings.content_alignment.label",
-      "default": "center",
-      "options": [
-        {
-          "value": "left",
-          "label": "t:sections.all.content_settings.content_alignment.left.label"
-        },
-        {
-          "value": "center",
-          "label": "t:sections.all.content_settings.content_alignment.center.label"
-        },
-        {
-          "value": "right",
-          "label": "t:sections.all.content_settings.content_alignment.right.label"
-        }
-      ]
-    },
-    {
-      "type": "range",
-      "id": "column_gap",
-      "label": "t:sections.all.items.column_gap.label",
-      "min": 0,
-      "max": 50,
-      "step": 5,
-      "default": 30,
-      "unit": "px"
-    },
-    {
       "type": "header",
       "content": "t:sections.collection-packery.settings.collection_information.header"
     },
@@ -356,6 +348,8 @@
         }
       ]
     },
+
+    
     {
       "type": "header",
       "content": "t:sections.all.mobile_options.label"
@@ -429,7 +423,95 @@
           "id": "collection_title",
           "label": "t:sections.collection-packery.blocks.collection_title.label",
           "info": "t:sections.collection-packery.blocks.collection_title.info"
-        }
+        },
+        {
+          "type": "paragraph",
+          "content": "=== Button ==="
+        },
+        {
+          "type": "range",
+          "id": "py_btn_item",
+          "label": "Padding Y",
+          "default": 0,
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "px_btn_item",
+          "label": "Padding X",
+          "default": 0,
+          "min": 0,
+          "max": 30,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "color_background",
+          "id": "color_btn_item",
+          "label": "Color",
+          "default": "#111"
+        },
+        {
+          "type": "color_background",
+          "id": "bg_btn_item",
+          "label": "Background",
+          "default": "#fff"
+        },
+        {
+          "type": "color_background",
+          "id": "color_hover_btn_item",
+          "label": "Hover Color",
+          "default": "#fff"
+        },
+        {
+          "type": "color_background",
+          "id": "bg_hover_btn_item",
+          "label": "Hover Background",
+          "default": "#111"
+        },
+        {
+          "type": "select",
+          "id": "justify_content_customize",
+          "label": "Justify Content",
+          "default": "center",
+          "options": [
+            {
+              "value": "start",
+              "label": "Start"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "end",
+              "label": "End"
+            },
+          ]
+        },
+        {
+          "type": "select",
+          "id": "txt_align_customize",
+          "label": "Text Align",
+          "default": "center",
+          "options": [
+            {
+              "value": "start",
+              "label": "Start"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "end",
+              "label": "End"
+            },
+          ]
+        },
       ]
     }
   ],

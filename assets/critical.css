@@ -770,6 +770,9 @@ picture {
 .rounded-0 {
   border-radius: 0;
 }
+.rounded-35 {
+  border-radius: 20px;
+}
 :where(.rounded) {
   border-radius: var(--rounded-radius);
   overflow: hidden;

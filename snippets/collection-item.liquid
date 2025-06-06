@@ -113,9 +113,9 @@
     </div>
 
     {% comment %} collection information {% endcomment %}
-    {% comment %} 
+    {% comment %} justify-content-{{ section_st.text_alignment }} text-{{ section_st.text_alignment }} {% endcomment %}
     <div
-      class="collection-item__information{% if collection_information_position == 'below_image' %} mt-custom{% else %} absolute inset-x-15 bottom-15 inset-x-md-30 bottom-md-30 z-3 flex justify-content-{{ section_st.text_alignment }}{% endif %} text-{{ section_st.text_alignment }}{% if collection_information_position == 'overlay_image' and  design == 'morden' %} flex-column align-item-{{  section_st.text_alignment }} gap-5{% endif %}"
+      class="{{ wrapper_button_class }} collection-item__information{% if collection_information_position == 'below_image' %} mt-custom{% else %} absolute inset-x-15 bottom-15 inset-x-md-30 bottom-md-30 z-3 flex {% endif %}{% if collection_information_position == 'overlay_image' and  design == 'morden' %} flex-column align-item-{{  section_st.text_alignment }} gap-5{% endif %}"
       {% if collection_information_position == 'below_image' %}
         style="--space-top: {{ section_st.information_spacing }}px;"
       {% endif %}
@@ -124,9 +124,10 @@
       {% if collection_information_position == 'overlay_image' and section_st.show_icon and design == 'morden' %}
         <div class="flex align-center justify-between"><div>
       {% endif %}
+      {% comment %} {% if collection_information_position == 'overlay_image' and  design == 'default' %} btn btn-white{% endif %} {% endcomment %}
       <a
         aria-label="{{ card_collection.title }}"
-        class="collection-item__name no-underline word-break heading-color {{ section_st.font_weight }}{% if font_size > 14 %} fs-medium-list{% else %} fs-custom{% endif %}{% if collection_information_position == 'below_image' %} mb-10{% else %} inline-flex gap-5 align-center justify-content-{{ section_st.text_alignment }}{% endif %}{% if collection_information_position == 'overlay_image' and  design == 'default' %} btn btn-white{% endif %}"
+        class="{{ button_class }} rounded-35 collection-item__name no-underline word-break heading-color {{ section_st.font_weight }}{% if font_size > 14 %} fs-medium-list{% else %} fs-custom{% endif %}{% if collection_information_position == 'below_image' %} mb-10{% else %} inline-flex gap-5 align-center justify-content-{{ section_st.text_alignment }}{% endif %}"
         style="--font-size: {{ font_size }};--space-bottom: {{ section_st.spacing }}"
         href="{{ card_collection.url }}"
       >
@@ -220,9 +221,7 @@
         </div>
       {% endif %}
     </div> 
-    {% endcomment %}
   </div>
-  
 {% else %}
   {% comment %} ============================================================================== {% endcomment %}
   {% comment %} Case card collection has no data, handle default data with shopify placeholder {% endcomment %}
@@ -256,7 +255,6 @@
         {% endif %}
       </a>
     </div>
-    {% comment %}
     <div
       class="collection-item__information{% if collection_information_position == 'below_image' %} mt-custom{% else %} absolute inset-x-15 bottom-15 inset-x-md-30 bottom-md-30 z-3 flex justify-content-{{ section_st.text_alignment }} {% endif %} text-{{ section_st.text_alignment }}{% if collection_information_position == 'overlay_image' and  design == 'morden' %} flex-column align-item-{{  section_st.text_alignment }} gap-5{% endif %}"
       {% if collection_information_position == 'below_image' %}
@@ -329,6 +327,5 @@
         </div>
       {% endif %}
     </div>
-    {% endcomment %}
   </div>
 {% endif %}
