@@ -40,19 +40,6 @@
 {% endif %}
 
 {% endcapture %}
-{% for block in section.blocks %}
-  {% assign block_st = block.settings %}
-<style>
-  .btn-item-{{ block.id }} {
-    color: {{block_st.color_btn_item}};
-    background-color: {{block_st.bg_btn_item}};
-  }
-  .btn-item-{{ block.id }}:hover {
-    color: {{block_st.color_hover_btn_item}};
-    background-color: {{block_st.bg_hover_btn_item}};
-  }
-</style>
-{% endfor %}
 <section
   class="bg-light-gray section{% if section_st.padding_top < 30 %} pt-min{% endif %}{% if section_st.padding_bottom < 30 %} pb-min{% endif %} sec__collection-packery color-{{ color_scheme }} gradient{{ reset_spacing }}"
   style="{{ style | strip | strip_newlines }}"
@@ -120,8 +107,6 @@
       >
         {% for block in section.blocks %}
           {% assign block_st = block.settings %}
-          {% assign button_class = 'btn-item-' | append: block.id %}
-          {% assign wrapper_button_class = 'wrapper-btn-item-' | append: block.id %}
           <motion-element
             data-motion="fade-up-lg"
             data-motion-delay="50"
@@ -142,8 +127,6 @@
             block: block,
             collection_information_position: collection_information_position,
             design: design,
-            button_class: button_class,
-            wrapper_button_class: wrapper_button_class
           %}
         </motion-element>
         {% endfor %}
@@ -308,7 +291,7 @@
     },
     {
       "type": "header",
-      "content": "Height",
+      "content": "Collection height",
     },
     {
       "type": "range",
@@ -332,41 +315,7 @@
     },
     {
       "type": "header",
-      "content": "t:sections.collection-packery.settings.collection_information.header"
-    },
-    {
-      "type": "paragraph",
-      "content": "t:sections.collection-packery.settings.collection_information.collection_name"
-    },
-    {
-      "type": "range",
-      "id": "font_size",
-      "label": "t:sections.all.content_settings.font_size.label",
-      "min": 12,
-      "max": 20,
-      "step": 1,
-      "default": 14,
-      "unit": "px"
-    },
-    {
-      "type": "select",
-      "id": "font_weight",
-      "label": "t:sections.all.content_settings.font_weight.label",
-      "default": "heading_weight",
-      "options": [
-        {
-          "value": "body_weight",
-          "label": "t:sections.all.content_settings.font_weight.body_weight.label"
-        },
-        {
-          "value": "subheading_weight",
-          "label": "t:sections.all.content_settings.font_weight.subheading_weight.label"
-        },
-        {
-          "value": "heading_weight",
-          "label": "t:sections.all.content_settings.font_weight.heading_weight.label"
-        }
-      ]
+      "content": "Setting content Collection infor",
     },
     {
       "type": "paragraph",
@@ -416,7 +365,7 @@
       "type": "select",
       "id": "jc_item",
       "label": "Justify Content",
-      "default": "center",
+      "default": "start",
       "options": [
         {
           "value": "start",
@@ -432,7 +381,7 @@
         },
       ]
     },
-        {
+    {
       "type": "select",
       "id": "ai_item",
       "label": "Algin Item",
@@ -449,10 +398,48 @@
       ]
     },
     {
+      "type": "header",
+      "content": "t:sections.collection-packery.settings.collection_information.header"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.collection-packery.settings.collection_information.collection_name"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "t:sections.all.content_settings.font_size.label",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "default": 14,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "t:sections.all.content_settings.font_weight.label",
+      "default": "heading_weight",
+      "options": [
+        {
+          "value": "body_weight",
+          "label": "t:sections.all.content_settings.font_weight.body_weight.label"
+        },
+        {
+          "value": "subheading_weight",
+          "label": "t:sections.all.content_settings.font_weight.subheading_weight.label"
+        },
+        {
+          "value": "heading_weight",
+          "label": "t:sections.all.content_settings.font_weight.heading_weight.label"
+        }
+      ]
+    },
+    {
       "type": "select",
       "id": "txt_align",
       "label": "Text Align",
-      "default": "center",
+      "default": "start",
       "options": [
         {
           "value": "start",
@@ -487,6 +474,92 @@
       "max": 30,
       "step": 1,
       "unit": "px"
+    },
+    {
+      "type": "color_background",
+      "id": "color_btn_item",
+      "label": "Color",
+      "default": "#111"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_btn_item",
+      "label": "Background",
+      "default": "#fff"
+    },
+    {
+      "type": "color_background",
+      "id": "color_hover_btn_item",
+      "label": "Hover Color",
+      "default": "#fff"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_hover_btn_item",
+      "label": "Hover Background",
+      "default": "#111"
+    },
+    {
+      "type": "paragraph",
+      "content": "Subtitle",
+    },
+    {
+      "type": "range",
+      "id": "mt_subtitle",
+      "label": "Spacing Top",
+      "default": 0,
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+    },
+    {
+      "type": "range",
+      "id": "fs_subtitle",
+      "label": "Font Size",
+      "default": 12,
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+    },
+    {
+      "type": "select",
+      "id": "fw_subtitle",
+      "label": "Font Weight",
+      "default": "200",
+      "options": [
+        {
+          "value": "200",
+          "label": "200",
+        },
+        {
+          "value": "300",
+          "label": "300",
+        },
+        {
+          "value": "400",
+          "label": "400",
+        },
+        {
+          "value": "500",
+          "label": "500",
+        },
+        {
+          "value": "600",
+          "label": "600",
+        },
+        {
+          "value": "700",
+          "label": "700",
+        },
+      ]
+    },
+    {
+      "type": "color_background",
+      "id": "color_subtitle",
+      "label": "Color",
+      "default": "#111",
     },
     {
       "type": "header",
@@ -563,32 +636,9 @@
           "info": "t:sections.collection-packery.blocks.collection_title.info"
         },
         {
-          "type": "paragraph",
-          "content": "=== Button ==="
-        },
-        {
-          "type": "color_background",
-          "id": "color_btn_item",
-          "label": "Color",
-          "default": "#111"
-        },
-        {
-          "type": "color_background",
-          "id": "bg_btn_item",
-          "label": "Background",
-          "default": "#fff"
-        },
-        {
-          "type": "color_background",
-          "id": "color_hover_btn_item",
-          "label": "Hover Color",
-          "default": "#fff"
-        },
-        {
-          "type": "color_background",
-          "id": "bg_hover_btn_item",
-          "label": "Hover Background",
-          "default": "#111"
+          "type": "text",
+          "id": "collection_subtitle",
+          "label": "Collection Subtitle",
         },
       ]
     }

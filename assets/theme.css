@@ -2140,6 +2140,25 @@ mini-cart-remove-button.loading .remove-icon {
   padding-right: calc(var(--pr-collection-item) * 1px);
 }
 
+/* Sử dụng flex-direction: column; nên thay đổi thuộc tính align-items và justify-content */
+.jc-item {
+  align-items: var(--jc-item);
+}
+
+.ai-item {
+  justify-content: var(--ai-item);
+}
+
+.btn-item {
+    color: var(--color-btn-item);
+    background-color: var(--bg-btn-item);
+}
+
+.btn-item:hover {
+    color: var(--color-hover-btn-item);
+    background-color: var(--bg-hover-btn-item);
+}
+
 .py-btn-item {
   padding-top:  calc(var(--py-btn-item) * 1px);
   padding-bottom: calc(var(--py-btn-item) * 1px);
@@ -2154,12 +2173,20 @@ mini-cart-remove-button.loading .remove-icon {
   text-align: var(--txt-align);
 }
 
-.jc-item {
-  justify-content: var(--jc-item);
+.mt-subtitle {
+  margin-top: calc(var(--mt-subtitle) * 1px);
 }
 
-.ai-item {
-  align-items: var(--ai-item);
+.fs-subtitle {
+  font-size: calc(var(--fs-subtitle) * 1px);
+}
+
+.fw-subtitle {
+  font-weight: var(--fw-subtitle);
+} 
+
+.color-subtitle {
+  color: var(--color-subtitle);
 }
 
 @media (max-width: 380.98px) {

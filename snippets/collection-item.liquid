@@ -15,6 +15,7 @@
   assign block_st = block.settings
   assign collection_image = block_st.collection_image
   assign collection_title = block_st.collection_title
+  assign collection_subtitle = block_st.collection_subtitle
   assign image_ratio = section_st.image_ratio
   assign custom_ratio = section_st.custom_ratio
   assign show_product_count = section_st.show_product_count
@@ -23,16 +24,28 @@
   assign rounded_image = section_st.rounded_image
   assign image_custom_width = section_st.image_custom_width
   assign image_width = section_st.image_width
-  assign font_size = section_st.font_size
+
   assign pt_collection_item = section_st.pt_collection_item
   assign pl_collection_item = section_st.pl_collection_item
   assign pb_collection_item = section_st.pb_collection_item
   assign pr_collection_item = section_st.pr_collection_item
+  assign jc_item = section_st.jc_item
+  assign ai_item = section_st.ai_item
+  
+  assign font_size = section_st.font_size
+  assign color_btn_item = section_st.color_btn_item
+  assign bg_btn_item = section_st.bg_btn_item
+  assign color_hover_btn_item = section_st.color_hover_btn_item
+  assign bg_hover_btn_item = section_st.bg_hover_btn_item
   assign py_btn_item = section_st.py_btn_item
   assign px_btn_item = section_st.px_btn_item
   assign txt_align = section_st.txt_align
-  assign jc_item = section_st.jc_item
-  assign ai_item = section_st.ai_item
+
+  assign mt_subtitle = section_st.mt_subtitle
+  assign fs_subtitle = section_st.fs_subtitle
+  assign fw_subtitle = section_st.fw_subtitle
+  assign color_subtitle = section_st.color_subtitle
+
   assign ratio = ''
   if image_ratio != 'adapt'
     case image_ratio
@@ -124,7 +137,7 @@
     {% comment %} collection information {% endcomment %}
     {% comment %} justify-content-{{ section_st.text_alignment }} text-{{ section_st.text_alignment }} bottom-15 bottom-md-30 inset-x-15 inset-x-md-30 {% endcomment %}
     <div
-      class="jc-item ai-item p-collection-item collection-item__information{% if collection_information_position == 'below_image' %} mt-custom{% else %} absolute inset-0 z-3 flex {% endif %}{% if collection_information_position == 'overlay_image' and  design == 'morden' %} flex-column align-item-{{  section_st.text_alignment }} gap-5{% endif %}"
+      class="column jc-item ai-item p-collection-item collection-item__information{% if collection_information_position == 'below_image' %} mt-custom{% else %} absolute inset-0 z-3 flex {% endif %}{% if collection_information_position == 'overlay_image' and  design == 'morden' %} flex-column align-item-{{  section_st.text_alignment }} gap-5{% endif %}"
       style="
         --pt-collection-item: {{ pt_collection_item }};
         --pl-collection-item: {{ pl_collection_item }};
@@ -144,10 +157,14 @@
       {% comment %} {% if collection_information_position == 'overlay_image' and  design == 'default' %} btn btn-white{% endif %} {% endcomment %}
       <a
         aria-label="{{ card_collection.title }}"
-        class="{{ button_class }} txt-align px-btn-item py-btn-item rounded-35 h-fit-content collection-item__name no-underline word-break heading-color {{ section_st.font_weight }}{% if font_size > 14 %} fs-medium-list{% else %} fs-custom{% endif %}{% if collection_information_position == 'below_image' %} mb-10{% else %} inline-flex gap-5 align-center justify-content-{{ section_st.text_alignment }}{% endif %}"
+        class="btn-item px-btn-item py-btn-item txt-align rounded-20 h-fit-content collection-item__name no-underline word-break heading-color {{ section_st.font_weight }}{% if font_size > 14 %} fs-medium-list{% else %} fs-custom{% endif %}{% if collection_information_position == 'below_image' %} mb-10{% else %} inline-flex gap-5 align-center justify-content-{{ section_st.text_alignment }}{% endif %}"
         style="
           --font-size: {{ font_size }};
           --space-bottom: {{ section_st.spacing }};
+          --color-btn-item: {{ color_btn_item }};
+          --bg-btn-item: {{ bg_btn_item }};
+          --color-hover-btn-item: {{ color_hover_btn_item }};
+          --bg-hover-btn-item: {{ bg_hover_btn_item }};
           --py-btn-item: {{ py_btn_item }};
           --px-btn-item: {{ px_btn_item }};
           --txt-align: {{ txt_align }};
@@ -191,6 +208,20 @@
           {% endif %}
         {% endif %}
       </a>
+
+      {% if collection_subtitle != blank %}
+        <div 
+          class="mt-subtitle fs-subtitle fw-subtitle color-subtitle"
+          style="
+            --mt-subtitle: {{ mt_subtitle }};
+            --fs-subtitle: {{ fs_subtitle }};
+            --fw-subtitle: {{ fw_subtitle }};
+            --color-subtitle: {{ color_subtitle }};
+          "
+        >
+          {{ collection_subtitle }}
+        </div>
+      {% endif %}
 
       {% if collection_information_position == 'overlay_image'
         and design == 'morden'

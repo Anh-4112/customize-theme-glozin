@@ -151,14 +151,7 @@
             "collection": "collection-1",
             "collection_image": "shopify://shop_images/banner-1.jpg",
             "collection_title": "Trending <br>New Phone Pro",
-            "py_btn_item": 0,
-            "px_btn_item": 0,
-            "color_btn_item": "#111",
-            "bg_btn_item": "rgba(255, 255, 255, 0)",
-            "color_hover_btn_item": "#111",
-            "bg_hover_btn_item": "rgba(255, 255, 255, 0)",
-            "justify_content_customize": "start",
-            "txt_align_customize": "start"
+            "collection_subtitle": "Save 20% On Products"
           }
         },
         "collection_qHEjjt": {
@@ -167,14 +160,7 @@
             "collection": "collection-2",
             "collection_image": "shopify://shop_images/banner-2.jpg",
             "collection_title": "Top Product <br>MateBook Pro 2022",
-            "py_btn_item": 0,
-            "px_btn_item": 0,
-            "color_btn_item": "#111",
-            "bg_btn_item": "rgba(255, 255, 255, 0)",
-            "color_hover_btn_item": "#111",
-            "bg_hover_btn_item": "rgba(255, 255, 255, 0)",
-            "justify_content_customize": "start",
-            "txt_align_customize": "start"
+            "collection_subtitle": "Top Quality Products"
           }
         },
         "collection_qDXhEd": {
@@ -183,14 +169,7 @@
             "collection": "collection-3",
             "collection_image": "shopify://shop_images/banner-3.jpg",
             "collection_title": "iPad Pro <br>Up To 20% Off",
-            "py_btn_item": 0,
-            "px_btn_item": 0,
-            "color_btn_item": "#111",
-            "bg_btn_item": "rgba(255, 255, 255, 0)",
-            "color_hover_btn_item": "#111",
-            "bg_hover_btn_item": "rgba(255, 255, 255, 0)",
-            "justify_content_customize": "start",
-            "txt_align_customize": "start"
+            "collection_subtitle": "20 Days Return Products"
           }
         }
       },
@@ -211,8 +190,27 @@
         "image_ratio": "square",
         "custom_ratio": "",
         "show_product_count": false,
+        "h_item_mobile": 150,
+        "h_item_pc": 200,
+        "pt_collection_item": 35,
+        "pl_collection_item": 30,
+        "pb_collection_item": 35,
+        "pr_collection_item": 30,
+        "jc_item": "start",
+        "ai_item": "start",
         "font_size": 18,
         "font_weight": "heading_weight",
+        "txt_align": "start",
+        "py_btn_item": 0,
+        "px_btn_item": 0,
+        "color_btn_item": "#111",
+        "bg_btn_item": "rgb(255, 255, 255, 0)",
+        "color_hover_btn_item": "#111",
+        "bg_hover_btn_item": "rgb(255, 255, 255, 0)",
+        "mt_subtitle": 24,
+        "fs_subtitle": 14,
+        "fw_subtitle": "500",
+        "color_subtitle": "#111",
         "carousel_on_mobile": false,
         "items_per_row_mobile": 1,
         "padding_top": 5,
