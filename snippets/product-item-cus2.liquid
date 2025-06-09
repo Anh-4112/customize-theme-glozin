@@ -29,6 +29,12 @@
   endif
 %}
 {% liquid
+  assign section_st = section.settings
+  assign w_img_product = section_st.w_img_product
+  assign mt_img_product = section_st.mt_img_product
+  assign top_btn_pi = section_st.top_btn_pi
+  assign right_btn_pi = section_st.right_btn_pi
+
   assign theme_st = settings
   assign product_image_ratio = theme_st.product_image_ratio
   assign product_custom_ratio = theme_st.product_custom_ratio
@@ -37,12 +43,10 @@
   assign show_quick_view = theme_st.show_quick_view
   assign show_wishlist = theme_st.show_wishlist
   assign show_compare = theme_st.show_compare
-  assign show_vendor = theme_st.show_vendor
   assign show_short_description = theme_st.show_short_description
   assign show_rate = theme_st.show_rate
   assign show_secondary_image = theme_st.show_secondary_image
   assign show_add_cart = theme_st.show_add_cart
-  assign show_variant = theme_st.show_variant
   assign product_truncation_title = theme_st.product_truncation_title
   assign hidden_price = theme_st.hidden_price
   assign wishlist = pages.wishlist
@@ -91,7 +95,8 @@
       style="{% if indexFor and scroll_animation %}--animation-order: {{ indexFor }};  {% endif %}{% if type == 'list' %}--gap: 15{% endif %}"
     >
       {% comment %} Product inner media {% endcomment %}
-      <div class="mx-30 product-item__inner hover-effect overflow-hidden relative{% if type == 'list' or type == 'sticky' %} col-w-custom{% endif %}">
+      {% comment %} mx-30 {% endcomment %}
+      <div class="product-item__inner hover-effect overflow-hidden relative{% if type == 'list' or type == 'sticky' %} col-w-custom{% endif %}">
         {% assign product_media = card_product.featured_media %}
         {% comment %} Case product has image {% endcomment %}
         {%- if product_media -%}
@@ -125,6 +130,7 @@
               assign type_video = true
             endif
           -%}
+          {% comment %} mx-30 my-10  {% endcomment %}
           <a
             draggable="false"
             {% if template_disable_product_url == true %}
@@ -133,8 +139,12 @@
               href="{{ card_product.url }}"
             {% endif %}
             aria-label="{{ card_product.title }}"
-            class="mx-30 my-10 product__media product-item__media--ratio rounded block{% if card_product.media[1] != blank and show_secondary_image %} show_secondary{% endif %}"
-            style="--aspect-ratio: {{ ratio }};"
+            class="mx-auto w-img-product mt-img-product product__media product-item__media--ratio rounded block{% if card_product.media[1] != blank and show_secondary_image %} show_secondary{% endif %}"
+            style="
+              --aspect-ratio: {{ ratio }};
+              --w-img-product: {{ w_img_product }};
+              --mt-img-product: {{ mt_img_product }};
+            "
           >
             {% if type_video %}
               {%- liquid
@@ -315,12 +325,26 @@
               </button-wishlist>
             {%- endif -%}
           {% endif %}
-          
-          <div class="product-item__action transition flex flex-column gap-10 absolute static-1025 top-15 right-5{% if settings.show_action_on_mobile and product_style != 'card' %} invisible-1025{% elsif settings.show_action_on_mobile and product_style == 'card' %} visible-1025{% elsif settings.show_action_on_mobile == false and product_style == 'card' %} visible-1025{% endif %}{% if settings.show_action_on_mobile == false %} invisible{% endif %}">
+          {% comment %} top-15 right-5  {% endcomment %}
+          {% comment %} product-item = pi {% endcomment %}
+          <div 
+            class="top-btn-pi right-btn-pi product-item__action transition flex flex-column gap-10 absolute static-1025{% if settings.show_action_on_mobile and product_style != 'card' %} invisible-1025{% elsif settings.show_action_on_mobile and product_style == 'card' %} visible-1025{% elsif settings.show_action_on_mobile == false and product_style == 'card' %} visible-1025{% endif %}{% if settings.show_action_on_mobile == false %} invisible{% endif %}"
+            style="
+              --top-btn-pi: {{ top_btn_pi }};
+              --right-btn-pi: {{ right_btn_pi }};
+            "
+          >
             {% if template_enable_action == true %}
               {% if show_quick_view == true or show_compare == true or show_wishlist == true %}
                 {% if type != 'product-set' %}
-                  <div class="product-item__button-action heading-color transition flex gap-10 absolute-1025 z-5{% if product_style == 'morden' %} inset-x-0 bottom-10 bottom-1025-15 flex-row justify-center action__morden-style{% endif %}{% if product_style != 'morden' %} flex-column bottom-10 bottom-1025-auto top-1025-30{% if settings.rtl %} left-10 left-1025-15{% else %} right-10 right-1025-5{% endif %}{% endif %}{% if product_style != 'card' %} product__action-animation{% endif %}">
+                  {% comment %} top-1025-30 right-1025-5  {% endcomment %}
+                  <div 
+                    class="top-btn-pi right-btn-pi product-item__button-action heading-color transition flex gap-10 absolute-1025 z-5{% if product_style == 'morden' %} inset-x-0 bottom-10 bottom-1025-15 flex-row justify-center action__morden-style{% endif %}{% if product_style != 'morden' %} flex-column bottom-10 bottom-1025-auto {% if settings.rtl %} left-10 left-1025-15{% else %} right-10 {% endif %}{% endif %}{% if product_style != 'card' %} product__action-animation{% endif %}"
+                    style="
+                      --top-btn-pi: {{ top_btn_pi }};
+                      --right-btn-pi: {{ right_btn_pi }};
+                    "
+                  >
                     {% comment %} Product item wishlist {% endcomment %}
                     {%- if show_wishlist == true -%}
                       {% if wishlist == empty %}
@@ -730,9 +754,6 @@
           </a>
         </div>
       </div>
-
-
-
     </motion-element>
   </div>
 {% endif %}

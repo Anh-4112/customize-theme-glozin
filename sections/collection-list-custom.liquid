@@ -6,16 +6,15 @@
     assign reset_spacing = ' remove_spacing'
   endif
 
-  assign show_view_all_button = section_st.show_view_all_button
-  assign button_label = section_st.button_label
-  assign heading = section_st.heading
-  assign description = section_st.description
-  assign header_size = ''
-  if section_st.header_size == 'small'
-    assign header_size = 'h3'
-  elsif section_st.header_size == 'large'
-    assign header_size = 'h1-size'
-  endif
+  assign collection_title = section_st.collection_title
+  assign pt_col_title = section_st.pt_col_title
+  assign mx_col_title = section_st.mx_col_title
+  assign pb_col_title = section_st.pb_col_title
+  assign fs_col_title = section_st.fs_col_title
+  assign fw_col_title = section_st.fw_col_title
+  assign color_col_title = section_st.color_col_title
+  assign txt_align_col_title = section_st.txt_align_col_title
+
   if section_st.items_per_row_mobile > 1 and section_st.items_per_row_mobile < 2
     assign data_free_scroll = 'true'
   endif
@@ -34,9 +33,11 @@
 {%- capture style -%}
   --section-pt: {{ section_st.padding_top }}; --section-pb: {{ section_st.padding_bottom }};
 {%- endcapture -%}
-{%- capture col_style -%}
-{% if column_gap < 15 %}--col-gap: {{ column_gap }}px;{% else %}--col-gap: 15px;--col-gap-desktop: {{  column_gap }}px;{% endif %}
-{%- endcapture -%}
+{% comment %}
+  {%- capture col_style -%}
+    {% if column_gap < 15 %}--col-gap: {{ column_gap }}px;{% else %}--col-gap: 15px;--col-gap-desktop: {{  column_gap }}px;{% endif %}
+  {%- endcapture -%}
+{% endcomment %}
 <div
   class="bg-light-gray section{% if section_st.padding_top < 30 %} pt-min{% endif %}{% if section_st.padding_bottom < 30 %} pb-min{% endif %} sec__products-carousel color-{{ color_scheme }} gradient{{ reset_spacing }}{% if reveal %} overflow-hidden{% endif %}"
   style="{{ style | strip | strip_newlines }}"
@@ -86,75 +87,20 @@
         data-tablet="2"
         data-free-scroll="{{ data_free_scroll }}"
       >
-        {%- if heading != blank or description != blank -%}
-          <div
-            class="
-              mx-30 mt-30 bor-bot bor-1 bor-gray-light 
-              section__header text-{{ section_st.header_alignment }}{% if section_st.section_width == 'full_width' %} px-20{% endif %}
-              {% if show_view_all_button %} flex gap-15 gap-md-30 flex-wrap {% if section_st.header_alignment == 'center'  %} justify-content-{{ section_st.header_alignment }} {% else %} justify-between {% endif %} align-center{% if section_st.header_alignment == 'right' %} flex-row-reverse{% endif %}{% endif %}
+        {% if collection_title != blank %}
+          <div 
+            class="spacing-col-title fs-col-title fw-col-title color-col-title txt-align-col-title bor-bot bor-1 bor-light-cool-gray"
+            style="
+              --pt-col-title: {{ pt_col_title }};
+              --mx-col-title: {{ mx_col_title }};
+              --pb-col-title: {{ pb_col_title }};
+              --fs-col-title: {{ fs_col_title }};
+              --fw-col-title: {{ fw_col_title }};
+              --color-col-title: {{ color_col_title }};
+              --txt-align-col-title: {{ txt_align_col_title }};
             "
           >
-            {%- if heading != blank or description != blank -%}
-              <div class="secion__header-inner">
-                {%- if section_st.heading != blank -%}
-                  <motion-element
-                    data-motion="fade-up"           
-                    {% if scroll_animation != 'slide_in' %}
-                      hold
-                    {% endif %}
-                    data-motion-delay="50"
-                    class="block  {% if scroll_animation != 'none' %} scroll-trigger {{ scroll_animation }} {% endif %}"
-                    style="
-                    {%- if scroll_animation != 'none' -%}
-                      --animation-order: 0;
-                    {% endif %}
-                  "
-                  >
-                  <h2
-                    class="fs-20 mb-5 section__header-heading heading-letter-spacing  {{ header_size  }} mt-0{% if section_st.description != blank %} mb-10{% else %} mb-0{% endif %}"
-                    {%- if scroll_animation != 'none' -%}
-                      style="--animation-order: 0"
-                    {% endif %}
-                  >
-                    {{ section_st.heading }}
-                  </h2>
-                </motion-element>
-                {% endif %}
-                {%- if section_st.description != blank -%}
-                  <motion-element
-                    data-motion="fade-up"
-                    data-motion-delay="150"
-                    {% if scroll_animation != 'slide_in' %}
-                      hold
-                    {% endif %}
-                    class="block {% if scroll_animation != 'none' -%} scroll-trigger {{ scroll_animation }}{% endif %} "
-                    style="
-                    {%- if scroll_animation != 'none' -%}
-                      --animation-order: 1;
-                    {% endif %}
-                  "
-                  >
-                  <div
-                    class="section__header-des  rich__text-m0"
-                    {%- if scroll_animation != 'none' -%}
-                      style="--animation-order: 1"
-                    {% endif %}
-                  >
-                    {{ section_st.description }}
-                  </div>
-                </motion-element>
-                {% endif %}
-              </div>
-            {% endif %}
-            {% if show_view_all_button and section_st.header_alignment != 'center' %}
-              <a
-                class="btn_view-all no-underline inline-flex btn-link"
-                href="{{ section_st.collection.url }}"
-                aria-label="{{ button_label }}"
-              >
-                {{- 'general.view_all' | t -}}
-              </a>
-            {% endif %}
+            {{ collection_title }}
           </div>
         {% endif %}
 
@@ -162,6 +108,7 @@
           {% for product in section_st.collection_2.products limit: items_to_show_2 %}
             {% render 'product-item-cus2',
               card_product: product,
+              section: section,
               section_id: section.id,
               container: section_width,
               colunm: items_per_row,
@@ -254,7 +201,6 @@
       "default": "scheme-1"
     },
 
-
     {
       "type": "header",
       "content": "Products 1"
@@ -270,10 +216,8 @@
       "content": "Products 2"
     },
     {
-      "type": "text",
-      "id": "heading",
-      "label": "t:sections.all.section_header.heading.label",
-      "default": "Product carousel"
+      "type": "paragraph",
+      "content": "=== Collection Setting ===",
     },
     {
       "type": "collection",
@@ -321,7 +265,159 @@
       "unit": "s",
       "default": 2
     },
-
+    {
+      "type": "text",
+      "id": "collection_title",
+      "label": "=== Collection Title ===",
+    },
+    {
+      "type": "paragraph",
+      "content": "Spacing:",
+    },
+    {
+      "type": "range",
+      "id": "pt_col_title",
+      "label": "Top",
+      "default": 30,
+      "min": 0,
+      "max": 50,
+      "unit": "px",
+    },
+    {
+      "type": "range",
+      "id": "mx_col_title",
+      "label": "Left / Right",
+      "default": 35,
+      "min": 0,
+      "max": 50,
+      "unit": "px",
+    },
+    {
+      "type": "range",
+      "id": "pb_col_title",
+      "label": "Bottom",
+      "default": 5,
+      "min": 0,
+      "max": 50,
+      "unit": "px",
+    },
+    {
+      "type": "range",
+      "id": "fs_col_title",
+      "label": "Font Size",
+      "default": 16,
+      "min": 12,
+      "max": 30,
+      "unit": "px",
+    },
+    {
+      "type": "select",
+      "id": "fw_col_title",
+      "label": "Font Weight",
+      "default": "500",
+      "options": [
+        {
+          "value": "200",
+          "label": "200",
+        },
+        {
+          "value": "300",
+          "label": "300",
+        },
+        {
+          "value": "400",
+          "label": "400",
+        },
+        {
+          "value": "500",
+          "label": "500",
+        },
+        {
+          "value": "600",
+          "label": "600",
+        },
+        {
+          "value": "700",
+          "label": "700",
+        },
+      ]
+    },
+    {
+      "type": "color",
+      "id": "color_col_title",
+      "label": "Color",
+      "default": "#111",
+    },
+    {
+      "type": "select",
+      "id": "txt_align_col_title",
+      "label": "Text Aligh",
+      "default": "start",
+      "options": [
+        {
+          "value": "start",
+          "label": "Start",
+        },
+        {
+          "value": "center",
+          "label": "Center",
+        },
+        {
+          "value": "end",
+          "label": "End",
+        },
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": "=== Product Setting ===",
+    },
+    {
+      "type": "paragraph",
+      "content": "Image:",
+    },
+    {
+      "type": "range",
+      "id": "mt_img_product",
+      "label": "Top Spacing",
+      "default": 0,
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+    },
+    {
+      "type": "range",
+      "id": "w_img_product",
+      "label": "Width",
+      "default": 50,
+      "min": 50,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+    },
+    {
+      "type": "paragraph",
+      "content": "Button Position:",
+    },
+    {
+      "type": "range",
+      "id": "top_btn_pi",
+      "label": "Top",
+      "default": 40,
+      "min": 0,
+      "max": 70,
+      "unit": "px",
+    },
+    {
+      "type": "range",
+      "id": "right_btn_pi",
+      "label": "Right",
+      "default": 30,
+      "min": 0,
+      "max": 50,
+      "unit": "px",
+    },
 
     {
       "type": "header",
