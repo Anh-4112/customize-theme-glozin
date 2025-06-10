@@ -289,7 +289,6 @@
           </a>
         {%- endif -%}
 
-        {% comment %}
         {% if template_enable_product_badges == true %}
           {% render 'product-badges',
             card_product: card_product,
@@ -303,7 +302,6 @@
             <span>{{ 'products.product.label_set' | t: index: indexFor }}</span>
           </div>
         {% endif %}
-        {% endcomment %}
 
         {% if type != 'list' and type != 'sticky' %}
           {% comment %} Product item wishlist using only wishlist page {% endcomment %}

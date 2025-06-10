@@ -75,7 +75,7 @@
 
       {% comment %} Product 2 {% endcomment %}
       <slide-section
-        class="my-5 mx-1025-10 f-1 bg-white bor bor-2 bor-crimson-red rounded-5 swiper{% if reveal %} reveal_on_scroll{% endif %}"
+        class="f-1 my-5 mx-1025-10 h-fit-content bg-white bor bor-2 bor-crimson-red rounded-5 swiper{% if reveal %} reveal_on_scroll{% endif %}"
         data-section-id="{{ section.id }}"
         data-autoplay="{{ autoplay }}"
         data-effect="slide"
@@ -114,7 +114,7 @@
               colunm: items_per_row,
               colunm_mobile: section_st.items_per_row_mobile,
               padding: column_gap_2,
-              class: ' swiper-slide',
+              class: 'swiper-slide',
               template_enable_action: true,
               template_enable_product_vendor: true,
               template_enable_rate: true,
@@ -414,6 +414,77 @@
       "id": "right_btn_pi",
       "label": "Right",
       "default": 30,
+      "min": 0,
+      "max": 50,
+      "unit": "px",
+    },
+    {
+      "type": "paragraph",
+      "content": "Product Information:"
+    },
+    {
+      "type": "range",
+      "id": "mx_info_product",
+      "label": "Spacing Left/Right Block",
+      "default": 0,
+      "min": 0,
+      "max": 50,
+      "unit": "px",
+    },
+    {
+      "type": "paragraph",
+      "content": "Product item top spacing "
+    },
+    {
+      "type": "range",
+      "id": "mt_pi_title",
+      "label": "Title",
+      "default": 0,
+      "min": 0,
+      "max": 50,
+      "unit": "px",
+    },
+    {
+      "type": "range",
+      "id": "mt_pi_ratting",
+      "label": "Ratting",
+      "default": 0,
+      "min": 0,
+      "max": 50,
+      "unit": "px",
+    },
+    {
+      "type": "range",
+      "id": "mt_pi_price",
+      "label": "Price",
+      "default": 0,
+      "min": 0,
+      "max": 50,
+      "unit": "px",
+    },
+    {
+      "type": "range",
+      "id": "mt_pi_countdown",
+      "label": "Countdown timer",
+      "default": 0,
+      "min": 0,
+      "max": 50,
+      "unit": "px",
+    },
+    {
+      "type": "range",
+      "id": "mt_pi_progress",
+      "label": "Progress",
+      "default": 0,
+      "min": 0,
+      "max": 50,
+      "unit": "px",
+    },
+    {
+      "type": "range",
+      "id": "mt_pi_stock",
+      "label": "Stock",
+      "default": 0,
       "min": 0,
       "max": 50,
       "unit": "px",

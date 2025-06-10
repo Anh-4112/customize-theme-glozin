@@ -312,7 +312,7 @@
               </button-wishlist>
             {%- endif -%}
           {% endif %}
-          <div class="product-item__action transition flex flex-column gap-10 absolute static-1025 top-15 right-5{% if settings.show_action_on_mobile and product_style != 'card' %} invisible-1025{% elsif settings.show_action_on_mobile and product_style == 'card' %} visible-1025{% elsif settings.show_action_on_mobile == false and product_style == 'card' %} visible-1025{% endif %}{% if settings.show_action_on_mobile == false %} invisible{% endif %}">
+          <div class="product-item__action transition flex flex-column gap-10 absolute static-1025 top-20 right-5{% if settings.show_action_on_mobile and product_style != 'card' %} invisible-1025{% elsif settings.show_action_on_mobile and product_style == 'card' %} visible-1025{% elsif settings.show_action_on_mobile == false and product_style == 'card' %} visible-1025{% endif %}{% if settings.show_action_on_mobile == false %} invisible{% endif %}">
             {% if template_enable_action == true %}
               {% if show_quick_view == true or show_compare == true or show_wishlist == true %}
                 {% if type != 'product-set' %}

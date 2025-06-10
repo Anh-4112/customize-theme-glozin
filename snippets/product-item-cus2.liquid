@@ -34,6 +34,13 @@
   assign mt_img_product = section_st.mt_img_product
   assign top_btn_pi = section_st.top_btn_pi
   assign right_btn_pi = section_st.right_btn_pi
+  assign mx_info_product = section_st.mx_info_product
+  assign mt_pi_title = section_st.mt_pi_title
+  assign mt_pi_ratting = section_st.mt_pi_ratting
+  assign mt_pi_price = section_st.mt_pi_price
+  assign mt_pi_countdown = section_st.mt_pi_countdown
+  assign mt_pi_progress = section_st.mt_pi_progress
+  assign mt_pi_stock = section_st.mt_pi_stock
 
   assign theme_st = settings
   assign product_image_ratio = theme_st.product_image_ratio
@@ -80,7 +87,7 @@
     {% endif %}
   >
     <motion-element
-      class="bg-white product-item__wrapper block {% if direction == 'horizontal' %} flex-column  {% endif %} {{settings.product_hover_effect }}{% if type == 'list' or type == 'sticky' %} flex gap-custom align-center{% else %} product-grid{% endif %} {% if scroll_animation != 'none' and scroll_animation != null %} scroll-trigger {{ scroll_animation }} {% endif %}"
+      class="bg-white pb-38 product-item__wrapper block {% if direction == 'horizontal' %} flex-column  {% endif %} {{settings.product_hover_effect }}{% if type == 'list' or type == 'sticky' %} flex gap-custom align-center{% else %} product-grid{% endif %} {% if scroll_animation != 'none' and scroll_animation != null %} scroll-trigger {{ scroll_animation }} {% endif %}"
       {% if indexFor and scroll_animation %}
         data-cascade
       {% endif %}
@@ -325,10 +332,10 @@
               </button-wishlist>
             {%- endif -%}
           {% endif %}
-          {% comment %} top-15 right-5  {% endcomment %}
+          {% comment %}  right-5  {% endcomment %}
           {% comment %} product-item = pi {% endcomment %}
           <div 
-            class="top-btn-pi right-btn-pi product-item__action transition flex flex-column gap-10 absolute static-1025{% if settings.show_action_on_mobile and product_style != 'card' %} invisible-1025{% elsif settings.show_action_on_mobile and product_style == 'card' %} visible-1025{% elsif settings.show_action_on_mobile == false and product_style == 'card' %} visible-1025{% endif %}{% if settings.show_action_on_mobile == false %} invisible{% endif %}"
+            class="{% if top_btn_pi != '0' %}top-btn-pi{% else %}top-20{% endif %} right-btn-pi product-item__action transition flex flex-column gap-10 absolute static-1025{% if settings.show_action_on_mobile and product_style != 'card' %} invisible-1025{% elsif settings.show_action_on_mobile and product_style == 'card' %} visible-1025{% elsif settings.show_action_on_mobile == false and product_style == 'card' %} visible-1025{% endif %}{% if settings.show_action_on_mobile == false %} invisible{% endif %}"
             style="
               --top-btn-pi: {{ top_btn_pi }};
               --right-btn-pi: {{ right_btn_pi }};
@@ -513,13 +520,17 @@
       </div>
 
       {% comment %} Product information {% endcomment %}
-      <div class="mt-0 mx-30 product-item__information word-break{% if type == 'list' or type == 'sticky' %} text-start align-self-center type-list{% else %} mt-15{% endif %}">
+      <div 
+        class="mx-info-product product-item__information word-break"
+        style="--mx-info-product: {{ mx_info_product }};"
+      >
         {% comment %} Product item title {% endcomment %}
         {% if type != 'product-set' %}
           <a
             aria-label="{{ card_product.title }}"
-            class="fs-14 {% if product_truncation_title != 'none' %}product-title__truncate {% endif %}product-item__name {{ settings.product_name_text_transform }} heading-style no-underline fs-custom block lh-normal"
-            style="--font-size: {{ settings.product_size }};{% if product_truncation_title != 'none' %} --line-clamp: {{ product_truncation_title }};{% endif %}"            {% if template_disable_product_url == true %}
+            class="mt-pi-title heading-style fs-14 no-underline block lh-normal"
+            style="--mt-pi-title: {{ mt_pi_title }};"
+            {% if template_disable_product_url == true %}
               role="link" aria-disabled="true"
             {% else %}
               href="{{ card_product.url }}"
@@ -530,22 +541,25 @@
         {% endif %}
 
         {% comment %} Product item rating {% endcomment %}
-        {%- if template_enable_rate == true -%}
-          {%- if show_rate -%}
-            {%- if card_product.metafields.judgeme.badge -%}
-              <review-product
-                class="review-product-added inline-loading inline-flex"
-                data-product-handle="{{ card_product.handle }}"
-              >
-                {% comment %} {{- 'products.product.loading' | t -}} {% endcomment %}
-                <script type="application/json" class="product-review-json">
-                  {%- render 'review' | product: card_product -%}
-                </script>
-              </review-product>
+        <div 
+          class="mt-pi-ratting d-flex gap-1"
+          style="--mt-pi-ratting: {{ mt_pi_ratting }};"
+        >
+          {%- if template_enable_rate == true -%}
+            {%- if show_rate -%}
+              {%- if card_product.metafields.judgeme.badge -%}
+                <review-product
+                  class="review-product-added inline-loading inline-flex"
+                  data-product-handle="{{ card_product.handle }}"
+                >
+                  {% comment %} {{- 'products.product.loading' | t -}} {% endcomment %}
+                  <script type="application/json" class="product-review-json">
+                    {%- render 'review' | product: card_product -%}
+                  </script>
+                </review-product>
+              {%- endif -%}
             {%- endif -%}
           {%- endif -%}
-        {%- endif -%}
-        <div class="d-flex gap-1 mt-30">
           <svg width="12" height="12" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M9.96853 3.78143C10.0011 3.88335 10.0043 3.98868 9.9783 4.0974C9.95226 4.20612 9.89692 4.29785 9.81228 4.37259L7.63455 6.37033L8.27908 9.32616C8.29861 9.43488 8.28885 9.5402 8.24978 9.64213C8.21723 9.74405 8.15864 9.82899 8.074 9.89694C7.98286 9.96489 7.8852 9.99887 7.78103 9.99887C7.67687 10.0057 7.57921 9.98188 7.48806 9.92752L4.99783 8.36806L2.5076 9.92752C2.46853 9.94791 2.42296 9.96489 2.37088 9.97848C2.3253 9.99207 2.27973 9.99887 2.23416 9.99887C2.18207 9.99887 2.12674 9.98868 2.06814 9.96829C2.01606 9.9547 1.96723 9.93092 1.92166 9.89694C1.83702 9.82899 1.77517 9.74405 1.73611 9.64213C1.70356 9.5402 1.69705 9.43488 1.71658 9.32616L2.36111 6.37033L0.183377 4.37259C0.0987413 4.29785 0.0434028 4.20612 0.0173611 4.0974C-0.00868056 3.98868 -0.00542535 3.88335 0.0271267 3.78143C0.0596788 3.67271 0.115017 3.58437 0.193142 3.51642C0.277778 3.44847 0.372179 3.4077 0.476345 3.39411L3.36697 3.12911L4.50955 0.336353C4.54861 0.234428 4.61372 0.152888 4.70486 0.0917327C4.79601 0.0305776 4.89366 0 4.99783 0C5.102 0 5.19965 0.0305776 5.2908 0.0917327C5.38194 0.152888 5.44705 0.234428 5.48611 0.336353L6.62869 3.12911L9.51931 3.39411C9.62348 3.4077 9.71463 3.44847 9.79275 3.51642C9.87739 3.58437 9.93598 3.67271 9.96853 3.78143Z" fill="#FFB800"></path>
           </svg>
@@ -567,7 +581,8 @@
         {% if template_enable_price == true %}
           {% if hidden_price != true %}
             <div
-              class="mt-15 lh fs-20{% if type == 'list' or type == 'sticky' %} text-start{% else %} fs-custom{% endif %} flex gap-custom {{ priceclass }}"
+              class="mt-pi-price lh fs-18 flex gap-custom {{ priceclass }}"
+              style="--mt-pi-price: {{ mt_pi_price }};"
             >
               {%- render 'price', scope: 'item', product: card_product, show_badges: false, class: priceclass -%}
             </div>
@@ -592,25 +607,28 @@
 
         {% comment %} Countdown Timer {% endcomment %}
         {% if card_product.metafields.custom.countdown_timer != blank %}
-          <div class="countdown-timer mt-30 inline-flex flex-column gap-10">
-            <div class="countdown-messeage lh fs-13 fw-500">
-              {{ 'sections.shopable_video.countdown_message' | t }}
+          <div 
+            class="mt-pi-countdown countdown-timer inline-flex flex-column gap-10"
+            style="--mt-pi-countdown: {{ mt_pi_countdown }};"
+          >
+            <div class="lh fs-14 fw-500">
+              Hurry up! Offer ends in:
             </div>
             <countdown-timer-custom
-              class="flex flex-wrap fs-16 gap-5"
+              class="flex flex-wrap fs-16 gap-075"
               data-endtime="{{ card_product.metafields.custom.countdown_timer }}"
               data-days="{{ 'products.product.countdown.days' | t }}"
               data-hours="{{ 'products.product.countdown.hours' | t }}"
               data-mins="{{ 'products.product.countdown.mins' | t }}"
               data-secs="{{ 'products.product.countdown.secs' | t }}"
             >
-              <span class="days_timer fs-14 fw-600 w-40 h-50 bg-crimson-red cl-white inline-flex middle-center rounded-5"></span>
+              <span class="days_timer fs-14 fw-600 w-45 h-52 bg-crimson-red cl-white inline-flex middle-center rounded-5"></span>
               <span class="fs-20 fw-600 cl-black inline-flex middle-center">:</span>
-              <span class="hours_timer fs-14 fw-600 w-40 h-50 bg-crimson-red cl-white inline-flex middle-center rounded-5"></span>
+              <span class="hours_timer fs-14 fw-600 w-45 h-52 bg-crimson-red cl-white inline-flex middle-center rounded-5"></span>
               <span class="fs-20 fw-600 cl-black inline-flex middle-center">:</span>
-              <span class="minutes_timer fs-14 fw-600 w-40 h-50 bg-crimson-red cl-white inline-flex middle-center rounded-5"></span>
+              <span class="minutes_timer fs-14 fw-600 w-45 h-52 bg-crimson-red cl-white inline-flex middle-center rounded-5"></span>
               <span class="fs-20 fw-600 cl-black inline-flex middle-center">:</span>
-              <span class="seconds_timer fs-14 fw-600 w-40 h-50 bg-crimson-red cl-white inline-flex middle-center rounded-5"></span>
+              <span class="seconds_timer fs-14 fw-600 w-45 h-52 bg-crimson-red cl-white inline-flex middle-center rounded-5"></span>
             </countdown-timer-custom>
           </div>
         {% endif %}
@@ -621,7 +639,10 @@
         {% assign sold_quantity = total_quantity | minus: variant.inventory_quantity %}
         {% assign sold_percent = sold_quantity | times: 100 | divided_by: total_quantity %}
 
-        <div class="mt-20 product-progress-wrapper ">
+        <div 
+          class="mt-pi-progress product-progress-wrapper"
+          style="--mt-pi-progress: {{ mt_pi_progress }};"
+        >
           <div class="w-full h-5 bg-white-smoke rounded-5 overflow-h">
             <div class="h-full bg-crimson-red rounded-5" style="width: {{ sold_percent }}%;"></div>
           </div>
@@ -634,17 +655,21 @@
 
         {% if variant.inventory_management %}
           {% if variant.inventory_quantity > 0 %}
-            <p class="mt-5 mb-10 fs-12 fw-600 cl-black">
+            <div 
+              class="mt-pi-stock fs-12 fw-600 cl-black"
+              style="--mt-pi-stock: {{ mt_pi_stock }};"
+            >
               <span class="fw-500 cl-dark-blue-gray">Sold:</span>
               {{ sold_quantity }}/{{ total_quantity }}
               <span class="fw-500 cl-dark-blue-gray">products</span> 
-            </p>
+            </div>
           {% else %}
-            <p class="mt-5 mb-10">Out of stock</p>
+            <div 
+              class="mt-pi-stock"
+              style="--mt-pi-stock: {{ mt_pi_stock }};"
+            >Out of stock</div>
           {% endif %}
         {% endif %}
-
-
 
       </div>
       {% if template_disable_script_trigger_product_data != true %}

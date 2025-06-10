@@ -1100,6 +1100,9 @@ picture {
 .h-50 {
   height: 5rem;
 }
+.h-52 {
+  height: 5.2rem;
+}
 .h-60 {
   height: 6rem;
 }
@@ -1311,6 +1314,9 @@ picture {
 }
 .pb-30 {
   padding-bottom: 3rem;
+}
+.pb-38 {
+  padding-bottom: 3.8rem;
 }
 .m-0 {
   margin: 0;
@@ -1610,7 +1616,7 @@ header.active li.visible .submenu:not(.submenu-vertical) {
 .top-10 {
   top: 1rem;
 }
-.top-15 {
+.top-20 {
   top: 2rem;
 }
 .top-30 {
