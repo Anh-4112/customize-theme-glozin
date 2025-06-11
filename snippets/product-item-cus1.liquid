@@ -29,6 +29,10 @@
   endif
 %}
 {% liquid
+  assign section_st = section.settings
+  assign w_img_product_1 = section_st.w_img_product_1
+  assign mt_img_product_1 = section_st.mt_img_product_1
+
   assign theme_st = settings
   assign product_image_ratio = theme_st.product_image_ratio
   assign product_custom_ratio = theme_st.product_custom_ratio
@@ -63,7 +67,7 @@
 {% comment %} Case card product has data, handle data  bg-white product-item product__item-js {{ class }} style-as-{{ product_style }}{% endcomment %}
 {% if card_product and card_product != empty %}
   <div
-    class="grid-item grid-md-item grid-1025-item"
+    class="bg-white h-full pb-25 grid-item grid-md-item grid-1025-item"
     {% if type == 'sticky' %}
       data-section="{{ section_id }}"
       data-color-trigger="{{ settings.color_swatch_trigger }}"
@@ -73,7 +77,7 @@
     {% endif %}
   >
     <motion-element
-      class="h-full bg-white product-item__wrapper block {% if direction == 'horizontal' %} flex-column  {% endif %} {{settings.product_hover_effect }}{% if type == 'list' or type == 'sticky' %} flex gap-custom align-center{% else %} product-grid{% endif %} {% if scroll_animation != 'none' and scroll_animation != null %} scroll-trigger {{ scroll_animation }} {% endif %}"
+      class="product-item__wrapper block {% if direction == 'horizontal' %} flex-column  {% endif %} {{settings.product_hover_effect }}{% if type == 'list' or type == 'sticky' %} flex gap-custom align-center{% else %} product-grid{% endif %} {% if scroll_animation != 'none' and scroll_animation != null %} scroll-trigger {{ scroll_animation }} {% endif %}"
       {% if indexFor and scroll_animation %}
         data-cascade
       {% endif %}
@@ -88,7 +92,7 @@
       style="{% if indexFor and scroll_animation %}--animation-order: {{ indexFor }};  {% endif %}{% if type == 'list' %}--gap: 15{% endif %}"
     >
       {% comment %} Product inner media {% endcomment %}
-      <div class="mx-20 pt-10 bg-white product-item__inner hover-effect overflow-hidden relative{% if type == 'list' or type == 'sticky' %} col-w-custom{% endif %}">
+      <div class="product-item__inner hover-effect relative{% if type == 'list' or type == 'sticky' %} col-w-custom{% endif %}">
         {% assign product_media = card_product.featured_media %}
         {% comment %} Case product has image {% endcomment %}
         {%- if product_media -%}
@@ -130,8 +134,12 @@
               href="{{ card_product.url }}"
             {% endif %}
             aria-label="{{ card_product.title }}"
-            class="mx-10 my-10 product__media product-item__media--ratio rounded block{% if card_product.media[1] != blank and show_secondary_image %} show_secondary{% endif %}"
-            style="--aspect-ratio: {{ ratio }};"
+            class="w-img-product-1 mt-img-product-1 mx-auto product__media product-item__media--ratio rounded block{% if card_product.media[1] != blank and show_secondary_image %} show_secondary{% endif %}"
+            style="
+              --aspect-ratio: {{ ratio }};
+              --w-img-product-1: {{ w_img_product_1 }};
+              --mt-img-product-1: {{ mt_img_product_1 }};
+            "
           >
             {% if type_video %}
               {%- liquid
@@ -316,7 +324,8 @@
             {% if template_enable_action == true %}
               {% if show_quick_view == true or show_compare == true or show_wishlist == true %}
                 {% if type != 'product-set' %}
-                  <div class="product-item__button-action heading-color transition flex gap-10 absolute-1025 z-5{% if product_style == 'morden' %} inset-x-0 bottom-10 bottom-1025-15 flex-row justify-center action__morden-style{% endif %}{% if product_style != 'morden' %} flex-column bottom-10 bottom-1025-auto top-1025-15{% if settings.rtl %} left-10 left-1025-15{% else %} right-10 right-1025-0{% endif %}{% endif %}{% if product_style != 'card' %} product__action-animation{% endif %}">
+                  {% comment %}  {% endcomment %}
+                  <div class="product-item__button-action heading-color transition flex gap-10 absolute-1025 z-5 flex-column top-15 right-10{% if product_style != 'card' %} product__action-animation{% endif %}">
                     {% comment %} Product item wishlist {% endcomment %}
                     {%- if show_wishlist == true -%}
                       {% if wishlist == empty %}
@@ -443,11 +452,12 @@
                           value="{{ card_product.selected_or_first_available_variant.id }}"
                           disabled
                         >
+                          {% comment %} bg-1025-dark-blue cl-1025-white bg-1025-hover-blue w-1025-90p btn-white shadow {% endcomment %}
                         <button
                           id="{{ product_form_id }}-submit"
                           type="submit"
                           name="add"
-                          class="bg-1025-dark-blue cl-1025-white bg-1025-hover-blue w-1025-90p {% if product_style == 'card' %}invisible-1025 {% endif %}product__add-cart product-item__button-submit transition btn btn-white shadow text-center w-30 h-30 w-1025-auto h-1025-auto inline-flex content-center relative absolute-1025 z-5 bottom-1025-15"
+                          class="{% if product_style == 'card' %}invisible-1025 {% endif %}product__add-cart product-item__button-submit bg-dark-blue cl-white bg-1025-hover-blue w-30 h-30 round-50p inline-flex content-center w-1025-60p round-1025-35 absolute-1025 z-5 bottom-1025-n15 transition"
                           aria-haspopup="dialog"
                           aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
                           aria-live="polite"
@@ -492,7 +502,7 @@
         {% endif %}
       </div>
       {% comment %} Product information {% endcomment %}
-      <div class="mt-0 mx-20 product-item__information word-break{% if type == 'list' or type == 'sticky' %} text-start align-self-center type-list{% else %} mt-15{% endif %}">
+      <div class="mx-20 product-item__information word-break mt-15">
         {% comment %} Product item title {% endcomment %}
         {% if type != 'product-set' %}
           <a
@@ -944,7 +954,7 @@
           </a>
         </div>
       </div>
-      {% comment %}
+
       <div class="product-item__information word-break{% if type == 'list' or type == 'sticky' %} text-start align-self-center type-list{% else %} text-{{ settings.product_alignment }} mt-15{% endif %}">
         <a
           draggable="false"
@@ -963,7 +973,6 @@
           {%- render 'price' | scope: 'item', show_badges: false, class: priceclass -%}
         </div>
       </div>
-      {% endcomment %}
     </motion-element>
   </div>
 {% endif %}

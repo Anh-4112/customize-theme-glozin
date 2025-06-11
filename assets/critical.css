@@ -1055,6 +1055,9 @@ picture {
 .w-30 {
   width: 3rem;
 }
+.w-32 {
+  width: 3.2rem;
+}
 .w-50-percent {
   width: 50%;
 }
@@ -1087,6 +1090,9 @@ picture {
 }
 .h-30 {
   height: 3rem;
+}
+.h-32 {
+  height: 3.2rem;
 }
 .h-40 {
   height: 4rem;
@@ -1615,6 +1621,9 @@ header.active li.visible .submenu:not(.submenu-vertical) {
 }
 .top-10 {
   top: 1rem;
+}
+.top-15 {
+  top: 1.5rem;
 }
 .top-20 {
   top: 2rem;
@@ -2283,20 +2292,26 @@ header.active li.visible .submenu:not(.submenu-vertical) {
   .left-1025-15 {
     left: 1.5rem;
   }
+  .bottom-1025-n15 {
+    bottom: -1.5rem;
+  }
   .bottom-1025-15 {
     bottom: 1.5rem;
   }
   .bottom-1025-auto {
     bottom: auto;
   }
+  .w-1025-auto {
+    width: auto;
+  }
+  .w-1025-60p {
+    width: 60%;
+  }
   .w-1025-45 {
     width: 4.5rem;
   }
   .h-1025-45 {
     height: 4.5rem;
-  }
-  .w-1025-auto {
-    width: auto;
   }
   .h-1025-auto {
     height: auto;

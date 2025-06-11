@@ -30,14 +30,20 @@
 %}
 {% liquid
   assign section_st = section.settings
-  assign w_img_product = section_st.w_img_product
-  assign mt_img_product = section_st.mt_img_product
-  assign top_btn_pi = section_st.top_btn_pi
-  assign right_btn_pi = section_st.right_btn_pi
-  assign mx_info_product = section_st.mx_info_product
-  assign mt_pi_title = section_st.mt_pi_title
-  assign mt_pi_ratting = section_st.mt_pi_ratting
-  assign mt_pi_price = section_st.mt_pi_price
+  assign w_img_product_2 = section_st.w_img_product_2
+  assign mt_img_product_2 = section_st.mt_img_product_2
+  assign top_btn_pi_2 = section_st.top_btn_pi_2
+  assign right_btn_pi_2 = section_st.right_btn_pi_2
+  assign btn_product_item_cl = section_st.btn_product_item_cl
+  assign btn_product_item_bg = section_st.btn_product_item_bg
+  assign btn_product_item_cl_hover = section_st.btn_product_item_cl_hover
+  assign btn_product_item_bg_hover = section_st.btn_product_item_bg_hover
+  assign add_cart_product_item_cl = section_st.add_cart_product_item_cl
+  assign add_cart_product_item_bg = section_st.add_cart_product_item_bg
+  assign mx_info_product_2 = section_st.mx_info_product_2
+  assign mt_pi_title_2 = section_st.mt_pi_title_2
+  assign mt_pi_ratting_2 = section_st.mt_pi_ratting_2
+  assign mt_pi_price_2 = section_st.mt_pi_price_2
   assign mt_pi_countdown = section_st.mt_pi_countdown
   assign mt_pi_progress = section_st.mt_pi_progress
   assign mt_pi_stock = section_st.mt_pi_stock
@@ -54,7 +60,6 @@
   assign show_rate = theme_st.show_rate
   assign show_secondary_image = theme_st.show_secondary_image
   assign show_add_cart = theme_st.show_add_cart
-  assign product_truncation_title = theme_st.product_truncation_title
   assign hidden_price = theme_st.hidden_price
   assign wishlist = pages.wishlist
   assign compare = pages.compare
@@ -102,7 +107,6 @@
       style="{% if indexFor and scroll_animation %}--animation-order: {{ indexFor }};  {% endif %}{% if type == 'list' %}--gap: 15{% endif %}"
     >
       {% comment %} Product inner media {% endcomment %}
-      {% comment %} mx-30 {% endcomment %}
       <div class="product-item__inner hover-effect overflow-hidden relative{% if type == 'list' or type == 'sticky' %} col-w-custom{% endif %}">
         {% assign product_media = card_product.featured_media %}
         {% comment %} Case product has image {% endcomment %}
@@ -137,7 +141,6 @@
               assign type_video = true
             endif
           -%}
-          {% comment %} mx-30 my-10  {% endcomment %}
           <a
             draggable="false"
             {% if template_disable_product_url == true %}
@@ -146,11 +149,11 @@
               href="{{ card_product.url }}"
             {% endif %}
             aria-label="{{ card_product.title }}"
-            class="mx-auto w-img-product mt-img-product product__media product-item__media--ratio rounded block{% if card_product.media[1] != blank and show_secondary_image %} show_secondary{% endif %}"
+            class="w-img-product-2 mt-img-product-2 mx-auto product__media product-item__media--ratio rounded block{% if card_product.media[1] != blank and show_secondary_image %} show_secondary{% endif %}"
             style="
               --aspect-ratio: {{ ratio }};
-              --w-img-product: {{ w_img_product }};
-              --mt-img-product: {{ mt_img_product }};
+              --w-img-product-2: {{ w_img_product_2 }};
+              --mt-img-product-2: {{ mt_img_product_2 }};
             "
           >
             {% if type_video %}
@@ -332,24 +335,22 @@
               </button-wishlist>
             {%- endif -%}
           {% endif %}
-          {% comment %}  right-5  {% endcomment %}
           {% comment %} product-item = pi {% endcomment %}
           <div 
-            class="{% if top_btn_pi != '0' %}top-btn-pi{% else %}top-20{% endif %} right-btn-pi product-item__action transition flex flex-column gap-10 absolute static-1025{% if settings.show_action_on_mobile and product_style != 'card' %} invisible-1025{% elsif settings.show_action_on_mobile and product_style == 'card' %} visible-1025{% elsif settings.show_action_on_mobile == false and product_style == 'card' %} visible-1025{% endif %}{% if settings.show_action_on_mobile == false %} invisible{% endif %}"
+            class="top-btn-pi-2 right-btn-pi-2 product-item__action transition flex flex-column gap-10 absolute static-1025{% if settings.show_action_on_mobile and product_style != 'card' %} invisible-1025{% elsif settings.show_action_on_mobile and product_style == 'card' %} visible-1025{% elsif settings.show_action_on_mobile == false and product_style == 'card' %} visible-1025{% endif %}{% if settings.show_action_on_mobile == false %} invisible{% endif %}"
             style="
-              --top-btn-pi: {{ top_btn_pi }};
-              --right-btn-pi: {{ right_btn_pi }};
+              --top-btn-pi-2: {{ top_btn_pi_2 }};
+              --right-btn-pi-2: {{ right_btn_pi_2 }};
             "
           >
             {% if template_enable_action == true %}
               {% if show_quick_view == true or show_compare == true or show_wishlist == true %}
                 {% if type != 'product-set' %}
-                  {% comment %} top-1025-30 right-1025-5  {% endcomment %}
                   <div 
-                    class="top-btn-pi right-btn-pi product-item__button-action heading-color transition flex gap-10 absolute-1025 z-5{% if product_style == 'morden' %} inset-x-0 bottom-10 bottom-1025-15 flex-row justify-center action__morden-style{% endif %}{% if product_style != 'morden' %} flex-column bottom-10 bottom-1025-auto {% if settings.rtl %} left-10 left-1025-15{% else %} right-10 {% endif %}{% endif %}{% if product_style != 'card' %} product__action-animation{% endif %}"
+                    class="top-btn-pi-2 right-btn-pi-2 product-item__button-action heading-color transition flex gap-10 absolute-1025 z-5{% if product_style == 'morden' %} inset-x-0 bottom-10 bottom-1025-15 flex-row justify-center action__morden-style{% endif %}{% if product_style != 'morden' %} flex-column bottom-10 bottom-1025-auto {% if settings.rtl %} left-10 left-1025-15{% else %} right-10 {% endif %}{% endif %}{% if product_style != 'card' %} product__action-animation{% endif %}"
                     style="
-                      --top-btn-pi: {{ top_btn_pi }};
-                      --right-btn-pi: {{ right_btn_pi }};
+                      --top-btn-pi-2: {{ top_btn_pi_2 }};
+                      --right-btn-pi-2: {{ right_btn_pi_2 }};
                     "
                   >
                     {% comment %} Product item wishlist {% endcomment %}
@@ -359,7 +360,13 @@
                       {% endif %}
                       <button-wishlist
                         tabindex="0"
-                        class="product-item__button pointer product-item__button-wishlist tooltip relative btn-hover transition btn-hover transition btn-white rounded-50 p-0 shadow w-30 h-30 inline-flex content-center"
+                        class="product-item__button-customize product-item__button product-item__button-wishlist pointer relative tooltip w-32 h-32 round-50p inline-flex content-center bor bor-1 bor-gray-light transition"
+                        style="
+                          --btn-product-item-cl: {{ btn_product_item_cl }};
+                          --btn-product-item-bg: {{ btn_product_item_bg }};
+                          --btn-product-item-cl-hover: {{ btn_product_item_cl_hover }};
+                          --btn-product-item-bg-hover: {{ btn_product_item_bg_hover }};
+                        "
                         data-product-id="{{ card_product.id }}"
                         data-action="{{ action_when_click_added_wishlist }}"
                         data-tooltip-remove="{{ 'products.product.actions.wishlist.remove' | t }}"
@@ -383,7 +390,13 @@
                       {% endif %}
                       <button-compare
                         tabindex="0"
-                        class="product-item__button pointer product-item__button-quickview tooltip relative btn-hover transition btn-white rounded-50 p-0 shadow w-30 h-30 inline-flex content-center"
+                        class="product-item__button-customize product-item__button product-item__button-quickview pointer relative tooltip w-32 h-32 round-50p inline-flex content-center bor bor-1 bor-gray-light transition"
+                        style="
+                          --btn-product-item-cl: {{ btn_product_item_cl }};
+                          --btn-product-item-bg: {{ btn_product_item_bg }};
+                          --btn-product-item-cl-hover: {{ btn_product_item_cl_hover }};
+                          --btn-product-item-bg-hover: {{ btn_product_item_bg_hover }};
+                        "
                         data-product-id="{{ card_product.id }}"
                         data-action="{{ action_when_click_added_compare }}"
                         data-tooltip-remove="{{ 'products.product.actions.compare.remove' | t }}"
@@ -401,9 +414,15 @@
                     {% comment %} Product item quickview {% endcomment %}
                     {%- if show_quick_view == true -%}
                       <button-quickview
+                        class="product-item__button-customize  product-item__button product-item__button-quickview pointer relative tooltip w-32 h-32 round-50p inline-flex content-center bor bor-1 bor-gray-light transition"
+                        style="
+                          --btn-product-item-cl: {{ btn_product_item_cl }};
+                          --btn-product-item-bg: {{ btn_product_item_bg }};
+                          --btn-product-item-cl-hover: {{ btn_product_item_cl_hover }};
+                          --btn-product-item-bg-hover: {{ btn_product_item_bg_hover }};
+                        "
                         data-custom-class="quickview"
                         tabindex="0"
-                        class="product-item__button pointer product-item__button-quickview tooltip relative btn-hover transition btn-white rounded-50 p-0 shadow w-30 h-30 inline-flex content-center"
                         data-url="/products/{{ card_product.handle }}?section_id=product-quickview&ajax=1"
                       >
                         <svg width="14" height="12" fill="none" class="hidden-on-load">
@@ -433,10 +452,14 @@
                           disabled
                         >
                         <button
+                          class="product-item__add-cart-customize {% if product_style == 'card' %}invisible-1025 {% endif %}product-item__button-submit text-center w-32 h-32 round-50p inline-flex content-center z-5"
+                          style="
+                            --add-cart-product-item-cl: {{ add_cart_product_item_cl }};
+                            --add-cart-product-item-bg: {{ add_cart_product_item_bg }};
+                          "
                           id="{{ product_form_id }}-submit"
                           type="submit"
                           name="add"
-                          class="bg-dark-blue cl-white translate-y-0 {% if product_style == 'card' %}invisible-1025 {% endif %}product__add-cart product-item__button-submit transition btn btn-white shadow text-center w-30 h-30 w-1025-auto h-1025-auto inline-flex content-center relative absolute-1025 z-5"
                           aria-haspopup="dialog"
                           aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
                           aria-live="polite"
@@ -521,15 +544,15 @@
 
       {% comment %} Product information {% endcomment %}
       <div 
-        class="mx-info-product product-item__information word-break"
-        style="--mx-info-product: {{ mx_info_product }};"
+        class="mx-info-product-2 product-item__information word-break"
+        style="--mx-info-product-2: {{ mx_info_product_2 }};"
       >
         {% comment %} Product item title {% endcomment %}
         {% if type != 'product-set' %}
           <a
             aria-label="{{ card_product.title }}"
-            class="mt-pi-title heading-style fs-14 no-underline block lh-normal"
-            style="--mt-pi-title: {{ mt_pi_title }};"
+            class="mt-pi-title-2 heading-style fs-14 no-underline block lh-normal"
+            style="--mt-pi-title-2: {{ mt_pi_title_2 }};"
             {% if template_disable_product_url == true %}
               role="link" aria-disabled="true"
             {% else %}
@@ -542,8 +565,8 @@
 
         {% comment %} Product item rating {% endcomment %}
         <div 
-          class="mt-pi-ratting d-flex gap-1"
-          style="--mt-pi-ratting: {{ mt_pi_ratting }};"
+          class="mt-pi-ratting-2 d-flex gap-1"
+          style="--mt-pi-ratting-2: {{ mt_pi_ratting_2 }};"
         >
           {%- if template_enable_rate == true -%}
             {%- if show_rate -%}
@@ -581,8 +604,8 @@
         {% if template_enable_price == true %}
           {% if hidden_price != true %}
             <div
-              class="mt-pi-price lh fs-18 flex gap-custom {{ priceclass }}"
-              style="--mt-pi-price: {{ mt_pi_price }};"
+              class="mt-pi-price-2 lh fs-18 flex gap-custom {{ priceclass }}"
+              style="--mt-pi-price-2: {{ mt_pi_price_2 }};"
             >
               {%- render 'price', scope: 'item', product: card_product, show_badges: false, class: priceclass -%}
             </div>
