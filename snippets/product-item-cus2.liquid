@@ -377,8 +377,7 @@
                           <use href="#icon-wishlist" />
                         </svg>
                         <span class="tooltip-content px-7 invisible rounded-3 absolute pointer-none{% if product_style == 'morden' %} tooltip-top{% endif %}{% if product_style != 'morden' %}{% if settings.rtl %} tooltip-right{% else %} tooltip-left{% endif %}{% endif %}">
-                          {% comment %} {{- 'products.product.actions.wishlist.add' | t -}} {% endcomment %}
-                          Wishlist
+                          {{- 'products.product.actions.wishlist.add' | t -}}
                         </span>
                       </button-wishlist>
                     {%- endif -%}

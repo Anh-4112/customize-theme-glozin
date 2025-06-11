@@ -527,8 +527,8 @@
           "label": "Select Options"
         },
         "wishlist": {
-          "add": "Add to wishlist",
-          "remove": "Remove from wishlist",
+          "add": "Wishlist",
+          "remove": "Wishlist",
           "redirect": "Browse wishlist"
         },
         "compare": {

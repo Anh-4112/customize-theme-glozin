@@ -80,14 +80,15 @@
             -%}
               {%- case block.type -%}
                 {%- when 'newsletter' -%}
+                  {% comment %} --col-width: {{ block_st.content_width }}; col-md-w-custom {% endcomment %}
                   <motion-element
                     data-motion="fade-up-lg"
                     {% if scroll_animation != 'slide_in' %}
                       hold
                     {% endif %}
                     data-motion-delay="{{ forloop.index0 | times: 50 }}"
-                    class="f-lg-33p{% if scroll_animation == 'slide_in' %} opacity-0 {% endif %} footer-block w-full col-md-w-custom-50 col-md-w-custom{% if block.type == 'store_info' %} pb-30 border-bottom border-bottom-md-0{% else %} mb-0 mb-md-20 border-bottom border-bottom-md-0{% endif %} {{ block.type }}"
-                    style="--col-width: {{ block_st.content_width }}; --menu-list: {{ menu_item }}"
+                    class="f-lg-33p{% if scroll_animation == 'slide_in' %} opacity-0 {% endif %} footer-block w-full {% if block.type == 'store_info' %} pb-30 border-bottom border-bottom-md-0{% else %} mb-0 mb-md-20 border-bottom border-bottom-md-0{% endif %} {{ block.type }}"
+                    style="--menu-list: {{ menu_item }}"
                     {{ block.shopify_attributes }}
                   >
                     <collapsible-block tabindex="0" class="footer-block mb-30 newsletter mb-50 my-md-0">
@@ -120,7 +121,7 @@
                                     id="NewsletterForm--{{ section.id }}"
                                     type="email"
                                     name="contact[email]"
-                                    class="round-35 field__input show-placeholder m-0 w-full pl-0 bg-transparent form-control"
+                                    class="newsletter-customize pl-20 bor bor-2 bor-light-cool-gray round-35 field__input show-placeholder m-0 w-full pl-0 bg-transparent form-control"
                                     value="{{ form.email }}"
                                     aria-required="true"
                                     autocapitalize="off"
@@ -144,8 +145,9 @@
                                   </label>
                                 </div>
                                 <button
+                                  class="round-35 fs-12 fw-700 cl-white bg-dark-blue f-20p newsletter-form__button word-break"
+                                  style="height: var(--input-height);"
                                   type="submit"
-                                  class="btn-primary newsletter-form__button word-break"
                                   name="commit"
                                   id="Subscribe-{{ section.id }}"
                                   aria-label="{%- if block_st.button_label != blank -%}{{ block_st.button_label }} {%- else -%} {{ 'subscribe.button_label' | t }} {% endif %}"
