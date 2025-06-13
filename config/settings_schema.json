@@ -114,13 +114,13 @@
       {
         "type": "range",
         "id": "fluid_container_width",
+        "label": "t:settings_schema.layout.settings.fluid_container_width.label",
+        "default": 1410,
         "min": 1200,
         "max": 1800,
         "step": 10,
         "unit": "px",
-        "label": "t:settings_schema.layout.settings.fluid_container_width.label",
-        "info": "t:settings_schema.layout.settings.fluid_container_width.info",
-        "default": 1410
+        "info": "t:settings_schema.layout.settings.fluid_container_width.info"
       },
       {
         "type": "header",

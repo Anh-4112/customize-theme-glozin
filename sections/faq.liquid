@@ -33,7 +33,7 @@
                 {% if scroll_animation != 'slide_in' %}
                   hold
                 {% endif %}
-            class="block  {% if scroll_animation != 'none' %} scroll-trigger {{ scroll_animation }}{% endif %}"
+            class="block {% if scroll_animation != 'none' %} scroll-trigger {{ scroll_animation }}{% endif %}"
             style="
               {%- if scroll_animation != 'none' -%}
                 --animation-order: 0;
@@ -41,7 +41,7 @@
             "
           >
             <h2
-              class="section__header-heading  heading-letter-spacing {{ header_size  }} mt-0{% if section_st.description != blank %} mb-10{% else %} mb-0{% endif %}"
+              class="section__header-heading heading-letter-spacing {{ header_size  }} mt-0{% if section_st.description != blank %} mb-10{% else %} mb-0{% endif %}"
             >
               {{ section_st.heading }}
             </h2>

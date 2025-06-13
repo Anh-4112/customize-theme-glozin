@@ -32,7 +32,7 @@
 %}
 {%- capture style -%}
     --section-pt: {{ section_st.padding_top }}; --section-pb: {{ section_st.padding_bottom }}; --font-size: {{ section_st.font_size }};--countdown-text-size: {{ section_st.font_size }}px;--swiper-navigation-color: var(--color-text); 
-  {%- endcapture -%}
+{%- endcapture -%}
 {%- if section.blocks.size > 0 and is_shown -%}
   {%- style -%}
     announcement-bar .announcement-slide {
